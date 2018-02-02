@@ -25,6 +25,7 @@ namespace BrickemonGo
             this.StatPanel.Paint += new PaintEventHandler(Form1_Paint);
             this.InfoPanel.Paint += new PaintEventHandler(Info_Paint);
             this.formeTablePanel.Paint += new PaintEventHandler(Formes_Paint);
+            this.spritestabPanel.Paint += new PaintEventHandler(Sprites_Paint);
             Refresh();
             pictureBox1.Update();
             NameLabel.Update();
@@ -115,6 +116,21 @@ namespace BrickemonGo
             //name text box
             NameLabel.Text = poke.GetName();
             //GetFormes();
+        }
+        private void Sprites_Paint(object sender, PaintEventArgs e)
+        {
+            try
+            {
+                pictureBox1.ImageLocation = (@"res/sprites/sugimori/" + this.poke.GetDexNum() + ".png");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            SpriteboxFront.ImageLocation = @"res/sprites/blackwhite/" + poke.GetDexNum() + ".png";
+            SpriteboxBack.ImageLocation = @"res/sprites/blackwhite/back/" + poke.GetDexNum() + ".png";
+            SpriteboxFrontShiny.ImageLocation = @"res/sprites/blackwhite/shiny" + poke.GetDexNum() + ".png";
+            SpriteboxBackShiny.ImageLocation = @"res/sprites/blackwhite/back/shiny" + poke.GetDexNum() + ".png";
         }
         public Color DetermineColor(float x, int id)//id is flag for whether its hp or not (hp bar calculated differently :))
         {

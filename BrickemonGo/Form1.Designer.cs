@@ -58,10 +58,16 @@
             this.FormesTab = new System.Windows.Forms.TabPage();
             this.formtabpanel = new System.Windows.Forms.Panel();
             this.formeTablePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.rightButton = new System.Windows.Forms.Button();
-            this.leftButton = new System.Windows.Forms.Button();
             this.MovesTab = new System.Windows.Forms.TabPage();
             this.MovesPanel = new System.Windows.Forms.Panel();
+            this.rightButton = new System.Windows.Forms.Button();
+            this.leftButton = new System.Windows.Forms.Button();
+            this.SpritesTab = new System.Windows.Forms.TabPage();
+            this.spritestabPanel = new System.Windows.Forms.Panel();
+            this.SpriteboxFront = new System.Windows.Forms.PictureBox();
+            this.SpriteboxFrontShiny = new System.Windows.Forms.PictureBox();
+            this.SpriteboxBack = new System.Windows.Forms.PictureBox();
+            this.SpriteboxBackShiny = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.StatPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -73,6 +79,12 @@
             this.FormesTab.SuspendLayout();
             this.formtabpanel.SuspendLayout();
             this.MovesTab.SuspendLayout();
+            this.SpritesTab.SuspendLayout();
+            this.spritestabPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxFront)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxFrontShiny)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxBack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxBackShiny)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -89,10 +101,10 @@
             this.NameLabel.AutoSize = true;
             this.NameLabel.CausesValidation = false;
             this.NameLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NameLabel.Font = new System.Drawing.Font("Dubai", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameLabel.Location = new System.Drawing.Point(352, 9);
             this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(155, 49);
+            this.NameLabel.Size = new System.Drawing.Size(164, 33);
             this.NameLabel.TabIndex = 1;
             this.NameLabel.Text = "NameLabel";
             this.NameLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -124,10 +136,10 @@
             // 
             this.TotalLabel.AutoSize = true;
             this.TotalLabel.BackColor = System.Drawing.Color.Transparent;
-            this.TotalLabel.Font = new System.Drawing.Font("Dubai", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalLabel.Location = new System.Drawing.Point(-1, 300);
             this.TotalLabel.Name = "TotalLabel";
-            this.TotalLabel.Size = new System.Drawing.Size(68, 40);
+            this.TotalLabel.Size = new System.Drawing.Size(68, 29);
             this.TotalLabel.TabIndex = 13;
             this.TotalLabel.Text = "Total";
             this.TotalLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -136,10 +148,10 @@
             // 
             this.TotalStatLabel.AutoSize = true;
             this.TotalStatLabel.BackColor = System.Drawing.Color.Transparent;
-            this.TotalStatLabel.Font = new System.Drawing.Font("Dubai", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalStatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalStatLabel.Location = new System.Drawing.Point(254, 300);
             this.TotalStatLabel.Name = "TotalStatLabel";
-            this.TotalStatLabel.Size = new System.Drawing.Size(28, 40);
+            this.TotalStatLabel.Size = new System.Drawing.Size(25, 29);
             this.TotalStatLabel.TabIndex = 12;
             this.TotalStatLabel.Text = "?";
             this.TotalStatLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -148,10 +160,10 @@
             // 
             this.SPEEDValueLabel.AutoSize = true;
             this.SPEEDValueLabel.BackColor = System.Drawing.Color.Transparent;
-            this.SPEEDValueLabel.Font = new System.Drawing.Font("Dubai", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SPEEDValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SPEEDValueLabel.Location = new System.Drawing.Point(258, 255);
             this.SPEEDValueLabel.Name = "SPEEDValueLabel";
-            this.SPEEDValueLabel.Size = new System.Drawing.Size(24, 32);
+            this.SPEEDValueLabel.Size = new System.Drawing.Size(20, 24);
             this.SPEEDValueLabel.TabIndex = 11;
             this.SPEEDValueLabel.Text = "?";
             // 
@@ -159,10 +171,10 @@
             // 
             this.SPAValueLabel.AutoSize = true;
             this.SPAValueLabel.BackColor = System.Drawing.Color.Transparent;
-            this.SPAValueLabel.Font = new System.Drawing.Font("Dubai", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SPAValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SPAValueLabel.Location = new System.Drawing.Point(258, 155);
             this.SPAValueLabel.Name = "SPAValueLabel";
-            this.SPAValueLabel.Size = new System.Drawing.Size(24, 32);
+            this.SPAValueLabel.Size = new System.Drawing.Size(20, 24);
             this.SPAValueLabel.TabIndex = 10;
             this.SPAValueLabel.Text = "?";
             // 
@@ -170,10 +182,10 @@
             // 
             this.SPDValueLabel.AutoSize = true;
             this.SPDValueLabel.BackColor = System.Drawing.Color.Transparent;
-            this.SPDValueLabel.Font = new System.Drawing.Font("Dubai", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SPDValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SPDValueLabel.Location = new System.Drawing.Point(258, 205);
             this.SPDValueLabel.Name = "SPDValueLabel";
-            this.SPDValueLabel.Size = new System.Drawing.Size(24, 32);
+            this.SPDValueLabel.Size = new System.Drawing.Size(20, 24);
             this.SPDValueLabel.TabIndex = 9;
             this.SPDValueLabel.Text = "?";
             // 
@@ -181,10 +193,10 @@
             // 
             this.DEFValueLabel.AutoSize = true;
             this.DEFValueLabel.BackColor = System.Drawing.Color.Transparent;
-            this.DEFValueLabel.Font = new System.Drawing.Font("Dubai", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DEFValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DEFValueLabel.Location = new System.Drawing.Point(258, 105);
             this.DEFValueLabel.Name = "DEFValueLabel";
-            this.DEFValueLabel.Size = new System.Drawing.Size(24, 32);
+            this.DEFValueLabel.Size = new System.Drawing.Size(20, 24);
             this.DEFValueLabel.TabIndex = 8;
             this.DEFValueLabel.Text = "?";
             // 
@@ -192,10 +204,10 @@
             // 
             this.ATKValueLabel.AutoSize = true;
             this.ATKValueLabel.BackColor = System.Drawing.Color.Transparent;
-            this.ATKValueLabel.Font = new System.Drawing.Font("Dubai", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ATKValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ATKValueLabel.Location = new System.Drawing.Point(258, 55);
             this.ATKValueLabel.Name = "ATKValueLabel";
-            this.ATKValueLabel.Size = new System.Drawing.Size(24, 32);
+            this.ATKValueLabel.Size = new System.Drawing.Size(20, 24);
             this.ATKValueLabel.TabIndex = 7;
             this.ATKValueLabel.Text = "?";
             // 
@@ -203,10 +215,10 @@
             // 
             this.HPValueLabel.AutoSize = true;
             this.HPValueLabel.BackColor = System.Drawing.Color.Transparent;
-            this.HPValueLabel.Font = new System.Drawing.Font("Dubai", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HPValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HPValueLabel.Location = new System.Drawing.Point(258, 5);
             this.HPValueLabel.Name = "HPValueLabel";
-            this.HPValueLabel.Size = new System.Drawing.Size(24, 32);
+            this.HPValueLabel.Size = new System.Drawing.Size(20, 24);
             this.HPValueLabel.TabIndex = 6;
             this.HPValueLabel.Text = "?";
             // 
@@ -214,10 +226,10 @@
             // 
             this.SpeLabel.AutoSize = true;
             this.SpeLabel.BackColor = System.Drawing.Color.Transparent;
-            this.SpeLabel.Font = new System.Drawing.Font("Dubai", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SpeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SpeLabel.Location = new System.Drawing.Point(0, 255);
             this.SpeLabel.Name = "SpeLabel";
-            this.SpeLabel.Size = new System.Drawing.Size(69, 32);
+            this.SpeLabel.Size = new System.Drawing.Size(73, 24);
             this.SpeLabel.TabIndex = 5;
             this.SpeLabel.Text = "SPEED";
             // 
@@ -225,11 +237,11 @@
             // 
             this.SpdLabel.AutoSize = true;
             this.SpdLabel.BackColor = System.Drawing.Color.Transparent;
-            this.SpdLabel.Font = new System.Drawing.Font("Dubai", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SpdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SpdLabel.Location = new System.Drawing.Point(0, 205);
             this.SpdLabel.Name = "SpdLabel";
             this.SpdLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.SpdLabel.Size = new System.Drawing.Size(49, 32);
+            this.SpdLabel.Size = new System.Drawing.Size(47, 24);
             this.SpdLabel.TabIndex = 4;
             this.SpdLabel.Text = "SPD";
             // 
@@ -237,10 +249,10 @@
             // 
             this.SpaLabel.AutoSize = true;
             this.SpaLabel.BackColor = System.Drawing.Color.Transparent;
-            this.SpaLabel.Font = new System.Drawing.Font("Dubai", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SpaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SpaLabel.Location = new System.Drawing.Point(0, 155);
             this.SpaLabel.Name = "SpaLabel";
-            this.SpaLabel.Size = new System.Drawing.Size(48, 32);
+            this.SpaLabel.Size = new System.Drawing.Size(47, 24);
             this.SpaLabel.TabIndex = 3;
             this.SpaLabel.Text = "SPA";
             // 
@@ -248,10 +260,10 @@
             // 
             this.DefLabel.AutoSize = true;
             this.DefLabel.BackColor = System.Drawing.Color.Transparent;
-            this.DefLabel.Font = new System.Drawing.Font("Dubai", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DefLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DefLabel.Location = new System.Drawing.Point(0, 105);
             this.DefLabel.Name = "DefLabel";
-            this.DefLabel.Size = new System.Drawing.Size(48, 32);
+            this.DefLabel.Size = new System.Drawing.Size(48, 24);
             this.DefLabel.TabIndex = 2;
             this.DefLabel.Text = "DEF";
             // 
@@ -259,10 +271,10 @@
             // 
             this.AtkLabel.AutoSize = true;
             this.AtkLabel.BackColor = System.Drawing.Color.Transparent;
-            this.AtkLabel.Font = new System.Drawing.Font("Dubai", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AtkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AtkLabel.Location = new System.Drawing.Point(0, 55);
             this.AtkLabel.Name = "AtkLabel";
-            this.AtkLabel.Size = new System.Drawing.Size(49, 32);
+            this.AtkLabel.Size = new System.Drawing.Size(47, 24);
             this.AtkLabel.TabIndex = 1;
             this.AtkLabel.Text = "ATK";
             // 
@@ -270,10 +282,10 @@
             // 
             this.HpLabel.AutoSize = true;
             this.HpLabel.BackColor = System.Drawing.Color.Transparent;
-            this.HpLabel.Font = new System.Drawing.Font("Dubai", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HpLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HpLabel.Location = new System.Drawing.Point(0, 5);
             this.HpLabel.Name = "HpLabel";
-            this.HpLabel.Size = new System.Drawing.Size(39, 32);
+            this.HpLabel.Size = new System.Drawing.Size(36, 24);
             this.HpLabel.TabIndex = 0;
             this.HpLabel.Text = "HP";
             // 
@@ -281,10 +293,10 @@
             // 
             this.SearchBox.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.SearchBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SearchBox.Font = new System.Drawing.Font("Dubai", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBox.Location = new System.Drawing.Point(61, 413);
             this.SearchBox.Name = "SearchBox";
-            this.SearchBox.Size = new System.Drawing.Size(142, 29);
+            this.SearchBox.Size = new System.Drawing.Size(142, 22);
             this.SearchBox.TabIndex = 3;
             this.SearchBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.SearchBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SearchBox_KeyPress);
@@ -305,11 +317,12 @@
             this.tabControl1.Controls.Add(this.StatsTab);
             this.tabControl1.Controls.Add(this.FormesTab);
             this.tabControl1.Controls.Add(this.MovesTab);
-            this.tabControl1.Font = new System.Drawing.Font("Dubai", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Controls.Add(this.SpritesTab);
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.ItemSize = new System.Drawing.Size(54, 27);
             this.tabControl1.Location = new System.Drawing.Point(319, 64);
             this.tabControl1.Name = "tabControl1";
-            this.tabControl1.Padding = new System.Drawing.Point(35, 3);
+            this.tabControl1.Padding = new System.Drawing.Point(30, 3);
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(553, 485);
             this.tabControl1.TabIndex = 5;
@@ -341,7 +354,7 @@
             // 
             this.fullinfobox.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.fullinfobox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.fullinfobox.Font = new System.Drawing.Font("Dubai", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullinfobox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fullinfobox.Location = new System.Drawing.Point(3, 107);
             this.fullinfobox.Multiline = true;
             this.fullinfobox.Name = "fullinfobox";
@@ -421,6 +434,25 @@
             this.formeTablePanel.Size = new System.Drawing.Size(545, 454);
             this.formeTablePanel.TabIndex = 3;
             // 
+            // MovesTab
+            // 
+            this.MovesTab.Controls.Add(this.MovesPanel);
+            this.MovesTab.Location = new System.Drawing.Point(4, 31);
+            this.MovesTab.Name = "MovesTab";
+            this.MovesTab.Size = new System.Drawing.Size(545, 450);
+            this.MovesTab.TabIndex = 3;
+            this.MovesTab.Text = "Moves";
+            this.MovesTab.UseVisualStyleBackColor = true;
+            // 
+            // MovesPanel
+            // 
+            this.MovesPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.MovesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MovesPanel.Location = new System.Drawing.Point(0, 0);
+            this.MovesPanel.Name = "MovesPanel";
+            this.MovesPanel.Size = new System.Drawing.Size(545, 450);
+            this.MovesPanel.TabIndex = 3;
+            // 
             // rightButton
             // 
             this.rightButton.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -447,24 +479,60 @@
             this.leftButton.UseVisualStyleBackColor = false;
             this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
             // 
-            // MovesTab
+            // SpritesTab
             // 
-            this.MovesTab.Controls.Add(this.MovesPanel);
-            this.MovesTab.Location = new System.Drawing.Point(4, 31);
-            this.MovesTab.Name = "MovesTab";
-            this.MovesTab.Size = new System.Drawing.Size(545, 450);
-            this.MovesTab.TabIndex = 3;
-            this.MovesTab.Text = "Moves";
-            this.MovesTab.UseVisualStyleBackColor = true;
+            this.SpritesTab.Controls.Add(this.spritestabPanel);
+            this.SpritesTab.Location = new System.Drawing.Point(4, 31);
+            this.SpritesTab.Name = "SpritesTab";
+            this.SpritesTab.Size = new System.Drawing.Size(545, 450);
+            this.SpritesTab.TabIndex = 4;
+            this.SpritesTab.Text = "Sprites";
+            this.SpritesTab.UseVisualStyleBackColor = true;
             // 
-            // MovesPanel
+            // spritestabPanel
             // 
-            this.MovesPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.MovesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MovesPanel.Location = new System.Drawing.Point(0, 0);
-            this.MovesPanel.Name = "MovesPanel";
-            this.MovesPanel.Size = new System.Drawing.Size(545, 450);
-            this.MovesPanel.TabIndex = 3;
+            this.spritestabPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.spritestabPanel.Controls.Add(this.SpriteboxBackShiny);
+            this.spritestabPanel.Controls.Add(this.SpriteboxBack);
+            this.spritestabPanel.Controls.Add(this.SpriteboxFrontShiny);
+            this.spritestabPanel.Controls.Add(this.SpriteboxFront);
+            this.spritestabPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spritestabPanel.Location = new System.Drawing.Point(0, 0);
+            this.spritestabPanel.Name = "spritestabPanel";
+            this.spritestabPanel.Size = new System.Drawing.Size(545, 450);
+            this.spritestabPanel.TabIndex = 1;
+            // 
+            // SpriteboxFront
+            // 
+            this.SpriteboxFront.Location = new System.Drawing.Point(83, 74);
+            this.SpriteboxFront.Name = "SpriteboxFront";
+            this.SpriteboxFront.Size = new System.Drawing.Size(128, 128);
+            this.SpriteboxFront.TabIndex = 0;
+            this.SpriteboxFront.TabStop = false;
+            // 
+            // SpriteboxFrontShiny
+            // 
+            this.SpriteboxFrontShiny.Location = new System.Drawing.Point(313, 74);
+            this.SpriteboxFrontShiny.Name = "SpriteboxFrontShiny";
+            this.SpriteboxFrontShiny.Size = new System.Drawing.Size(128, 128);
+            this.SpriteboxFrontShiny.TabIndex = 1;
+            this.SpriteboxFrontShiny.TabStop = false;
+            // 
+            // SpriteboxBack
+            // 
+            this.SpriteboxBack.Location = new System.Drawing.Point(83, 263);
+            this.SpriteboxBack.Name = "SpriteboxBack";
+            this.SpriteboxBack.Size = new System.Drawing.Size(128, 128);
+            this.SpriteboxBack.TabIndex = 2;
+            this.SpriteboxBack.TabStop = false;
+            // 
+            // SpriteboxBackShiny
+            // 
+            this.SpriteboxBackShiny.Location = new System.Drawing.Point(313, 263);
+            this.SpriteboxBackShiny.Name = "SpriteboxBackShiny";
+            this.SpriteboxBackShiny.Size = new System.Drawing.Size(128, 128);
+            this.SpriteboxBackShiny.TabIndex = 3;
+            this.SpriteboxBackShiny.TabStop = false;
             // 
             // Form1
             // 
@@ -495,6 +563,12 @@
             this.FormesTab.PerformLayout();
             this.formtabpanel.ResumeLayout(false);
             this.MovesTab.ResumeLayout(false);
+            this.SpritesTab.ResumeLayout(false);
+            this.spritestabPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxFront)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxFrontShiny)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxBack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxBackShiny)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -535,6 +609,12 @@
         private System.Windows.Forms.TableLayoutPanel formeTablePanel;
         private System.Windows.Forms.TabPage MovesTab;
         private System.Windows.Forms.Panel MovesPanel;
+        private System.Windows.Forms.TabPage SpritesTab;
+        private System.Windows.Forms.Panel spritestabPanel;
+        private System.Windows.Forms.PictureBox SpriteboxBackShiny;
+        private System.Windows.Forms.PictureBox SpriteboxBack;
+        private System.Windows.Forms.PictureBox SpriteboxFrontShiny;
+        private System.Windows.Forms.PictureBox SpriteboxFront;
     }
 }
 
