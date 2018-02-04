@@ -129,8 +129,8 @@ namespace BrickemonGo
             }
             SpriteboxFront.ImageLocation = @"res/sprites/blackwhite/" + poke.GetDexNum() + ".png";
             SpriteboxBack.ImageLocation = @"res/sprites/blackwhite/back/" + poke.GetDexNum() + ".png";
-            SpriteboxFrontShiny.ImageLocation = @"res/sprites/blackwhite/shiny" + poke.GetDexNum() + ".png";
-            SpriteboxBackShiny.ImageLocation = @"res/sprites/blackwhite/back/shiny" + poke.GetDexNum() + ".png";
+            SpriteboxFrontShiny.ImageLocation = @"res/sprites/blackwhite/shiny/" + poke.GetDexNum() + ".png";
+            SpriteboxBackShiny.ImageLocation = @"res/sprites/blackwhite/back/shiny/" + poke.GetDexNum() + ".png";
         }
         public Color DetermineColor(float x, int id)//id is flag for whether its hp or not (hp bar calculated differently :))
         {
@@ -227,8 +227,34 @@ namespace BrickemonGo
             {
                 formattedInfo += "\r\n" + "Evolutions [ none ]";
             }
-
-
+            //original game (later to support giving credit for fakemons too)
+            if (line.Contains("OriginalGame"))
+            {
+                str = line.Substring(line.IndexOf("OriginalGame") + 13);
+                str = str.Substring(0, str.IndexOf(","));
+                str = str.Replace("[", "");
+                str = str.Replace("]", "");
+                switch (str)
+                {
+                    case "Gen1":
+                        formattedInfo += "\r\n" + "Original Games: [ Red/Blue/Yellow ]";
+                        break;
+                    case "Gen2":
+                        formattedInfo += "\r\n" + "Original Games: [ Gold/Silver/Crystal ]";
+                        break;
+                    case "Gen3":
+                        formattedInfo += "\r\n" + "Original Games: [ Ruby/Sapphire/Emerald ]";
+                        break;
+                    case "Gen4":
+                        formattedInfo += "\r\n" + "Original Games: [ Diamond/Pearl/Platinum ]";
+                        break;
+                    case "Gen5":
+                        formattedInfo += "\r\n" + "Original Games: [ X/Y ]";
+                        break;
+                    default:
+                        throw new Exception("Pokemon has unknown original game");
+                }
+            }
 
 
 
