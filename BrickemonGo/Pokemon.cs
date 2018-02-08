@@ -249,7 +249,11 @@ namespace BrickemonGo
         {
             this.move4 = move4;
         }
-
+        //entire moveset
+        public Dictionary<int,Move> GetMoveset()
+        {
+            return this.moveset;
+        }
         public Type GetType()
         {
             return type;

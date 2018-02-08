@@ -13,12 +13,14 @@ namespace BrickemonGo
     public partial class Form1 : Form
     {
         private Pokemon poke;
+        private Dictionary<int,Move> MoveDictionary;
         public Form1(Pokemon x)
         {
             CreateForm(x);
         }
         public void CreateForm(Pokemon x)
         {
+            //init
             InitializeComponent();
             poke = x;
             //set up paint methods below
@@ -26,6 +28,7 @@ namespace BrickemonGo
             this.InfoPanel.Paint += new PaintEventHandler(Info_Paint);
             this.formeTablePanel.Paint += new PaintEventHandler(Formes_Paint);
             this.spritestabPanel.Paint += new PaintEventHandler(Sprites_Paint);
+            this.MoveTablePanel.Paint += new PaintEventHandler(Moves_Paint);
             Refresh();
             pictureBox1.Update();
             NameLabel.Update();
@@ -127,11 +130,33 @@ namespace BrickemonGo
             {
                 Console.WriteLine(ex);
             }
+            //name text box
+            NameLabel.Text = poke.GetName();
+            //sprite pictures
             SpriteboxFront.ImageLocation = @"res/sprites/blackwhite/" + poke.GetDexNum() + ".png";
             SpriteboxBack.ImageLocation = @"res/sprites/blackwhite/back/" + poke.GetDexNum() + ".png";
             SpriteboxFrontShiny.ImageLocation = @"res/sprites/blackwhite/shiny/" + poke.GetDexNum() + ".png";
             SpriteboxBackShiny.ImageLocation = @"res/sprites/blackwhite/back/shiny/" + poke.GetDexNum() + ".png";
         }
+
+        private void Moves_Paint(object sender, PaintEventArgs e)
+        {
+            try
+            {
+                pictureBox1.ImageLocation = (@"res/sprites/sugimori/" + this.poke.GetDexNum() + ".png");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            //name text box
+            NameLabel.Text = poke.GetName();
+            //make move table
+            MoveDictionary = poke.GetMoveset();
+            //STOPPED HERE PLS CONVERT TO ARRAY/OR/GRAB DATA FROM HERE AND POPULATE MOVE TAB TABLE :)
+
+        }
+
         public Color DetermineColor(float x, int id)//id is flag for whether its hp or not (hp bar calculated differently :))
         {
             if (id == 1)//its a hp bar

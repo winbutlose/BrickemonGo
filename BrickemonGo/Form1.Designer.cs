@@ -60,14 +60,15 @@
             this.formeTablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.MovesTab = new System.Windows.Forms.TabPage();
             this.MovesPanel = new System.Windows.Forms.Panel();
-            this.rightButton = new System.Windows.Forms.Button();
-            this.leftButton = new System.Windows.Forms.Button();
             this.SpritesTab = new System.Windows.Forms.TabPage();
             this.spritestabPanel = new System.Windows.Forms.Panel();
-            this.SpriteboxFront = new System.Windows.Forms.PictureBox();
-            this.SpriteboxFrontShiny = new System.Windows.Forms.PictureBox();
-            this.SpriteboxBack = new System.Windows.Forms.PictureBox();
             this.SpriteboxBackShiny = new System.Windows.Forms.PictureBox();
+            this.SpriteboxBack = new System.Windows.Forms.PictureBox();
+            this.SpriteboxFrontShiny = new System.Windows.Forms.PictureBox();
+            this.SpriteboxFront = new System.Windows.Forms.PictureBox();
+            this.rightButton = new System.Windows.Forms.Button();
+            this.leftButton = new System.Windows.Forms.Button();
+            this.MoveTablePanel = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.StatPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -79,12 +80,13 @@
             this.FormesTab.SuspendLayout();
             this.formtabpanel.SuspendLayout();
             this.MovesTab.SuspendLayout();
+            this.MovesPanel.SuspendLayout();
             this.SpritesTab.SuspendLayout();
             this.spritestabPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxFront)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxFrontShiny)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpriteboxBackShiny)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxBack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxFrontShiny)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxFront)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -447,11 +449,67 @@
             // MovesPanel
             // 
             this.MovesPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.MovesPanel.Controls.Add(this.MoveTablePanel);
             this.MovesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MovesPanel.Location = new System.Drawing.Point(0, 0);
             this.MovesPanel.Name = "MovesPanel";
             this.MovesPanel.Size = new System.Drawing.Size(545, 450);
             this.MovesPanel.TabIndex = 3;
+            // 
+            // SpritesTab
+            // 
+            this.SpritesTab.Controls.Add(this.spritestabPanel);
+            this.SpritesTab.Location = new System.Drawing.Point(4, 31);
+            this.SpritesTab.Name = "SpritesTab";
+            this.SpritesTab.Size = new System.Drawing.Size(545, 450);
+            this.SpritesTab.TabIndex = 4;
+            this.SpritesTab.Text = "Sprites";
+            this.SpritesTab.UseVisualStyleBackColor = true;
+            // 
+            // spritestabPanel
+            // 
+            this.spritestabPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.spritestabPanel.Controls.Add(this.SpriteboxBackShiny);
+            this.spritestabPanel.Controls.Add(this.SpriteboxBack);
+            this.spritestabPanel.Controls.Add(this.SpriteboxFrontShiny);
+            this.spritestabPanel.Controls.Add(this.SpriteboxFront);
+            this.spritestabPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spritestabPanel.Location = new System.Drawing.Point(0, 0);
+            this.spritestabPanel.Name = "spritestabPanel";
+            this.spritestabPanel.Size = new System.Drawing.Size(545, 450);
+            this.spritestabPanel.TabIndex = 1;
+            // 
+            // SpriteboxBackShiny
+            // 
+            this.SpriteboxBackShiny.Location = new System.Drawing.Point(313, 263);
+            this.SpriteboxBackShiny.Name = "SpriteboxBackShiny";
+            this.SpriteboxBackShiny.Size = new System.Drawing.Size(128, 128);
+            this.SpriteboxBackShiny.TabIndex = 3;
+            this.SpriteboxBackShiny.TabStop = false;
+            // 
+            // SpriteboxBack
+            // 
+            this.SpriteboxBack.Location = new System.Drawing.Point(83, 263);
+            this.SpriteboxBack.Name = "SpriteboxBack";
+            this.SpriteboxBack.Size = new System.Drawing.Size(128, 128);
+            this.SpriteboxBack.TabIndex = 2;
+            this.SpriteboxBack.TabStop = false;
+            // 
+            // SpriteboxFrontShiny
+            // 
+            this.SpriteboxFrontShiny.Location = new System.Drawing.Point(313, 74);
+            this.SpriteboxFrontShiny.Name = "SpriteboxFrontShiny";
+            this.SpriteboxFrontShiny.Size = new System.Drawing.Size(128, 128);
+            this.SpriteboxFrontShiny.TabIndex = 1;
+            this.SpriteboxFrontShiny.TabStop = false;
+            // 
+            // SpriteboxFront
+            // 
+            this.SpriteboxFront.Location = new System.Drawing.Point(83, 74);
+            this.SpriteboxFront.Name = "SpriteboxFront";
+            this.SpriteboxFront.Size = new System.Drawing.Size(128, 128);
+            this.SpriteboxFront.TabIndex = 0;
+            this.SpriteboxFront.TabStop = false;
             // 
             // rightButton
             // 
@@ -479,60 +537,28 @@
             this.leftButton.UseVisualStyleBackColor = false;
             this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
             // 
-            // SpritesTab
+            // MoveTablePanel
             // 
-            this.SpritesTab.Controls.Add(this.spritestabPanel);
-            this.SpritesTab.Location = new System.Drawing.Point(4, 31);
-            this.SpritesTab.Name = "SpritesTab";
-            this.SpritesTab.Size = new System.Drawing.Size(545, 450);
-            this.SpritesTab.TabIndex = 4;
-            this.SpritesTab.Text = "Sprites";
-            this.SpritesTab.UseVisualStyleBackColor = true;
-            // 
-            // spritestabPanel
-            // 
-            this.spritestabPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.spritestabPanel.Controls.Add(this.SpriteboxBackShiny);
-            this.spritestabPanel.Controls.Add(this.SpriteboxBack);
-            this.spritestabPanel.Controls.Add(this.SpriteboxFrontShiny);
-            this.spritestabPanel.Controls.Add(this.SpriteboxFront);
-            this.spritestabPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.spritestabPanel.Location = new System.Drawing.Point(0, 0);
-            this.spritestabPanel.Name = "spritestabPanel";
-            this.spritestabPanel.Size = new System.Drawing.Size(545, 450);
-            this.spritestabPanel.TabIndex = 1;
-            // 
-            // SpriteboxFront
-            // 
-            this.SpriteboxFront.Location = new System.Drawing.Point(83, 74);
-            this.SpriteboxFront.Name = "SpriteboxFront";
-            this.SpriteboxFront.Size = new System.Drawing.Size(128, 128);
-            this.SpriteboxFront.TabIndex = 0;
-            this.SpriteboxFront.TabStop = false;
-            // 
-            // SpriteboxFrontShiny
-            // 
-            this.SpriteboxFrontShiny.Location = new System.Drawing.Point(313, 74);
-            this.SpriteboxFrontShiny.Name = "SpriteboxFrontShiny";
-            this.SpriteboxFrontShiny.Size = new System.Drawing.Size(128, 128);
-            this.SpriteboxFrontShiny.TabIndex = 1;
-            this.SpriteboxFrontShiny.TabStop = false;
-            // 
-            // SpriteboxBack
-            // 
-            this.SpriteboxBack.Location = new System.Drawing.Point(83, 263);
-            this.SpriteboxBack.Name = "SpriteboxBack";
-            this.SpriteboxBack.Size = new System.Drawing.Size(128, 128);
-            this.SpriteboxBack.TabIndex = 2;
-            this.SpriteboxBack.TabStop = false;
-            // 
-            // SpriteboxBackShiny
-            // 
-            this.SpriteboxBackShiny.Location = new System.Drawing.Point(313, 263);
-            this.SpriteboxBackShiny.Name = "SpriteboxBackShiny";
-            this.SpriteboxBackShiny.Size = new System.Drawing.Size(128, 128);
-            this.SpriteboxBackShiny.TabIndex = 3;
-            this.SpriteboxBackShiny.TabStop = false;
+            this.MoveTablePanel.AutoScroll = true;
+            this.MoveTablePanel.ColumnCount = 4;
+            this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.MoveTablePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MoveTablePanel.Location = new System.Drawing.Point(0, 0);
+            this.MoveTablePanel.Name = "MoveTablePanel";
+            this.MoveTablePanel.RowCount = 8;
+            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MoveTablePanel.Size = new System.Drawing.Size(545, 454);
+            this.MoveTablePanel.TabIndex = 4;
             // 
             // Form1
             // 
@@ -563,12 +589,13 @@
             this.FormesTab.PerformLayout();
             this.formtabpanel.ResumeLayout(false);
             this.MovesTab.ResumeLayout(false);
+            this.MovesPanel.ResumeLayout(false);
             this.SpritesTab.ResumeLayout(false);
             this.spritestabPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxFront)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxFrontShiny)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SpriteboxBackShiny)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxBack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxFrontShiny)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpriteboxFront)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -615,6 +642,7 @@
         private System.Windows.Forms.PictureBox SpriteboxBack;
         private System.Windows.Forms.PictureBox SpriteboxFrontShiny;
         private System.Windows.Forms.PictureBox SpriteboxFront;
+        private System.Windows.Forms.TableLayoutPanel MoveTablePanel;
     }
 }
 
