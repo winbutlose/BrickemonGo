@@ -13,7 +13,7 @@ namespace BrickemonGo
     public partial class Form1 : Form
     {
         private Pokemon poke;
-        private Dictionary<int,Move> MoveDictionary;
+        private Dictionary<int, Move> MoveDictionary;
         public Form1(Pokemon x)
         {
             CreateForm(x);
@@ -34,6 +34,11 @@ namespace BrickemonGo
             NameLabel.Update();
             GetAllInformation();
             GetFormes();
+            //fix horizontal scrollbar in movetablepanel
+            int vertScrollWidth = SystemInformation.VerticalScrollBarWidth;
+            MoveTablePanel.Padding = new Padding(0, 0, vertScrollWidth, 0);
+            
+
         }
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
@@ -151,10 +156,6 @@ namespace BrickemonGo
             }
             //name text box
             NameLabel.Text = poke.GetName();
-            //make move table
-            MoveDictionary = poke.GetMoveset();
-            //STOPPED HERE PLS CONVERT TO ARRAY/OR/GRAB DATA FROM HERE AND POPULATE MOVE TAB TABLE :)
-
         }
 
         public Color DetermineColor(float x, int id)//id is flag for whether its hp or not (hp bar calculated differently :))
@@ -376,6 +377,7 @@ namespace BrickemonGo
             this.poke = x;
             GetAllInformation();
             GetFormes();
+            DrawMoves();
             Refresh();
         }
         private void DrawFormes(String[] formeList)
@@ -385,9 +387,28 @@ namespace BrickemonGo
             //roll thru list and make new formepanel (with pic) for each forme this poke has
             for (int i = 0; i < formeList.Count(); i++)
             {
-                FormePanel x = new FormePanel(formeList[i] +" forme", "res/sprites/sugimori/" + poke.GetDexNum() +"-"+formeList[i]+ ".png");
+                FormePanel x = new FormePanel(formeList[i] + " forme", "res/sprites/sugimori/" + poke.GetDexNum() + "-" + formeList[i] + ".png");
                 formeTablePanel.Controls.Add(x);
                 Console.WriteLine(formeList[i]);
+            }
+        }
+        private void DrawMoves()
+        {
+            //make move table
+            MoveDictionary = poke.GetMoveset();
+            //GRAB DATA FROM HERE AND POPULATE MOVE TAB TABLE :)
+            MoveTablePanel.Controls.Clear();
+            MoveTablePanel.AutoScroll = false;
+            MoveTablePanel.AutoScroll = true;
+            int iterator = 0;
+            Size s = new Size(25,25);
+            foreach (KeyValuePair<int, Move> entry in MoveDictionary)
+            {
+                MoveTablePanel.Controls.Add(new TextBox() { Text = entry.Value.GetName(), ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 150, BorderStyle = BorderStyle.None }, 3, iterator);
+                MoveTablePanel.Controls.Add(new TextBox() {Text = ""+entry.Key, ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 25, BorderStyle = BorderStyle.None }, 0, iterator);
+                MoveTablePanel.Controls.Add(new PictureBox() {ImageLocation = @"res/type circles/" + entry.Value.GetType().GetPrimaryTypeString().ToLower() + ".png",SizeMode = PictureBoxSizeMode.Zoom, Size = s },2,iterator);
+                //Console.WriteLine(@"res/type circles/" + entry.Value.GetType().GetPrimaryTypeString().ToLower() + ".png");
+                iterator++;
             }
         }
     }

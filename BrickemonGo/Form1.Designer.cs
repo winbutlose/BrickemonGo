@@ -60,6 +60,7 @@
             this.formeTablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.MovesTab = new System.Windows.Forms.TabPage();
             this.MovesPanel = new System.Windows.Forms.Panel();
+            this.MoveTablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.SpritesTab = new System.Windows.Forms.TabPage();
             this.spritestabPanel = new System.Windows.Forms.Panel();
             this.SpriteboxBackShiny = new System.Windows.Forms.PictureBox();
@@ -68,7 +69,6 @@
             this.SpriteboxFront = new System.Windows.Forms.PictureBox();
             this.rightButton = new System.Windows.Forms.Button();
             this.leftButton = new System.Windows.Forms.Button();
-            this.MoveTablePanel = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.StatPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -456,6 +456,29 @@
             this.MovesPanel.Size = new System.Drawing.Size(545, 450);
             this.MovesPanel.TabIndex = 3;
             // 
+            // MoveTablePanel
+            // 
+            this.MoveTablePanel.AutoScroll = true;
+            this.MoveTablePanel.ColumnCount = 4;
+            this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.MoveTablePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MoveTablePanel.Location = new System.Drawing.Point(0, 0);
+            this.MoveTablePanel.Name = "MoveTablePanel";
+            this.MoveTablePanel.RowCount = 8;
+            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MoveTablePanel.Size = new System.Drawing.Size(545, 454);
+            this.MoveTablePanel.TabIndex = 4;
+            // 
             // SpritesTab
             // 
             this.SpritesTab.Controls.Add(this.spritestabPanel);
@@ -536,29 +559,6 @@
             this.leftButton.TabIndex = 6;
             this.leftButton.UseVisualStyleBackColor = false;
             this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
-            // 
-            // MoveTablePanel
-            // 
-            this.MoveTablePanel.AutoScroll = true;
-            this.MoveTablePanel.ColumnCount = 4;
-            this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.MoveTablePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MoveTablePanel.Location = new System.Drawing.Point(0, 0);
-            this.MoveTablePanel.Name = "MoveTablePanel";
-            this.MoveTablePanel.RowCount = 8;
-            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.MoveTablePanel.Size = new System.Drawing.Size(545, 454);
-            this.MoveTablePanel.TabIndex = 4;
             // 
             // Form1
             // 
