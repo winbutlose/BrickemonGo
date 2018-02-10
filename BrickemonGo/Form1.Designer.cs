@@ -459,7 +459,10 @@
             // MoveTablePanel
             // 
             this.MoveTablePanel.AutoScroll = true;
-            this.MoveTablePanel.ColumnCount = 4;
+            this.MoveTablePanel.ColumnCount = 7;
+            this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.MoveTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());

@@ -62,6 +62,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Move.cs" />
+    <Compile Include="MovePopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MovePopUp.Designer.cs">
+      <DependentUpon>MovePopUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Nature.cs" />
     <Compile Include="Pack.cs" />
     <Compile Include="PokeCardBox.cs">
@@ -82,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovePopUp.resx">
+      <DependentUpon>MovePopUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

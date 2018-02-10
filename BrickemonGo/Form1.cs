@@ -396,7 +396,7 @@ namespace BrickemonGo
         {
             //make move table
             MoveDictionary = poke.GetMoveset();
-            //GRAB DATA FROM HERE AND POPULATE MOVE TAB TABLE :)
+            //GRAB DATA FROM HERE^ AND POPULATE MOVE TAB TABLE :)
             MoveTablePanel.Controls.Clear();
             MoveTablePanel.AutoScroll = false;
             MoveTablePanel.AutoScroll = true;
@@ -404,10 +404,12 @@ namespace BrickemonGo
             Size s = new Size(25,25);
             foreach (KeyValuePair<int, Move> entry in MoveDictionary)
             {
-                MoveTablePanel.Controls.Add(new TextBox() { Text = entry.Value.GetName(), ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 150, BorderStyle = BorderStyle.None }, 3, iterator);
+                MoveTablePanel.Controls.Add(new TextBox() { Text = entry.Value.GetName(), ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 150, BorderStyle = BorderStyle.None }, 2, iterator);
                 MoveTablePanel.Controls.Add(new TextBox() {Text = ""+entry.Key, ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 25, BorderStyle = BorderStyle.None }, 0, iterator);
-                MoveTablePanel.Controls.Add(new PictureBox() {ImageLocation = @"res/type circles/" + entry.Value.GetType().GetPrimaryTypeString().ToLower() + ".png",SizeMode = PictureBoxSizeMode.Zoom, Size = s },2,iterator);
-                //Console.WriteLine(@"res/type circles/" + entry.Value.GetType().GetPrimaryTypeString().ToLower() + ".png");
+                MoveTablePanel.Controls.Add(new PictureBox() {ImageLocation = @"res/type circles/" + entry.Value.GetType().GetPrimaryTypeString().ToLower() + ".png",SizeMode = PictureBoxSizeMode.Zoom, Size = s },1,iterator);
+                MoveTablePanel.Controls.Add(new TextBox() { Text = "" + entry.Value.GetDamage(), ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 25, BorderStyle = BorderStyle.None }, 3, iterator);
+                MoveTablePanel.Controls.Add(new TextBox() { Text = "" + entry.Value.GetAccuracy() + "%", ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 40, BorderStyle = BorderStyle.None }, 4, iterator);
+                MoveTablePanel.Controls.Add(new TextBox() { Text = "" + entry.Value.GetMoveCategoryString(), ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 75, BorderStyle = BorderStyle.None }, 5, iterator);
                 iterator++;
             }
         }
