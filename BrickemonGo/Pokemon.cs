@@ -40,6 +40,7 @@ namespace BrickemonGo
 
         private Boolean hasMega; // does this pokemon have the ability to mega evolve?
         private String megaName; //ex: "Mega Charizard Y" or "Primal Kyogre"
+        private Type megaType;
 
 
         //mega poke stats
@@ -105,6 +106,7 @@ namespace BrickemonGo
             this.SetLevel(1);
             this.CalculateStats();
             this.InitMegaForme();
+            this.CalculateMegaStats();
             //this.shiny = ((int)(Math.random() *4096+1)==4096) ? true:false; old java code, 1/4096 chance to be shiny on instantiation
             Random random = new Random();
             int shinyint = random.Next(1, 4097);
@@ -406,7 +408,7 @@ namespace BrickemonGo
         public void InitMegaForme()
         {
             //reads in mega stats and other stuff necesscary to have mega evolution
-            string[] allpokes = System.IO.File.ReadAllLines(@"res/pokedex-mega.txt");
+            string[] allpokes = System.IO.File.ReadAllLines(@"res/pokemon-mega.txt");
             for (int i = 0; i < allpokes.Length; i++)
             {
 
@@ -415,7 +417,7 @@ namespace BrickemonGo
                 {
                     if (line.Substring(0, line.IndexOf(":")).Equals(this.name.ToLower() + "megax"))
                     {
-                        
+
                     }
                     if (line.Substring(0, line.IndexOf(":")).Equals(this.name.ToLower() + "megay"))
                     {
@@ -423,19 +425,40 @@ namespace BrickemonGo
                     }
                 }
                 //case for pkmn with 1 mega forme
-                else if (line.Substring(0, line.IndexOf(":")).Equals(this.name.ToLower() + "mega"))
+                else if (line.Substring(0, line.IndexOf(",")).Equals(this.name.ToLower() + "mega"))
                 {
                     //found mega forme for this pokemon 
-                    String[] split = line.Split(','); 
-                    this.megaBaseHp = int.Parse(split[9].Substring(14));
-                    this.megaBaseAtk = int.Parse(split[10].Substring(4));
-                    this.megaBaseDef = int.Parse(split[11].Substring(4));
-                    this.megaBaseSpAtk = int.Parse(split[12].Substring(4));
-                    this.megaBaseSpDef = int.Parse(split[13].Substring(4));
-                    this.megaBaseSpeed = int.Parse(split[14].Substring(4,2));
+                    String[] split = line.Split(',');
+                    //types and name
+                    this.megaType = new Type();
+                    
+
+                    if (split.Length == 9)
+                    {
+                        this.megaType.SetPrimaryType(int.Parse(split[1]));
+                        this.megaType.SetSecondaryType(int.Parse(split[2]));
+                        this.megaBaseHp = int.Parse(split[3]);
+                        this.megaBaseAtk = int.Parse(split[4]);
+                        this.megaBaseDef = int.Parse(split[5]);
+                        this.megaBaseSpAtk = int.Parse(split[6]);
+                        this.megaBaseSpDef = int.Parse(split[7]);
+                        this.megaBaseSpeed = int.Parse(split[8]);
+                    }
+                    else if(split.Length == 8)//monotype
+                    {
+                        this.megaType.SetPrimaryType(int.Parse(split[1]));
+                        this.megaBaseHp = int.Parse(split[2]);
+                        this.megaBaseAtk = int.Parse(split[3]);
+                        this.megaBaseDef = int.Parse(split[3]);
+                        this.megaBaseSpAtk = int.Parse(split[4]);
+                        this.megaBaseSpDef = int.Parse(split[5]);
+                        this.megaBaseSpeed = int.Parse(split[6]);
+                    }
+
                 }
             }
         }
+
 
         //calculates actual stats of pokemon based on level and base stats and saves in stats data fields
         //this is called either after experience (and EVs) is earned or after pokemon levels up (our choice later)
@@ -502,6 +525,70 @@ namespace BrickemonGo
             this.hp = ((((2 * this.baseHp) + this.hpIV + (this.hpEV / 4)) * this.level) / 100) + this.level + 10;
         }
 
+        //calculate mega stats
+        public void CalculateMegaStats()
+        {
+            //first find which stats are boosted
+            double atkBoost = 1, defBoost = 1, spaBoost = 1, spdBoost = 1, speBoost = 1;
+            switch (this.nature.GetBoostedStat())
+            {
+                case 1:
+                    atkBoost = 1.1;
+                    break;
+                case 2:
+                    defBoost = 1.1;
+                    break;
+                case 3:
+                    spaBoost = 1.1;
+                    break;
+                case 4:
+                    spdBoost = 1.1;
+                    break;
+                case 5:
+                    speBoost = 1.1;
+                    break;
+                default:  //default means we got a nature that doesn't boost or reduce anything
+                    break;
+            }
+            switch (this.nature.GetReducedStat())
+            {
+                case 1:
+                    atkBoost = 0.9;
+                    break;
+                case 2:
+                    defBoost = 0.9;
+                    break;
+                case 3:
+                    spaBoost = 0.9;
+                    break;
+                case 4:
+                    spdBoost = 0.9;
+                    break;
+                case 5:
+                    speBoost = 0.9;
+                    break;
+                default: //default means we got a nature that doesn't boost or reduce anything
+                    break;
+            }
+            Double atkplaceholder = (((((2 * this.megaBaseAtk) + this.atkIV + (this.atkEV / 4)) * this.level) / 100) + 5) * atkBoost;
+            this.megaAtk = Convert.ToInt32(atkplaceholder);
+
+            Double defplaceholder = (((((2 * this.megaBaseDef) + this.defIV + (this.defEV / 4)) * this.level) / 100) + 5) * defBoost;
+            this.megaDef = Convert.ToInt32(defplaceholder);
+
+            Double spaplaceholder = (((((2 * this.megaBaseSpAtk) + this.spaIV + (this.spaEV / 4)) * this.level) / 100) + 5) * spaBoost;
+            this.megaSpAtk = Convert.ToInt32(spaplaceholder);
+
+            Double spdplaceholder = (((((2 * this.megaBaseSpDef) + this.spdIV + (this.spdEV / 4)) * this.level) / 100) + 5) * spdBoost;
+            this.megaSpDef = Convert.ToInt32(spdplaceholder);
+
+            Double speplaceholder = (((((2 * this.megaBaseSpeed) + this.speIV + (this.speEV / 4)) * this.level) / 100) + 5) * speBoost;
+            this.megaSpeed = Convert.ToInt32(speplaceholder);
+
+            //HP is calculated differently
+            this.megaHp = ((((2 * this.megaBaseHp) + this.hpIV + (this.hpEV / 4)) * this.level) / 100) + this.level + 10;
+        }
+
         //generates random (as random as we can) IVs. THIS ONLY HAPPENS ONCE!
         //random numbers from 0-31
         public void GenerateIvs()
@@ -544,7 +631,7 @@ namespace BrickemonGo
             for (int i = 0; i < split.Length; i += 2)
             {
                 int learnLevel = int.Parse(split[i]);//level move is learned
-                //Console.WriteLine("NUM:" + split[i + 1]);
+                                                     //Console.WriteLine("NUM:" + split[i + 1]);
                 Move learnMove = new Move(int.Parse(split[i + 1]));
                 //moves learned before this pokemon's level will be added immediately
                 //for all other moves, get the data and put into hashmap
