@@ -37,17 +37,23 @@ namespace BrickemonGo
         private Move move4; //move#4 of current pokemon
 
         //mega pokemon stuff (separate stats for mega pokemon)
-        private int megaBaseHp; 
-        private int megaBaseAtk; 
-        private int megaBaseDef; 
-        private int megaBaseSpAtk; 
-        private int megaBaseSpDef; 
-        private int megaBaseSpeed; 
-        private int megaHp; 
-        private int megaAtk; 
-        private int megaDef; 
-        private int megaSpAtk; 
-        private int megaSpDef; 
+
+        private Boolean hasMega; // does this pokemon have the ability to mega evolve?
+        private String megaName; //ex: "Mega Charizard Y" or "Primal Kyogre"
+
+
+        //mega poke stats
+        private int megaBaseHp;
+        private int megaBaseAtk;
+        private int megaBaseDef;
+        private int megaBaseSpAtk;
+        private int megaBaseSpDef;
+        private int megaBaseSpeed;
+        private int megaHp;
+        private int megaAtk;
+        private int megaDef;
+        private int megaSpAtk;
+        private int megaSpDef;
         private int megaSpeed;
 
         //second set of mega poke stats (for pokemon that have 2 mega formes like charizard or mewtwo)
@@ -98,6 +104,7 @@ namespace BrickemonGo
             this.InitExpTable();
             this.SetLevel(1);
             this.CalculateStats();
+            this.InitMegaForme();
             //this.shiny = ((int)(Math.random() *4096+1)==4096) ? true:false; old java code, 1/4096 chance to be shiny on instantiation
             Random random = new Random();
             int shinyint = random.Next(1, 4097);
@@ -266,7 +273,7 @@ namespace BrickemonGo
             this.move4 = move4;
         }
         //entire moveset
-        public Dictionary<int,Move> GetMoveset()
+        public Dictionary<int, Move> GetMoveset()
         {
             return this.moveset;
         }
@@ -399,16 +406,35 @@ namespace BrickemonGo
         public void InitMegaForme()
         {
             //reads in mega stats and other stuff necesscary to have mega evolution
-            string[] allpokes = System.IO.File.ReadAllLines(@"res/pokedex-otherformes.txt");
-            for(int i = 0; i < allpokes.Length; i++)
-            {
-                //TO DO !!!!!!! add mega forme stats!!!!!!
-            }
-        }
-
-        public void ReadMegaStats()
-        {
             string[] allpokes = System.IO.File.ReadAllLines(@"res/pokedex-mega.txt");
+            for (int i = 0; i < allpokes.Length; i++)
+            {
+
+                String line = allpokes[i];
+                if (this.dexNum == 6 || this.dexNum == 150)  //charizard and mewtwo have 2 separate mega formes
+                {
+                    if (line.Substring(0, line.IndexOf(":")).Equals(this.name.ToLower() + "megax"))
+                    {
+                        
+                    }
+                    if (line.Substring(0, line.IndexOf(":")).Equals(this.name.ToLower() + "megay"))
+                    {
+
+                    }
+                }
+                //case for pkmn with 1 mega forme
+                else if (line.Substring(0, line.IndexOf(":")).Equals(this.name.ToLower() + "mega"))
+                {
+                    //found mega forme for this pokemon 
+                    String[] split = line.Split(','); 
+                    this.megaBaseHp = int.Parse(split[9].Substring(14));
+                    this.megaBaseAtk = int.Parse(split[10].Substring(4));
+                    this.megaBaseDef = int.Parse(split[11].Substring(4));
+                    this.megaBaseSpAtk = int.Parse(split[12].Substring(4));
+                    this.megaBaseSpDef = int.Parse(split[13].Substring(4));
+                    this.megaBaseSpeed = int.Parse(split[14].Substring(4,2));
+                }
+            }
         }
 
         //calculates actual stats of pokemon based on level and base stats and saves in stats data fields

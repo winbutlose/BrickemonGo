@@ -18,7 +18,7 @@ namespace BrickemonGo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Pokemon x = new Pokemon(6,100);
+            Pokemon x = new Pokemon(9,100);
             Console.WriteLine(x);
             x.GiveExp(1000000);
             Console.WriteLine(x.EstimateLevel());
