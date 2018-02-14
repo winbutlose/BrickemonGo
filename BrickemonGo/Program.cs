@@ -18,13 +18,13 @@ namespace BrickemonGo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Pokemon x = new Pokemon(452,100);
-            //Console.WriteLine(x);
-            // x.GiveExp(15000000);
-            // Console.WriteLine(x.EstimateLevel());
-            //Console.WriteLine("-----------------");
-            //Console.WriteLine(x.Data());
-            Application.Run(new Form1(x));
+            Pokemon x = new Pokemon(6,100);
+            Console.WriteLine(x);
+            x.GiveExp(1000000);
+            Console.WriteLine(x.EstimateLevel());
+            Console.WriteLine("-----------------");
+            Console.WriteLine(x.Data());
+            //Application.Run(new Form1(x));
             //Application.Run(new DeckMaker());
         }
     }

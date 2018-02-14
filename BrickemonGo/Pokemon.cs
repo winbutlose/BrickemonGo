@@ -13,7 +13,7 @@ namespace BrickemonGo
 
         private String name; //actual name of the pokemon eg. Charizard
         private String nickname; //nickname of the pokemon given by the player
-        private String gender; //gender of the pokemon either MALE or FEMALE only 2 genders!!! what about undefined ;^)
+        private String gender; //gender of the pokemon
         private String OT; //original trainer
         private Nature nature; //nature of the pokemon
         private Boolean shiny; //whether the pokemon is shiny or not
@@ -48,7 +48,23 @@ namespace BrickemonGo
         private int megaDef; 
         private int megaSpAtk; 
         private int megaSpDef; 
-        private int megaSpeed; 
+        private int megaSpeed;
+
+        //second set of mega poke stats (for pokemon that have 2 mega formes like charizard or mewtwo)
+        //this set will be the 2nd/Y forme stats while X will be default
+        private int megaBaseHpY;
+        private int megaBaseAtkY;
+        private int megaBaseDefY;
+        private int megaBaseSpAtkY;
+        private int megaBaseSpDefY;
+        private int megaBaseSpeedY;
+        private int megaHpY;
+        private int megaAtkY;
+        private int megaDefY;
+        private int megaSpAtkY;
+        private int megaSpDefY;
+        private int megaSpeedY;
+
 
         private int remainingHp;
 
@@ -390,6 +406,11 @@ namespace BrickemonGo
             }
         }
 
+        public void ReadMegaStats()
+        {
+            string[] allpokes = System.IO.File.ReadAllLines(@"res/pokedex-mega.txt");
+        }
+
         //calculates actual stats of pokemon based on level and base stats and saves in stats data fields
         //this is called either after experience (and EVs) is earned or after pokemon levels up (our choice later)
         public void CalculateStats()
@@ -639,6 +660,38 @@ namespace BrickemonGo
             bob.Append("\t|SpAtk: " + this.spAtk + "|");
             bob.Append("\t|SpDef: " + this.spDef + "|");
             bob.Append("\t|Speed: " + this.speed + "|");
+
+            bob.Append("\n|MEGA BASE STATS|");
+            bob.Append("\n|HP: " + this.megaBaseHp + "|");
+            bob.Append("\t|Atk: " + this.megaBaseAtk + "|");
+            bob.Append("\t|Def: " + this.megaBaseDef + "|");
+            bob.Append("\t|SpAtk: " + this.megaBaseSpAtk + "|");
+            bob.Append("\t|SpDef: " + this.megaBaseSpDef + "|");
+            bob.Append("\t|Speed: " + this.megaBaseSpeed + "|");
+
+            bob.Append("\n|MEGA CALCULATED STATS|");
+            bob.Append("\n|HP: " + this.megaHp + "|");
+            bob.Append("\t|Atk: " + this.megaAtk + "|");
+            bob.Append("\t|Def: " + this.megaDef + "|");
+            bob.Append("\t|SpAtk: " + this.megaSpAtk + "|");
+            bob.Append("\t|SpDef: " + this.megaSpDef + "|");
+            bob.Append("\t|Speed: " + this.megaSpeed + "|");
+
+            bob.Append("\n|MEGA (2/Y) BASE STATS|");
+            bob.Append("\n|HP: " + this.megaBaseHpY + "|");
+            bob.Append("\t|Atk: " + this.megaBaseAtkY + "|");
+            bob.Append("\t|Def: " + this.megaBaseDefY + "|");
+            bob.Append("\t|SpAtk: " + this.megaBaseSpAtkY + "|");
+            bob.Append("\t|SpDef: " + this.megaBaseSpDefY + "|");
+            bob.Append("\t|Speed: " + this.megaBaseSpeedY + "|");
+
+            bob.Append("\n|MEGA (2/Y) CALCULATED STATS|");
+            bob.Append("\n|HP: " + this.megaHpY + "|");
+            bob.Append("\t|Atk: " + this.megaAtkY + "|");
+            bob.Append("\t|Def: " + this.megaDefY + "|");
+            bob.Append("\t|SpAtk: " + this.megaSpAtkY + "|");
+            bob.Append("\t|SpDef: " + this.megaSpDefY + "|");
+            bob.Append("\t|Speed: " + this.megaSpeedY + "|");
 
             bob.Append("\n|IVs|");
             bob.Append("\n|HP: " + this.hpIV + "|");
