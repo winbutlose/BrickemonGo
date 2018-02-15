@@ -275,6 +275,9 @@ namespace BrickemonGo
                         formattedInfo += "\r\n" + "Original Games: [ Diamond/Pearl/Platinum ]";
                         break;
                     case "Gen5":
+                        formattedInfo += "\r\n" + "Original Games: [ BLack/White ]";
+                        break;
+                    case "Gen6":
                         formattedInfo += "\r\n" + "Original Games: [ X/Y ]";
                         break;
                     default:
