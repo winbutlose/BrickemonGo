@@ -38,9 +38,11 @@ namespace BrickemonGo
 
         //mega pokemon stuff (separate stats for mega pokemon)
 
-        private Boolean hasMega; // does this pokemon have the ability to mega evolve?
-        private String megaName; //ex: "Mega Charizard Y" or "Primal Kyogre"
+        private int hasMega; // does this pokemon have the ability to mega evolve? (0=no 1=single mega 2=two different mega formes)
+        private String megaName; //ex: "Mega Charizard X" or "Primal Kyogre"
+        private String megaNameY; //ex "Mega Charizard Y" or "Mega Mewtwo Y"
         private Type megaType;
+        private Type megaTypeY;
 
 
         //mega poke stats
@@ -106,7 +108,7 @@ namespace BrickemonGo
             this.SetLevel(1);
             this.CalculateStats();
             this.InitMegaForme();
-            this.CalculateMegaStats();
+            this.CalculateMegaStats(hasMega);
             //this.shiny = ((int)(Math.random() *4096+1)==4096) ? true:false; old java code, 1/4096 chance to be shiny on instantiation
             Random random = new Random();
             int shinyint = random.Next(1, 4097);
@@ -131,6 +133,7 @@ namespace BrickemonGo
 
             this.SetLevel(lv);//ALWAYS USE SETLEVEL PLS, otherwise u gotta do other shit too when u change the level
             this.CalculateStats();
+            this.CalculateMegaStats(hasMega);
             this.GenerateMoveset();
             this.remainingHp = this.hp;
         }
@@ -150,7 +153,20 @@ namespace BrickemonGo
         {
             this.name = n;
         }
-        //HP
+        //mega formes
+        public int HasMega()
+        {
+            return this.hasMega;
+        }
+        public String GetMegaName()
+        {
+            return this.megaName;
+        }
+        public String GetMegaNameY()
+        {
+            return this.megaNameY;
+        }
+        //real HP
         public int GetRemainingHp()
         {
             if (this.remainingHp < 0)
@@ -172,7 +188,27 @@ namespace BrickemonGo
         {
             this.hp = hp;
         }
+        public void SetMegaHp(int hp)
+        {
+            this.megaHp = hp;
+        }
         public int GetBaseHp()
+        {
+            return this.baseHp;
+        }
+        public int GetMegaHp()
+        {
+            return this.megaHp;
+        }
+        public int GetMegaBaseHp()
+        {
+            return this.megaBaseHp;
+        }
+        public int GetMegaHpY()
+        {
+            return this.hp;
+        }
+        public int GetMegaBaseHpY()
         {
             return this.baseHp;
         }
@@ -189,7 +225,31 @@ namespace BrickemonGo
         {
             return this.baseAtk;
         }
-        //DEFENCE
+        public int GetMegaAtk()
+        {
+            return this.megaAtk;
+        }
+        public void SetMegaAtk(int atk)
+        {
+            this.megaAtk = atk;
+        }
+        public int GetMegaBaseAtk()
+        {
+            return this.megaBaseAtk;
+        }
+        public int GetMegaAtkY()
+        {
+            return this.megaAtkY;
+        }
+        public void SetMegaAtkY(int atk)
+        {
+            this.megaAtkY = atk;
+        }
+        public int GetMegaBaseAtkY()
+        {
+            return this.megaBaseAtkY;
+        }
+        //DEFENSE
         public int GetDef()
         {
             return this.def;
@@ -201,6 +261,30 @@ namespace BrickemonGo
         public int GetBaseDef()
         {
             return this.baseDef;
+        }
+        public int GetMegaDef()
+        {
+            return this.megaDef;
+        }
+        public void SetMegaDef(int def)
+        {
+            this.megaDef = def;
+        }
+        public int GetMegaBaseDef()
+        {
+            return this.megaBaseDef;
+        }
+        public int GetMegaDefY()
+        {
+            return this.megaDefY;
+        }
+        public void SetMegaDefY(int def)
+        {
+            this.megaDefY = def;
+        }
+        public int GetMegaBaseDefY()
+        {
+            return this.megaBaseDefY;
         }
         //SPECIAL ATTACK
         public int GetSpAtk()
@@ -215,6 +299,30 @@ namespace BrickemonGo
         {
             return this.baseSpAtk;
         }
+        public int GetMegaSpAtk()
+        {
+            return this.megaSpAtk;
+        }
+        public void SetMegaSpAtk(int spAtk)
+        {
+            this.megaSpAtk = spAtk;
+        }
+        public int GetMegaBaseSpAtk()
+        {
+            return this.megaBaseSpAtk;
+        }
+        public int GetMegaSpAtkY()
+        {
+            return this.megaSpAtkY;
+        }
+        public void SetMegaSpAtkY(int spAtk)
+        {
+            this.megaSpAtkY = spAtk;
+        }
+        public int GetMegaBaseSpAtkY()
+        {
+            return this.megaBaseSpAtkY;
+        }
         //SPECIAL DEFENCE
         public int GetSpDef()
         {
@@ -228,6 +336,30 @@ namespace BrickemonGo
         {
             return this.baseSpDef;
         }
+        public int GetMegaSpDef()
+        {
+            return this.megaSpDef;
+        }
+        public void SetMegaSpDef(int spDef)
+        {
+            this.megaSpDef = spDef;
+        }
+        public int GetMegaBaseSpDef()
+        {
+            return this.megaBaseSpDef;
+        }
+        public int GetMegaSpDefY()
+        {
+            return this.megaSpDefY;
+        }
+        public void SetMegaSpDefY(int spDef)
+        {
+            this.megaSpDefY = spDef;
+        }
+        public int GetMegaBaseSpDefY()
+        {
+            return this.megaBaseSpDefY;
+        }
         //SPEED
         public int GetSpeed()
         {
@@ -240,6 +372,30 @@ namespace BrickemonGo
         public int GetBaseSpeed()
         {
             return this.baseSpeed;
+        }
+        public int GetMegaSpeed()
+        {
+            return this.megaSpeed;
+        }
+        public void SetMegaSpeed(int speed)
+        {
+            this.megaSpeed = speed;
+        }
+        public int GetMegaBaseSpeed()
+        {
+            return this.megaBaseSpeed;
+        }
+        public int GetMegaSpeedY()
+        {
+            return this.megaSpeedY;
+        }
+        public void SetMegaSpeedY(int speed)
+        {
+            this.megaSpeedY = speed;
+        }
+        public int GetMegaBaseSpeedY()
+        {
+            return this.megaBaseSpeedY;
         }
         //MOVES
         public Move GetMove1()
@@ -279,11 +435,20 @@ namespace BrickemonGo
         {
             return this.moveset;
         }
+        //types
         public Type GetType()
         {
             return type;
         }
-
+        public Type GetMegaType()
+        {
+            return megaType;
+        }
+        public Type GetMegaTypeY()
+        {
+            return megaTypeY;
+        }
+        //other stuff
         public Boolean GetShiny()
         {
             return shiny;
@@ -369,6 +534,9 @@ namespace BrickemonGo
             //if its double type
             if (split.Length == 11)
             {
+                //first, does it have mega forme?
+                this.hasMega = int.Parse(split[10]);
+                //dexnum and stats
                 this.dexNum = int.Parse(split[0]);
                 this.SetName(split[1]);
                 this.type.SetPrimaryType(int.Parse(split[2]));
@@ -383,9 +551,13 @@ namespace BrickemonGo
             //for monotypes
             else
             {
+                //first, does it have mega forme?
+                this.hasMega = int.Parse(split[9]);
+                //dexnum and stats
                 this.dexNum = int.Parse(split[0]);
                 this.SetName(split[1]);
                 this.type.SetPrimaryType(int.Parse(split[2]));
+                this.type.SetMonotype(true);
                 this.baseHp = int.Parse(split[3]);
                 this.baseAtk = int.Parse(split[4]);
                 this.baseDef = int.Parse(split[5]);
@@ -413,25 +585,79 @@ namespace BrickemonGo
             {
 
                 String line = allpokes[i];
-                if (this.dexNum == 6 || this.dexNum == 150)  //charizard and mewtwo have 2 separate mega formes
+                if (hasMega == 2)  //2 mega formes means x and y forme
                 {
-                    if (line.Substring(0, line.IndexOf(":")).Equals(this.name.ToLower() + "megax"))
+                    if (line.Substring(0, line.IndexOf(",")).Equals(this.name.ToLower() + "megax"))
                     {
+                        //found mega forme for this pokemon 
+                        String[] split = line.Split(',');
+                        //types and name
+                        this.megaType = new Type();
+                        this.megaName = split[0];
 
+                        if (split.Length == 9)
+                        {
+                            this.megaType.SetPrimaryType(int.Parse(split[1]));
+                            this.megaType.SetSecondaryType(int.Parse(split[2]));
+                            this.megaBaseHp = int.Parse(split[3]);
+                            this.megaBaseAtk = int.Parse(split[4]);
+                            this.megaBaseDef = int.Parse(split[5]);
+                            this.megaBaseSpAtk = int.Parse(split[6]);
+                            this.megaBaseSpDef = int.Parse(split[7]);
+                            this.megaBaseSpeed = int.Parse(split[8]);
+                        }
+                        else if (split.Length == 8)//monotype
+                        {
+                            this.megaType.SetPrimaryType(int.Parse(split[1]));
+                            this.megaType.SetMonotype(true);
+                            this.megaBaseHp = int.Parse(split[2]);
+                            this.megaBaseAtk = int.Parse(split[3]);
+                            this.megaBaseDef = int.Parse(split[4]);
+                            this.megaBaseSpAtk = int.Parse(split[5]);
+                            this.megaBaseSpDef = int.Parse(split[6]);
+                            this.megaBaseSpeed = int.Parse(split[7]);
+                        }
                     }
-                    if (line.Substring(0, line.IndexOf(":")).Equals(this.name.ToLower() + "megay"))
+                    if (line.Substring(0, line.IndexOf(",")).Equals(this.name.ToLower() + "megay"))
                     {
+                        //found mega forme for this pokemon !!USING second set of mega poke stats!!
+                        String[] split = line.Split(',');
+                        //types and name
+                        this.megaTypeY = new Type();
+                        this.megaNameY = split[0];
 
+                        if (split.Length == 9)
+                        {
+                            this.megaTypeY.SetPrimaryType(int.Parse(split[1]));
+                            this.megaTypeY.SetSecondaryType(int.Parse(split[2]));
+                            this.megaBaseHpY = int.Parse(split[3]);
+                            this.megaBaseAtkY = int.Parse(split[4]);
+                            this.megaBaseDefY = int.Parse(split[5]);
+                            this.megaBaseSpAtkY = int.Parse(split[6]);
+                            this.megaBaseSpDefY = int.Parse(split[7]);
+                            this.megaBaseSpeedY = int.Parse(split[8]);
+                        }
+                        else if (split.Length == 8)//monotype
+                        {
+                            this.megaTypeY.SetPrimaryType(int.Parse(split[1]));
+                            this.megaTypeY.SetMonotype(true);
+                            this.megaBaseHpY = int.Parse(split[2]);
+                            this.megaBaseAtkY = int.Parse(split[3]);
+                            this.megaBaseDefY = int.Parse(split[4]);
+                            this.megaBaseSpAtkY = int.Parse(split[5]);
+                            this.megaBaseSpDefY = int.Parse(split[6]);
+                            this.megaBaseSpeedY = int.Parse(split[7]);
+                        }
                     }
                 }
                 //case for pkmn with 1 mega forme
-                else if (line.Substring(0, line.IndexOf(",")).Equals(this.name.ToLower() + "mega"))
+                else if (line.Substring(0, line.IndexOf(",")).Equals(this.name.ToLower() + "mega") || line.Substring(0, line.IndexOf(",")).Equals(this.name.ToLower() + "primal"))
                 {
                     //found mega forme for this pokemon 
                     String[] split = line.Split(',');
                     //types and name
                     this.megaType = new Type();
-                    
+                    this.megaName = split[0];
 
                     if (split.Length == 9)
                     {
@@ -444,15 +670,16 @@ namespace BrickemonGo
                         this.megaBaseSpDef = int.Parse(split[7]);
                         this.megaBaseSpeed = int.Parse(split[8]);
                     }
-                    else if(split.Length == 8)//monotype
+                    else if (split.Length == 8)//monotype
                     {
                         this.megaType.SetPrimaryType(int.Parse(split[1]));
+                        this.megaType.SetMonotype(true);
                         this.megaBaseHp = int.Parse(split[2]);
                         this.megaBaseAtk = int.Parse(split[3]);
-                        this.megaBaseDef = int.Parse(split[3]);
-                        this.megaBaseSpAtk = int.Parse(split[4]);
-                        this.megaBaseSpDef = int.Parse(split[5]);
-                        this.megaBaseSpeed = int.Parse(split[6]);
+                        this.megaBaseDef = int.Parse(split[4]);
+                        this.megaBaseSpAtk = int.Parse(split[5]);
+                        this.megaBaseSpDef = int.Parse(split[6]);
+                        this.megaBaseSpeed = int.Parse(split[7]);
                     }
 
                 }
@@ -526,8 +753,9 @@ namespace BrickemonGo
         }
 
         //calculate mega stats
-        public void CalculateMegaStats()
-        {
+        public void CalculateMegaStats(int multiplemegas) //if multiple megas = 0 this wont do anythings
+                                                          //if mult megas = 1 this will calc mega values
+        {                                                   //if mult megas = 2 this will calc mega and megaY values
             //first find which stats are boosted
             double atkBoost = 1, defBoost = 1, spaBoost = 1, spdBoost = 1, speBoost = 1;
             switch (this.nature.GetBoostedStat())
@@ -570,23 +798,46 @@ namespace BrickemonGo
                 default: //default means we got a nature that doesn't boost or reduce anything
                     break;
             }
-            Double atkplaceholder = (((((2 * this.megaBaseAtk) + this.atkIV + (this.atkEV / 4)) * this.level) / 100) + 5) * atkBoost;
-            this.megaAtk = Convert.ToInt32(atkplaceholder);
+            if (multiplemegas > 0)
+            {
+                Double megaatkplaceholder = (((((2 * this.megaBaseAtk) + this.atkIV + (this.atkEV / 4)) * this.level) / 100) + 5) * atkBoost;
+                this.megaAtk = Convert.ToInt32(megaatkplaceholder);
 
-            Double defplaceholder = (((((2 * this.megaBaseDef) + this.defIV + (this.defEV / 4)) * this.level) / 100) + 5) * defBoost;
-            this.megaDef = Convert.ToInt32(defplaceholder);
+                Double megadefplaceholder = (((((2 * this.megaBaseDef) + this.defIV + (this.defEV / 4)) * this.level) / 100) + 5) * defBoost;
+                this.megaDef = Convert.ToInt32(megadefplaceholder);
 
-            Double spaplaceholder = (((((2 * this.megaBaseSpAtk) + this.spaIV + (this.spaEV / 4)) * this.level) / 100) + 5) * spaBoost;
-            this.megaSpAtk = Convert.ToInt32(spaplaceholder);
+                Double megaspaplaceholder = (((((2 * this.megaBaseSpAtk) + this.spaIV + (this.spaEV / 4)) * this.level) / 100) + 5) * spaBoost;
+                this.megaSpAtk = Convert.ToInt32(megaspaplaceholder);
 
-            Double spdplaceholder = (((((2 * this.megaBaseSpDef) + this.spdIV + (this.spdEV / 4)) * this.level) / 100) + 5) * spdBoost;
-            this.megaSpDef = Convert.ToInt32(spdplaceholder);
+                Double megaspdplaceholder = (((((2 * this.megaBaseSpDef) + this.spdIV + (this.spdEV / 4)) * this.level) / 100) + 5) * spdBoost;
+                this.megaSpDef = Convert.ToInt32(megaspdplaceholder);
 
-            Double speplaceholder = (((((2 * this.megaBaseSpeed) + this.speIV + (this.speEV / 4)) * this.level) / 100) + 5) * speBoost;
-            this.megaSpeed = Convert.ToInt32(speplaceholder);
+                Double megaspeplaceholder = (((((2 * this.megaBaseSpeed) + this.speIV + (this.speEV / 4)) * this.level) / 100) + 5) * speBoost;
+                this.megaSpeed = Convert.ToInt32(megaspeplaceholder);
 
-            //HP is calculated differently
-            this.megaHp = ((((2 * this.megaBaseHp) + this.hpIV + (this.hpEV / 4)) * this.level) / 100) + this.level + 10;
+                //HP is calculated differently
+                this.megaHp = ((((2 * this.megaBaseHp) + this.hpIV + (this.hpEV / 4)) * this.level) / 100) + this.level + 10;
+            }
+            if (multiplemegas == 2)
+            {
+                Double megaatkplaceholderY = (((((2 * this.megaBaseAtkY) + this.atkIV + (this.atkEV / 4)) * this.level) / 100) + 5) * atkBoost;
+                this.megaAtkY = Convert.ToInt32(megaatkplaceholderY);
+
+                Double megadefplaceholderY = (((((2 * this.megaBaseDefY) + this.defIV + (this.defEV / 4)) * this.level) / 100) + 5) * defBoost;
+                this.megaDefY = Convert.ToInt32(megadefplaceholderY);
+
+                Double megaspaplaceholderY = (((((2 * this.megaBaseSpAtkY) + this.spaIV + (this.spaEV / 4)) * this.level) / 100) + 5) * spaBoost;
+                this.megaSpAtkY = Convert.ToInt32(megaspaplaceholderY);
+
+                Double megaspdplaceholderY = (((((2 * this.megaBaseSpDefY) + this.spdIV + (this.spdEV / 4)) * this.level) / 100) + 5) * spdBoost;
+                this.megaSpDefY = Convert.ToInt32(megaspdplaceholderY);
+
+                Double megaspeplaceholderY = (((((2 * this.megaBaseSpeedY) + this.speIV + (this.speEV / 4)) * this.level) / 100) + 5) * speBoost;
+                this.megaSpeedY = Convert.ToInt32(megaspeplaceholderY);
+
+                //HP is calculated differently
+                this.megaHpY = ((((2 * this.megaBaseHpY) + this.hpIV + (this.hpEV / 4)) * this.level) / 100) + this.level + 10;
+            }
         }
 
         //generates random (as random as we can) IVs. THIS ONLY HAPPENS ONCE!
@@ -746,6 +997,7 @@ namespace BrickemonGo
             bob.Append("\t|Name: " + this.name + "|");
             bob.Append("\t|Nickname: " + this.nickname + "|");
             bob.Append("\t|Level: " + this.level + "|");
+            bob.Append("\t|Mega Formes: " + this.megaName + "| " + this.megaNameY + "|");
             int estLv = EstimateLevel();
             if (estLv > 100)
             {

@@ -55,7 +55,7 @@
             this.type2picturebox = new System.Windows.Forms.PictureBox();
             this.type1picturebox = new System.Windows.Forms.PictureBox();
             this.StatsTab = new System.Windows.Forms.TabPage();
-            this.FormesTab = new System.Windows.Forms.TabPage();
+            this.MegasTab = new System.Windows.Forms.TabPage();
             this.formtabpanel = new System.Windows.Forms.Panel();
             this.formeTablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.MovesTab = new System.Windows.Forms.TabPage();
@@ -69,6 +69,7 @@
             this.SpriteboxFront = new System.Windows.Forms.PictureBox();
             this.rightButton = new System.Windows.Forms.Button();
             this.leftButton = new System.Windows.Forms.Button();
+            this.FormesTab = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.StatPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -77,7 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.type2picturebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.type1picturebox)).BeginInit();
             this.StatsTab.SuspendLayout();
-            this.FormesTab.SuspendLayout();
+            this.MegasTab.SuspendLayout();
             this.formtabpanel.SuspendLayout();
             this.MovesTab.SuspendLayout();
             this.MovesPanel.SuspendLayout();
@@ -317,16 +318,18 @@
             // 
             this.tabControl1.Controls.Add(this.InfoTab);
             this.tabControl1.Controls.Add(this.StatsTab);
-            this.tabControl1.Controls.Add(this.FormesTab);
+            this.tabControl1.Controls.Add(this.MegasTab);
             this.tabControl1.Controls.Add(this.MovesTab);
             this.tabControl1.Controls.Add(this.SpritesTab);
+            this.tabControl1.Controls.Add(this.FormesTab);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.ItemSize = new System.Drawing.Size(54, 27);
             this.tabControl1.Location = new System.Drawing.Point(319, 64);
+            this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(30, 3);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(553, 485);
+            this.tabControl1.Size = new System.Drawing.Size(608, 485);
             this.tabControl1.TabIndex = 5;
             // 
             // InfoTab
@@ -336,7 +339,7 @@
             this.InfoTab.Location = new System.Drawing.Point(4, 31);
             this.InfoTab.Name = "InfoTab";
             this.InfoTab.Padding = new System.Windows.Forms.Padding(3);
-            this.InfoTab.Size = new System.Drawing.Size(545, 450);
+            this.InfoTab.Size = new System.Drawing.Size(600, 450);
             this.InfoTab.TabIndex = 0;
             this.InfoTab.Text = "Info";
             // 
@@ -349,7 +352,7 @@
             this.InfoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InfoPanel.Location = new System.Drawing.Point(3, 3);
             this.InfoPanel.Name = "InfoPanel";
-            this.InfoPanel.Size = new System.Drawing.Size(539, 444);
+            this.InfoPanel.Size = new System.Drawing.Size(594, 444);
             this.InfoPanel.TabIndex = 0;
             // 
             // fullinfobox
@@ -396,15 +399,15 @@
             this.StatsTab.TabIndex = 1;
             this.StatsTab.Text = "Stats";
             // 
-            // FormesTab
+            // MegasTab
             // 
-            this.FormesTab.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.FormesTab.Controls.Add(this.formtabpanel);
-            this.FormesTab.Location = new System.Drawing.Point(4, 31);
-            this.FormesTab.Name = "FormesTab";
-            this.FormesTab.Size = new System.Drawing.Size(545, 450);
-            this.FormesTab.TabIndex = 2;
-            this.FormesTab.Text = "Formes";
+            this.MegasTab.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.MegasTab.Controls.Add(this.formtabpanel);
+            this.MegasTab.Location = new System.Drawing.Point(4, 31);
+            this.MegasTab.Name = "MegasTab";
+            this.MegasTab.Size = new System.Drawing.Size(545, 450);
+            this.MegasTab.TabIndex = 2;
+            this.MegasTab.Text = "Mega";
             // 
             // formtabpanel
             // 
@@ -563,12 +566,21 @@
             this.leftButton.UseVisualStyleBackColor = false;
             this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
             // 
+            // FormesTab
+            // 
+            this.FormesTab.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.FormesTab.Location = new System.Drawing.Point(4, 58);
+            this.FormesTab.Name = "FormesTab";
+            this.FormesTab.Size = new System.Drawing.Size(545, 423);
+            this.FormesTab.TabIndex = 5;
+            this.FormesTab.Text = "Formes";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(937, 561);
             this.Controls.Add(this.leftButton);
             this.Controls.Add(this.rightButton);
             this.Controls.Add(this.tabControl1);
@@ -588,8 +600,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.type2picturebox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.type1picturebox)).EndInit();
             this.StatsTab.ResumeLayout(false);
-            this.FormesTab.ResumeLayout(false);
-            this.FormesTab.PerformLayout();
+            this.MegasTab.ResumeLayout(false);
+            this.MegasTab.PerformLayout();
             this.formtabpanel.ResumeLayout(false);
             this.MovesTab.ResumeLayout(false);
             this.MovesPanel.ResumeLayout(false);
@@ -632,7 +644,7 @@
         private System.Windows.Forms.PictureBox type2picturebox;
         private System.Windows.Forms.PictureBox type1picturebox;
         private System.Windows.Forms.TextBox fullinfobox;
-        private System.Windows.Forms.TabPage FormesTab;
+        private System.Windows.Forms.TabPage MegasTab;
         private System.Windows.Forms.Button rightButton;
         private System.Windows.Forms.Button leftButton;
         private System.Windows.Forms.Panel formtabpanel;
@@ -646,6 +658,7 @@
         private System.Windows.Forms.PictureBox SpriteboxFrontShiny;
         private System.Windows.Forms.PictureBox SpriteboxFront;
         private System.Windows.Forms.TableLayoutPanel MoveTablePanel;
+        private System.Windows.Forms.TabPage FormesTab;
     }
 }
 

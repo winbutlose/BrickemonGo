@@ -24,7 +24,8 @@ namespace BrickemonGo
         {
             this.primaryTypeString = type;
             UpdateTypingToInt();
-            CheckMonotype();
+            this.monotype = true;
+            //CheckMonotype();
         }
         //same as above but for dual types
         public Type(String type1, String type2)
@@ -81,7 +82,10 @@ namespace BrickemonGo
         {
             return this.monotype;
         }
-
+        public void SetMonotype(Boolean x)
+        {
+            this.monotype = x;
+        }
         public void CheckMonotype()
         {
             if (primaryType == secondaryType)

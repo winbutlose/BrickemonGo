@@ -37,7 +37,7 @@ namespace BrickemonGo
             //fix horizontal scrollbar in movetablepanel
             int vertScrollWidth = SystemInformation.VerticalScrollBarWidth;
             MoveTablePanel.Padding = new Padding(0, 0, vertScrollWidth, 0);
-            
+
 
         }
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -51,7 +51,7 @@ namespace BrickemonGo
                 Console.WriteLine(ex);
             }
             //name text box
-            NameLabel.Text = poke.GetName();
+            NameLabel.Text = "#"+poke.GetDexNum()+"  "+poke.GetName();
             //do calculations
             float hp = (float)(poke.GetBaseHp() * 2);
             float atk = (float)(poke.GetBaseAtk() * 2);
@@ -104,7 +104,7 @@ namespace BrickemonGo
                 Console.WriteLine(ex);
             }
             //name text box
-            NameLabel.Text = poke.GetName();
+            NameLabel.Text = "#" + poke.GetDexNum() + "  " + poke.GetName();
             //pictures for types
             Type type = poke.GetType();
             type1picturebox.ImageLocation = @"res/type circles/" + type.GetPrimaryTypeString() + ".png";
@@ -122,7 +122,7 @@ namespace BrickemonGo
                 Console.WriteLine(ex);
             }
             //name text box
-            NameLabel.Text = poke.GetName();
+            NameLabel.Text = "#" + poke.GetDexNum() + "  " + poke.GetName();
             //GetFormes();
         }
         private void Sprites_Paint(object sender, PaintEventArgs e)
@@ -136,7 +136,7 @@ namespace BrickemonGo
                 Console.WriteLine(ex);
             }
             //name text box
-            NameLabel.Text = poke.GetName();
+            NameLabel.Text = "#" + poke.GetDexNum() + "  " + poke.GetName();
             //sprite pictures
             SpriteboxFront.ImageLocation = @"res/sprites/blackwhite/" + poke.GetDexNum() + ".png";
             SpriteboxBack.ImageLocation = @"res/sprites/blackwhite/back/" + poke.GetDexNum() + ".png";
@@ -155,7 +155,7 @@ namespace BrickemonGo
                 Console.WriteLine(ex);
             }
             //name text box
-            NameLabel.Text = poke.GetName();
+            NameLabel.Text = "#" + poke.GetDexNum() + "  " + poke.GetName();
         }
 
         public Color DetermineColor(float x, int id)//id is flag for whether its hp or not (hp bar calculated differently :))
@@ -291,68 +291,23 @@ namespace BrickemonGo
         }
         private void GetFormes()//populate formes tab with other formes of pokemon if necesscary 
         {
-            string[] allInfo = System.IO.File.ReadAllLines(@"res/pokedex.txt");
-            String line = allInfo[poke.GetDexNum()];
-            String formattedInfo = "";
-            String str = "none";
             Label FormesLabel = new Label();
             PictureBox formePicBox = new PictureBox();
-
-
-            if (line.Contains("otherFormes"))
+            String[] formelist = new String[2];
+            if(poke.HasMega() == 0)
             {
-                str = line.Substring(line.IndexOf("otherFormes:") + 14);
-                str = str.Substring(0, str.IndexOf("]") - 1);
-                Console.WriteLine("FORMESTRING=" + str);
-            }
-            else
-            {
-                //no extra formes
-                formattedInfo += "Formes: None";
-                FormesLabel.Text = formattedInfo;
-                formePicBox.ImageLocation = (@"res/sprites/sugimori/" + this.poke.GetDexNum() + "dne.png");
-                //clear the formes another pokemon might have drawn in the panel
                 formeTablePanel.Controls.Clear();
                 return;
             }
-
-            if (str.Contains(","))//multiple formes
+            else if (poke.HasMega() == 1)//single mega forme
             {
-                //formattedInfo = str.Substring(0, str.IndexOf(",")-1);
-                String[] formes = str.Split(',');
-                Console.WriteLine("formeimagelocMULTIPLE_FORMES=" + formes[0]);
-                for (int i = 0; i < formes.Length; i++)
-                {
-                    formes[i] = formes[i].Replace("\"", "");
-                    formes[i] = formes[i].Substring(poke.GetName().Length);
-                    Console.WriteLine("res/sprites/sugimori/" + this.poke.GetDexNum() + "-" + formes[0] + ".png");
-                }
-                //FormesLabel.Text = formes[0];
-                //formePicBox.ImageLocation = (@"res/sprites/sugimori/" + this.poke.GetDexNum() + "-" + formes[0] + ".png");
-                //DRAW IT NOW
-                DrawFormes(formes);
-                return;
+                formelist[0] = poke.GetMegaName().Substring(poke.GetName().Length);
             }
-
-            //single extra forme
-
-            formattedInfo = str.Substring(poke.GetName().Length);
-            Console.WriteLine("formeimageloc=" + formattedInfo);
-            String formattedInfoUp = (formattedInfo.Substring(0, 1)).ToUpper() + formattedInfo.Substring(1);
-            if (formattedInfo.Equals("mega"))
+            else if (poke.HasMega() == 2)//multiple mega formes
             {
-                FormesLabel.Text = "Mega " + poke.GetName();
+                formelist[0] = poke.GetMegaName().Substring(poke.GetName().Length);
+                formelist[1] = poke.GetMegaNameY().Substring(poke.GetName().Length);
             }
-            else
-            {
-                FormesLabel.Text = poke.GetName() + " " + formattedInfoUp + " Forme";
-            }
-            formePicBox.ImageLocation = (@"res/sprites/sugimori/" + this.poke.GetDexNum() + "-" + formattedInfo + ".png");
-            Console.WriteLine("res/sprites/sugimori/" + this.poke.GetDexNum() + "-" + formattedInfo + ".png");
-
-            //DRAW IT NOW
-            String[] formelist = new String[1];
-            formelist[0] = formattedInfo;
             DrawFormes(formelist);
         }
 
@@ -385,12 +340,19 @@ namespace BrickemonGo
             //first clear panel
             formeTablePanel.Controls.Clear();
             //roll thru list and make new formepanel (with pic) for each forme this poke has
-            for (int i = 0; i < formeList.Count(); i++)
+            if (formeList == null)
             {
-                FormePanel x = new FormePanel(formeList[i] + " forme", "res/sprites/sugimori/" + poke.GetDexNum() + "-" + formeList[i] + ".png");
-                formeTablePanel.Controls.Add(x);
-                Console.WriteLine(formeList[i]);
+                return;
             }
+            FormePanel x = new FormePanel(0,this.poke, "res/sprites/sugimori/" + poke.GetDexNum() + "-" + formeList[0] + ".png");
+            formeTablePanel.Controls.Add(x);
+            Console.WriteLine(formeList[0]);
+            if (formeList[1] == null)
+                return;
+            FormePanel y = new FormePanel(1,this.poke, "res/sprites/sugimori/" + poke.GetDexNum() + "-" + formeList[1] + ".png");
+            formeTablePanel.Controls.Add(y);
+            Console.WriteLine(formeList[1]);
+
         }
         private void DrawMoves()
         {
@@ -401,12 +363,12 @@ namespace BrickemonGo
             MoveTablePanel.AutoScroll = false;
             MoveTablePanel.AutoScroll = true;
             int iterator = 0;
-            Size s = new Size(25,25);
+            Size s = new Size(25, 25);
             foreach (KeyValuePair<int, Move> entry in MoveDictionary)
             {
                 MoveTablePanel.Controls.Add(new TextBox() { Text = entry.Value.GetName(), ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 150, BorderStyle = BorderStyle.None }, 2, iterator);
-                MoveTablePanel.Controls.Add(new TextBox() {Text = ""+entry.Key, ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 25, BorderStyle = BorderStyle.None }, 0, iterator);
-                MoveTablePanel.Controls.Add(new PictureBox() {ImageLocation = @"res/type circles/" + entry.Value.GetType().GetPrimaryTypeString().ToLower() + ".png",SizeMode = PictureBoxSizeMode.Zoom, Size = s },1,iterator);
+                MoveTablePanel.Controls.Add(new TextBox() { Text = "" + entry.Key, ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 25, BorderStyle = BorderStyle.None }, 0, iterator);
+                MoveTablePanel.Controls.Add(new PictureBox() { ImageLocation = @"res/type circles/" + entry.Value.GetType().GetPrimaryTypeString().ToLower() + ".png", SizeMode = PictureBoxSizeMode.Zoom, Size = s }, 1, iterator);
                 MoveTablePanel.Controls.Add(new TextBox() { Text = "" + entry.Value.GetDamage(), ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 25, BorderStyle = BorderStyle.None }, 3, iterator);
                 MoveTablePanel.Controls.Add(new TextBox() { Text = "" + entry.Value.GetAccuracy() + "%", ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 40, BorderStyle = BorderStyle.None }, 4, iterator);
                 MoveTablePanel.Controls.Add(new TextBox() { Text = "" + entry.Value.GetMoveCategoryString(), ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 75, BorderStyle = BorderStyle.None }, 5, iterator);
