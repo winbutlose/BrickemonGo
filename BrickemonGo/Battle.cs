@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BrickemonGo
+namespace BrickemonGo//test comment github plsss
 {
     public partial class Battle : Form
     {
