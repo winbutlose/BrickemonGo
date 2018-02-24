@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace BrickemonGo
 {
-    static class Program
+    static class Program //testing github desktop
     {
         /// <summary>
         /// The main entry point for the application.
