@@ -31,6 +31,8 @@
             this.PictureBoxOppPoke = new System.Windows.Forms.PictureBox();
             this.PictureBoxUserPoke = new System.Windows.Forms.PictureBox();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.outputbox = new System.Windows.Forms.TextBox();
+            this.inputbox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOppPoke)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxUserPoke)).BeginInit();
             this.MainPanel.SuspendLayout();
@@ -38,23 +40,25 @@
             // 
             // PictureBoxOppPoke
             // 
-            this.PictureBoxOppPoke.Location = new System.Drawing.Point(844, 12);
+            this.PictureBoxOppPoke.Location = new System.Drawing.Point(1055, 12);
             this.PictureBoxOppPoke.Name = "PictureBoxOppPoke";
-            this.PictureBoxOppPoke.Size = new System.Drawing.Size(213, 192);
+            this.PictureBoxOppPoke.Size = new System.Drawing.Size(250, 250);
             this.PictureBoxOppPoke.TabIndex = 0;
             this.PictureBoxOppPoke.TabStop = false;
             // 
             // PictureBoxUserPoke
             // 
-            this.PictureBoxUserPoke.Location = new System.Drawing.Point(35, 451);
+            this.PictureBoxUserPoke.Location = new System.Drawing.Point(12, 12);
             this.PictureBoxUserPoke.Name = "PictureBoxUserPoke";
-            this.PictureBoxUserPoke.Size = new System.Drawing.Size(241, 214);
+            this.PictureBoxUserPoke.Size = new System.Drawing.Size(250, 250);
             this.PictureBoxUserPoke.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PictureBoxUserPoke.TabIndex = 1;
             this.PictureBoxUserPoke.TabStop = false;
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.inputbox);
+            this.MainPanel.Controls.Add(this.outputbox);
             this.MainPanel.Controls.Add(this.PictureBoxUserPoke);
             this.MainPanel.Controls.Add(this.PictureBoxOppPoke);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -62,6 +66,22 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1280, 720);
             this.MainPanel.TabIndex = 2;
+            // 
+            // outputbox
+            // 
+            this.outputbox.Location = new System.Drawing.Point(286, 242);
+            this.outputbox.Multiline = true;
+            this.outputbox.Name = "outputbox";
+            this.outputbox.Size = new System.Drawing.Size(739, 286);
+            this.outputbox.TabIndex = 2;
+            // 
+            // inputbox
+            // 
+            this.inputbox.Location = new System.Drawing.Point(286, 577);
+            this.inputbox.Name = "inputbox";
+            this.inputbox.Size = new System.Drawing.Size(100, 20);
+            this.inputbox.TabIndex = 3;
+            this.inputbox.Enter += new System.EventHandler(this.inputbox_Enter);
             // 
             // Battle
             // 
@@ -77,6 +97,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOppPoke)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxUserPoke)).EndInit();
             this.MainPanel.ResumeLayout(false);
+            this.MainPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -86,5 +107,7 @@
         private System.Windows.Forms.PictureBox PictureBoxOppPoke;
         private System.Windows.Forms.PictureBox PictureBoxUserPoke;
         private System.Windows.Forms.Panel MainPanel;
+        private System.Windows.Forms.TextBox inputbox;
+        private System.Windows.Forms.TextBox outputbox;
     }
 }
