@@ -124,7 +124,7 @@ namespace BrickemonGo
         {
             for (int i = 0; i < pokemonParty.Length; i++)
             {
-                if (pokemonParty[i].GetHp() > 0)
+                if (pokemonParty[i].GetRemainingHp() > 0)
                 {
                     return false;
                 }

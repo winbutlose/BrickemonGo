@@ -32,7 +32,7 @@
             this.PictureBoxUserPoke = new System.Windows.Forms.PictureBox();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.outputbox = new System.Windows.Forms.TextBox();
-            this.inputbox = new System.Windows.Forms.TextBox();
+            this.textboxwords = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOppPoke)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxUserPoke)).BeginInit();
             this.MainPanel.SuspendLayout();
@@ -40,7 +40,7 @@
             // 
             // PictureBoxOppPoke
             // 
-            this.PictureBoxOppPoke.Location = new System.Drawing.Point(1055, 12);
+            this.PictureBoxOppPoke.Location = new System.Drawing.Point(1018, 12);
             this.PictureBoxOppPoke.Name = "PictureBoxOppPoke";
             this.PictureBoxOppPoke.Size = new System.Drawing.Size(250, 250);
             this.PictureBoxOppPoke.TabIndex = 0;
@@ -57,7 +57,7 @@
             // 
             // MainPanel
             // 
-            this.MainPanel.Controls.Add(this.inputbox);
+            this.MainPanel.Controls.Add(this.textboxwords);
             this.MainPanel.Controls.Add(this.outputbox);
             this.MainPanel.Controls.Add(this.PictureBoxUserPoke);
             this.MainPanel.Controls.Add(this.PictureBoxOppPoke);
@@ -69,19 +69,21 @@
             // 
             // outputbox
             // 
-            this.outputbox.Location = new System.Drawing.Point(286, 242);
+            this.outputbox.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.outputbox.Location = new System.Drawing.Point(268, 3);
             this.outputbox.Multiline = true;
             this.outputbox.Name = "outputbox";
-            this.outputbox.Size = new System.Drawing.Size(739, 286);
+            this.outputbox.Size = new System.Drawing.Size(739, 139);
             this.outputbox.TabIndex = 2;
             // 
-            // inputbox
+            // textboxwords
             // 
-            this.inputbox.Location = new System.Drawing.Point(286, 577);
-            this.inputbox.Name = "inputbox";
-            this.inputbox.Size = new System.Drawing.Size(100, 20);
-            this.inputbox.TabIndex = 3;
-            this.inputbox.Enter += new System.EventHandler(this.inputbox_Enter);
+            this.textboxwords.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textboxwords.Location = new System.Drawing.Point(331, 568);
+            this.textboxwords.Multiline = true;
+            this.textboxwords.Name = "textboxwords";
+            this.textboxwords.Size = new System.Drawing.Size(596, 49);
+            this.textboxwords.TabIndex = 3;
             // 
             // Battle
             // 
@@ -93,7 +95,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Battle";
             this.Text = "Battle";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOppPoke)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxUserPoke)).EndInit();
             this.MainPanel.ResumeLayout(false);
@@ -107,7 +108,7 @@
         private System.Windows.Forms.PictureBox PictureBoxOppPoke;
         private System.Windows.Forms.PictureBox PictureBoxUserPoke;
         private System.Windows.Forms.Panel MainPanel;
-        private System.Windows.Forms.TextBox inputbox;
         private System.Windows.Forms.TextBox outputbox;
+        private System.Windows.Forms.TextBox textboxwords;
     }
 }

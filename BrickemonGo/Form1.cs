@@ -34,6 +34,7 @@ namespace BrickemonGo
             NameLabel.Update();
             GetAllInformation();
             GetFormes();
+            DrawMoves();
             //fix horizontal scrollbar in movetablepanel
             int vertScrollWidth = SystemInformation.VerticalScrollBarWidth;
             MoveTablePanel.Padding = new Padding(0, 0, vertScrollWidth, 0);

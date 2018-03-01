@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +16,8 @@ namespace BrickemonGo
     {
         private Trainer T1, T2;
         private Pokemon P1, P2;
+        private int choiceT1, choiceT2;
+        private int moveT1, moveT2;
 
         public Battle(Trainer a, Trainer b)
         {
@@ -22,9 +25,17 @@ namespace BrickemonGo
             T2 = b;
             P1 = T1.GetPartyAt(0);
             P2 = T2.GetPartyAt(0);
-            //InitializeComponent();
-            //CreateBattle();
+            InitializeComponent();
+            this.Shown += Battle_shown;
+            
+        }
+        private void Battle_shown(Object sender, EventArgs e)
+        {
+
+            //MessageBox.Show("You are in the Form.Shown event.");
+            CreateBattle();
             DoBattle();
+
         }
         public void CreateBattle()
         {
@@ -34,81 +45,111 @@ namespace BrickemonGo
         }
         private void Main_paint(object sender, PaintEventArgs e)
         {
-            PictureBoxUserPoke.ImageLocation = (@"res/sprites/sugimori/6.png");
+            PictureBoxUserPoke.ImageLocation = (@"res/sprites/sugimori/"+P1.GetDexNum()+".png");
             PictureBoxUserPoke.SizeMode = PictureBoxSizeMode.Zoom;
-            PictureBoxOppPoke.ImageLocation = (@"res/sprites/sugimori/9.png");
+            PictureBoxOppPoke.ImageLocation = (@"res/sprites/sugimori/"+P2.GetDexNum()+".png");
             PictureBoxOppPoke.SizeMode = PictureBoxSizeMode.Zoom;
+            //hp bars hehe
+            SolidBrush brush = new SolidBrush(Color.Black);
+            e.Graphics.FillRectangle(brush, 0, 305, P1.GetRemainingHp(), 10);
+            e.Graphics.FillRectangle(brush, 900, 305, P2.GetRemainingHp(), 10);
+
+            //buttons
+
         }
 
         public void DoBattle()
         {
             //init battle vars
-            int choiceT1, choiceT2;
-            int moveT1 = 1, moveT2 = 1;
+            textboxwords.AppendText("Battle! "+P1.GetName()+" vs "+P2.GetName());
             Boolean fighting = true;
 
             //main battle loop
             while (fighting)
             {
+                //update GUI
+                Refresh();
+                //reset button choices
+                choiceT1 = -1;
+                choiceT2 = -1;
+                moveT1 = -1;
+                moveT2 = -1;
+
+                Console.WriteLine(P1+"\n"+P1.HpString());
+                Console.WriteLine(P2 + "\n" + P2.HpString());
+                Console.WriteLine("CHECKING WIN CONDITION");
+                //check if trainer is blacked out
+                if (T1.IsBlackedOut())
+                {
+                    MessageBox.Show(T2.GetName()+" Wins!");
+                    System.Windows.Forms.Application.Exit();
+                }
+                if (T2.IsBlackedOut())
+                {
+                    MessageBox.Show(T1.GetName() + " Wins!");
+                    System.Windows.Forms.Application.Exit();
+                }
+
                 //check fainted
                 if (P1.GetRemainingHp() == 0)
                 {
                     Console.WriteLine(P1.GetName() + " fainted!");
+                    textboxwords.AppendText(P1.GetName() + " fainted!");
                     //switch T1
+                    SwitchPoke(T1,1);
                 }
                 if (P2.GetRemainingHp() == 0)
                 {
                     Console.WriteLine(P2.GetName() + " fainted!");
+                    textboxwords.AppendText(P2.GetName() + " fainted!");
                     //switch T2
+                    SwitchPoke(T2, 1);
                 }
 
                 //*************
                 //Get decisions
                 //*************
-                Console.WriteLine(P1);
-                Console.WriteLine(P1.HpString());
-                Console.WriteLine("Enter action T1");
-                Console.WriteLine("1.) Run, 2.) Bag, 3.) Switch, 4.) Attack");
-
-                choiceT1 = Convert.ToInt32(Console.ReadLine());
-                if (choiceT1 < 0 || choiceT1 > 4)
-                {
-                    Console.WriteLine("Invalid entry. Enter action T1");
-                    choiceT1 = Convert.ToInt32(Console.ReadLine());
-                }
-                //what move u want or what u wanna switch to?
-                if (choiceT1 == 4)
-                {
-                    Console.WriteLine("What move?");
-                    moveT1 = Convert.ToInt32(Console.ReadLine());
-                }
-                if (choiceT1 == 3)
-                {
-                    Console.WriteLine("Switch to who?");
-                    moveT1 = Convert.ToInt32(Console.ReadLine());
-                }
 
 
-                Console.WriteLine(P2);
-                Console.WriteLine(P2.HpString());
-                Console.WriteLine("Enter action T2");
-                choiceT2 = Console.Read();
-                if (choiceT2 < 0 || choiceT2 > 4)
-                {
-                    Console.WriteLine("Invalid entry. Enter action T2");
-                    choiceT2 = Convert.ToInt32(Console.ReadLine());
-                }
-                //what move u want or what u wanna switch to?
-                if (choiceT2 == 4)
-                {
-                    Console.WriteLine("What move?");
-                    moveT2 = Convert.ToInt32(Console.ReadLine());
-                }
-                if (choiceT2 == 3)
-                {
-                    Console.WriteLine("Switch to who?");
-                    moveT2 = Convert.ToInt32(Console.ReadLine());
-                }
+                //choiceT1 = Convert.ToInt32(Console.ReadLine());
+                //if (choiceT1 < 0 || choiceT1 > 4)
+                //{
+                //    Console.WriteLine("Invalid entry. Enter action T1");
+                //    //choiceT1 = Convert.ToInt32(Console.ReadLine());
+                //}
+                ////what move u want or what u wanna switch to?
+                //if (choiceT1 == 4)
+                //{
+                //    Console.WriteLine("What move?");
+                //    //moveT1 = Convert.ToInt32(Console.ReadLine());
+                //}
+                //if (choiceT1 == 3)
+                //{
+                //    Console.WriteLine("Switch to who?");
+                //    //moveT1 = Convert.ToInt32(Console.ReadLine());
+                //}
+
+
+
+                //if (choiceT2 < 0 || choiceT2 > 4)
+                //{
+                //    Console.WriteLine("Invalid entry. Enter action T2");
+                //    // choiceT2 = Convert.ToInt32(Console.ReadLine());
+                //}
+                ////what move u want or what u wanna switch to?
+                //if (choiceT2 == 4)
+                //{
+                //    Console.WriteLine("What move?");
+                //    //moveT2 = Convert.ToInt32(Console.ReadLine());
+                //}
+                //if (choiceT2 == 3)
+                //{
+                //    Console.WriteLine("Switch to who?");
+                //    //moveT2 = Convert.ToInt32(Console.ReadLine());
+                //}
+
+                GetInput();
+
 
 
                 //*********
@@ -238,31 +279,31 @@ namespace BrickemonGo
         }
 
         //attack
-        public static void Attack(Pokemon A, int m, Pokemon B)
+        public void Attack(Pokemon A, int m, Pokemon B)
         {
             //which move is it?
             Move move = null;
             if (m == 1)
             {
-                //Console.WriteLine(A.getName()+" used "+A.getMove1().getName()+"!");
+                textboxwords.AppendText(A.GetName() + " used " + A.GetMove1().GetName() + "!");
                 move = A.GetMove1();
                 Console.WriteLine(A.GetMove1());
             }
             else if (m == 2)
             {
-                //Console.WriteLine(A.getName()+" used "+A.getMove2().getName()+"!");
+                textboxwords.AppendText(A.GetName() + " used " + A.GetMove2().GetName() + "!");
                 move = A.GetMove2();
                 Console.WriteLine(A.GetMove2());
             }
             else if (m == 3)
             {
-                //Console.WriteLine(A.getName()+" used "+A.getMove3().getName()+"!");
+                textboxwords.AppendText(A.GetName() + " used " + A.GetMove3().GetName() + "!");
                 move = A.GetMove3();
                 Console.WriteLine(A.GetMove3());
             }
             else if (m == 4)
             {
-                //Console.WriteLine(A.getName()+" used "+A.getMove4().getName()+"!");
+                textboxwords.AppendText(A.GetName() + " used " + A.GetMove4().GetName() + "!");
                 move = A.GetMove4();
                 Console.WriteLine(A.GetMove4());
             }
@@ -314,11 +355,8 @@ namespace BrickemonGo
         {
             Console.WriteLine(x.GetName() + " opened their bag... thats it lmao");
         }
+       
 
-        private void inputbox_Enter(object sender, EventArgs e)
-        {
-
-        }
 
         //switch
         void SwitchPoke(Trainer x, int y)
@@ -327,11 +365,13 @@ namespace BrickemonGo
             {
                 P1 = T1.GetPartyAt(y);
                 Console.WriteLine(T1.GetName() + ": Go! " + P1.GetName() + "!");
+                textboxwords.AppendText(T1.GetName() + ": Go! " + P1.GetName() + "!");
             }
             if (x == T2)
             {
                 P2 = T2.GetPartyAt(y);
                 Console.WriteLine(T2.GetName() + ": Go! " + P2.GetName() + "!");
+                textboxwords.AppendText(T2.GetName() + ": Go! " + P2.GetName() + "!");
             }
         }
 
@@ -339,6 +379,27 @@ namespace BrickemonGo
         void Run(Trainer x)
         {//for the wild method
 
+        }
+
+        public void GetInput()
+        {
+            Console.WriteLine("waiting for user input...");
+
+            outputbox.Text = P1 + "\r\n" + P1.HpString() + "\r\n" + P2 + "\r\n" + P2.HpString();
+
+
+            //for now
+            choiceT1 = 4;
+            choiceT2 = 4; //make them both attack
+
+            MoveChoiceForm c = new MoveChoiceForm(P1);
+            var result= c.ShowDialog();
+            if (result== DialogResult.OK)
+            {
+                moveT1=c.GetChoice();   // public property on your form of the result selected
+            }
+            Console.WriteLine("CHOICET1="+choiceT1);
+            moveT2 = 3; //for testing
         }
     }
 }
