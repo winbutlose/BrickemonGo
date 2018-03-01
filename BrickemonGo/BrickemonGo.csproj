@@ -94,6 +94,12 @@
     <Compile Include="SellForm.Designer.cs">
       <DependentUpon>SellForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SwitchChoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SwitchChoiceForm.Designer.cs">
+      <DependentUpon>SwitchChoiceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Trainer.cs" />
     <Compile Include="type.cs" />
     <EmbeddedResource Include="Battle.resx">
