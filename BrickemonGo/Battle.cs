@@ -27,15 +27,12 @@ namespace BrickemonGo
             P2 = T2.GetPartyAt(0);
             InitializeComponent();
             this.Shown += Battle_shown;
-            
+
         }
         private void Battle_shown(Object sender, EventArgs e)
         {
-
-            //MessageBox.Show("You are in the Form.Shown event.");
             CreateBattle();
             DoBattle();
-
         }
         public void CreateBattle()
         {
@@ -45,9 +42,9 @@ namespace BrickemonGo
         }
         private void Main_paint(object sender, PaintEventArgs e)
         {
-            PictureBoxUserPoke.ImageLocation = (@"res/sprites/sugimori/"+P1.GetDexNum()+".png");
+            PictureBoxUserPoke.ImageLocation = (@"res/sprites/sugimori/" + P1.GetDexNum() + ".png");
             PictureBoxUserPoke.SizeMode = PictureBoxSizeMode.Zoom;
-            PictureBoxOppPoke.ImageLocation = (@"res/sprites/sugimori/"+P2.GetDexNum()+".png");
+            PictureBoxOppPoke.ImageLocation = (@"res/sprites/sugimori/" + P2.GetDexNum() + ".png");
             PictureBoxOppPoke.SizeMode = PictureBoxSizeMode.Zoom;
             //hp bars hehe
             SolidBrush brush = new SolidBrush(Color.Black);
@@ -61,7 +58,7 @@ namespace BrickemonGo
         public void DoBattle()
         {
             //init battle vars
-            textboxwords.AppendText("Battle! "+P1.GetName()+" vs "+P2.GetName());
+            DrawText("Battle! " + P1.GetName() + " vs " + P2.GetName());
             Boolean fighting = true;
 
             //main battle loop
@@ -75,13 +72,13 @@ namespace BrickemonGo
                 moveT1 = -1;
                 moveT2 = -1;
 
-                Console.WriteLine(P1+"\n"+P1.HpString());
+                Console.WriteLine(P1 + "\n" + P1.HpString());
                 Console.WriteLine(P2 + "\n" + P2.HpString());
                 Console.WriteLine("CHECKING WIN CONDITION");
                 //check if trainer is blacked out
                 if (T1.IsBlackedOut())
                 {
-                    MessageBox.Show(T2.GetName()+" Wins!");
+                    MessageBox.Show(T2.GetName() + " Wins!");
                     System.Windows.Forms.Application.Exit();
                 }
                 if (T2.IsBlackedOut())
@@ -90,67 +87,21 @@ namespace BrickemonGo
                     System.Windows.Forms.Application.Exit();
                 }
 
-                //check fainted
-                if (P1.GetRemainingHp() == 0)
+                if (CheckFainted(P1))
                 {
-                    Console.WriteLine(P1.GetName() + " fainted!");
-                    textboxwords.AppendText(P1.GetName() + " fainted!");
-                    //switch T1
-                    SwitchPoke(T1,1);
+                    DrawText(P1.GetName() + " fainted!");
+                    GetSwitchInput();
                 }
-                if (P2.GetRemainingHp() == 0)
+                if (CheckFainted(P2))
                 {
-                    Console.WriteLine(P2.GetName() + " fainted!");
-                    textboxwords.AppendText(P2.GetName() + " fainted!");
-                    //switch T2
+                    DrawText(P2.GetName() + " fainted!");
                     SwitchPoke(T2, 1);
                 }
 
                 //*************
                 //Get decisions
                 //*************
-
-
-                //choiceT1 = Convert.ToInt32(Console.ReadLine());
-                //if (choiceT1 < 0 || choiceT1 > 4)
-                //{
-                //    Console.WriteLine("Invalid entry. Enter action T1");
-                //    //choiceT1 = Convert.ToInt32(Console.ReadLine());
-                //}
-                ////what move u want or what u wanna switch to?
-                //if (choiceT1 == 4)
-                //{
-                //    Console.WriteLine("What move?");
-                //    //moveT1 = Convert.ToInt32(Console.ReadLine());
-                //}
-                //if (choiceT1 == 3)
-                //{
-                //    Console.WriteLine("Switch to who?");
-                //    //moveT1 = Convert.ToInt32(Console.ReadLine());
-                //}
-
-
-
-                //if (choiceT2 < 0 || choiceT2 > 4)
-                //{
-                //    Console.WriteLine("Invalid entry. Enter action T2");
-                //    // choiceT2 = Convert.ToInt32(Console.ReadLine());
-                //}
-                ////what move u want or what u wanna switch to?
-                //if (choiceT2 == 4)
-                //{
-                //    Console.WriteLine("What move?");
-                //    //moveT2 = Convert.ToInt32(Console.ReadLine());
-                //}
-                //if (choiceT2 == 3)
-                //{
-                //    Console.WriteLine("Switch to who?");
-                //    //moveT2 = Convert.ToInt32(Console.ReadLine());
-                //}
-
                 GetInput();
-
-
 
                 //*********
                 // DO SHIT
@@ -261,11 +212,19 @@ namespace BrickemonGo
                         if (P1.GetSpeed() >= P2.GetSpeed())
                         {
                             Attack(P1, moveT1, P2);
+                            if (CheckFainted(P2))
+                            {
+                                break;
+                            }
                             Attack(P2, moveT2, P1);
                         }
                         else
                         {
                             Attack(P2, moveT2, P1);
+                            if (CheckFainted(P1))
+                            {
+                                break;
+                            }
                             Attack(P1, moveT1, P2);
                         }
                         break;
@@ -285,25 +244,25 @@ namespace BrickemonGo
             Move move = null;
             if (m == 1)
             {
-                textboxwords.AppendText(A.GetName() + " used " + A.GetMove1().GetName() + "!");
+                DrawText(A.GetName() + " used " + A.GetMove1().GetName() + "!");
                 move = A.GetMove1();
                 Console.WriteLine(A.GetMove1());
             }
             else if (m == 2)
             {
-                textboxwords.AppendText(A.GetName() + " used " + A.GetMove2().GetName() + "!");
+                DrawText(A.GetName() + " used " + A.GetMove2().GetName() + "!");
                 move = A.GetMove2();
                 Console.WriteLine(A.GetMove2());
             }
             else if (m == 3)
             {
-                textboxwords.AppendText(A.GetName() + " used " + A.GetMove3().GetName() + "!");
+                DrawText(A.GetName() + " used " + A.GetMove3().GetName() + "!");
                 move = A.GetMove3();
                 Console.WriteLine(A.GetMove3());
             }
             else if (m == 4)
             {
-                textboxwords.AppendText(A.GetName() + " used " + A.GetMove4().GetName() + "!");
+                DrawText(A.GetName() + " used " + A.GetMove4().GetName() + "!");
                 move = A.GetMove4();
                 Console.WriteLine(A.GetMove4());
             }
@@ -312,6 +271,8 @@ namespace BrickemonGo
                 Console.WriteLine("Invalid Move entered for " + A.GetName());
                 return;
             }
+
+
 
             //calculate modifiers
             double modifier = 1;//targets*weather*crit*random(85%-100%)*stab*type(effectiveness)*burn*other
@@ -346,8 +307,10 @@ namespace BrickemonGo
             Console.WriteLine("MOD: " + modifier);
             Console.WriteLine("Did " + damage + " damage");
 
-            B.SetRemainingHp(B.GetRemainingHp() - (int)damage);
+            DrawText(EffString(effectiveness));
 
+            B.SetRemainingHp(B.GetRemainingHp() - (int)damage);
+            Refresh();
         }
 
         //bag
@@ -355,7 +318,7 @@ namespace BrickemonGo
         {
             Console.WriteLine(x.GetName() + " opened their bag... thats it lmao");
         }
-       
+
 
 
         //switch
@@ -365,13 +328,13 @@ namespace BrickemonGo
             {
                 P1 = T1.GetPartyAt(y);
                 Console.WriteLine(T1.GetName() + ": Go! " + P1.GetName() + "!");
-                textboxwords.AppendText(T1.GetName() + ": Go! " + P1.GetName() + "!");
+                DrawText(T1.GetName() + ": Go! " + P1.GetName() + "!");
             }
             if (x == T2)
             {
                 P2 = T2.GetPartyAt(y);
                 Console.WriteLine(T2.GetName() + ": Go! " + P2.GetName() + "!");
-                textboxwords.AppendText(T2.GetName() + ": Go! " + P2.GetName() + "!");
+                DrawText(T2.GetName() + ": Go! " + P2.GetName() + "!");
             }
         }
 
@@ -393,13 +356,81 @@ namespace BrickemonGo
             choiceT2 = 4; //make them both attack
 
             MoveChoiceForm c = new MoveChoiceForm(P1);
-            var result= c.ShowDialog();
-            if (result== DialogResult.OK)
+            var result = c.ShowDialog();
+            if (result == DialogResult.OK)
             {
-                moveT1=c.GetChoice();   // public property on your form of the result selected
+                moveT1 = c.GetChoice(); 
             }
-            Console.WriteLine("CHOICET1="+choiceT1);
-            moveT2 = 3; //for testing
+            Console.WriteLine("CHOICET1=" + choiceT1);
+            Random random = new Random();
+            moveT2 = random.Next(1, 5);//for testing we make T2 pick random move btwn 1 and 4
+        }
+
+        //when you gotta switch pokemon we use this
+        public void GetSwitchInput()
+        {
+            Console.WriteLine("waiting for user input...");
+            SwitchChoiceForm c = new SwitchChoiceForm(T1);
+            var result = c.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                Console.WriteLine(c.GetChoice());
+                SwitchPoke(T1,c.GetChoice());
+            }
+        }
+
+        //--------------//
+        //HELPER METHODS//
+        //--------------//
+
+        //draw text writes text letter by letter like pokemon games do in their textboxes and makes it pretty
+        public void DrawText(String append)
+        {
+            textboxwords.Clear();
+            foreach (char x in append)
+            {
+                textboxwords.AppendText("" + x);
+                Thread.Sleep(20);
+            }
+            Thread.Sleep(500);
+        }
+
+        //returns string to print based on effectiveness of attack
+        public String EffString(double e)
+        {
+            String str = "";
+            switch (e)
+            {
+                case 0.25:
+                    str = "It's barely effective...";
+                    break;
+                case 0.5:
+                    str = "It's not very effective...";
+                    break;
+                case 1:
+                    //do nothing cause 1 is normally effective
+                    break;
+                case 2:
+                    str = "It's super effective!";
+                    break;
+                case 4:
+                    str = "It's ultra effective!!";
+                    break;
+                default:
+                    Console.WriteLine("ERROR IN EFFSTRING");
+                    break;
+            }
+            return str;
+        }
+
+        //checks if a pokemon is fainted so we can make the trainer switch to another or end the game
+        public Boolean CheckFainted(Pokemon x)
+        {
+            if (x.GetRemainingHp() == 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

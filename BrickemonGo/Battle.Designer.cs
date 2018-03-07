@@ -31,8 +31,8 @@
             this.PictureBoxOppPoke = new System.Windows.Forms.PictureBox();
             this.PictureBoxUserPoke = new System.Windows.Forms.PictureBox();
             this.MainPanel = new System.Windows.Forms.Panel();
-            this.outputbox = new System.Windows.Forms.TextBox();
             this.textboxwords = new System.Windows.Forms.TextBox();
+            this.outputbox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOppPoke)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxUserPoke)).BeginInit();
             this.MainPanel.SuspendLayout();
@@ -67,6 +67,16 @@
             this.MainPanel.Size = new System.Drawing.Size(1280, 720);
             this.MainPanel.TabIndex = 2;
             // 
+            // textboxwords
+            // 
+            this.textboxwords.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textboxwords.Font = new System.Drawing.Font("Dubai", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textboxwords.Location = new System.Drawing.Point(101, 568);
+            this.textboxwords.Name = "textboxwords";
+            this.textboxwords.ReadOnly = true;
+            this.textboxwords.Size = new System.Drawing.Size(1059, 48);
+            this.textboxwords.TabIndex = 3;
+            // 
             // outputbox
             // 
             this.outputbox.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -75,15 +85,6 @@
             this.outputbox.Name = "outputbox";
             this.outputbox.Size = new System.Drawing.Size(739, 139);
             this.outputbox.TabIndex = 2;
-            // 
-            // textboxwords
-            // 
-            this.textboxwords.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textboxwords.Location = new System.Drawing.Point(331, 568);
-            this.textboxwords.Multiline = true;
-            this.textboxwords.Name = "textboxwords";
-            this.textboxwords.Size = new System.Drawing.Size(596, 49);
-            this.textboxwords.TabIndex = 3;
             // 
             // Battle
             // 
