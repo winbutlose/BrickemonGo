@@ -61,7 +61,7 @@ namespace BrickemonGo
         public void DoBattle()
         {
             //init battle vars
-            textboxwords.AppendText("Battle! "+P1.GetName()+" vs "+P2.GetName());
+            textboxwords.Text = ("Battle! "+P1.GetName()+" vs "+P2.GetName());
             Boolean fighting = true;
 
             //main battle loop
@@ -94,14 +94,14 @@ namespace BrickemonGo
                 if (P1.GetRemainingHp() == 0)
                 {
                     Console.WriteLine(P1.GetName() + " fainted!");
-                    textboxwords.AppendText(P1.GetName() + " fainted!");
+                    textboxwords.Text = (P1.GetName() + " fainted!");
                     //switch T1
                     SwitchPoke(T1,1);
                 }
                 if (P2.GetRemainingHp() == 0)
                 {
                     Console.WriteLine(P2.GetName() + " fainted!");
-                    textboxwords.AppendText(P2.GetName() + " fainted!");
+                    textboxwords.Text = (P2.GetName() + " fainted!");
                     //switch T2
                     SwitchPoke(T2, 1);
                 }
@@ -109,47 +109,8 @@ namespace BrickemonGo
                 //*************
                 //Get decisions
                 //*************
-
-
-                //choiceT1 = Convert.ToInt32(Console.ReadLine());
-                //if (choiceT1 < 0 || choiceT1 > 4)
-                //{
-                //    Console.WriteLine("Invalid entry. Enter action T1");
-                //    //choiceT1 = Convert.ToInt32(Console.ReadLine());
-                //}
-                ////what move u want or what u wanna switch to?
-                //if (choiceT1 == 4)
-                //{
-                //    Console.WriteLine("What move?");
-                //    //moveT1 = Convert.ToInt32(Console.ReadLine());
-                //}
-                //if (choiceT1 == 3)
-                //{
-                //    Console.WriteLine("Switch to who?");
-                //    //moveT1 = Convert.ToInt32(Console.ReadLine());
-                //}
-
-
-
-                //if (choiceT2 < 0 || choiceT2 > 4)
-                //{
-                //    Console.WriteLine("Invalid entry. Enter action T2");
-                //    // choiceT2 = Convert.ToInt32(Console.ReadLine());
-                //}
-                ////what move u want or what u wanna switch to?
-                //if (choiceT2 == 4)
-                //{
-                //    Console.WriteLine("What move?");
-                //    //moveT2 = Convert.ToInt32(Console.ReadLine());
-                //}
-                //if (choiceT2 == 3)
-                //{
-                //    Console.WriteLine("Switch to who?");
-                //    //moveT2 = Convert.ToInt32(Console.ReadLine());
-                //}
-
                 GetInput();
-
+                Thread.Sleep(500);
 
 
                 //*********
@@ -261,11 +222,13 @@ namespace BrickemonGo
                         if (P1.GetSpeed() >= P2.GetSpeed())
                         {
                             Attack(P1, moveT1, P2);
+                            Thread.Sleep(500);
                             Attack(P2, moveT2, P1);
                         }
                         else
                         {
                             Attack(P2, moveT2, P1);
+                            Thread.Sleep(500);
                             Attack(P1, moveT1, P2);
                         }
                         break;
@@ -285,25 +248,25 @@ namespace BrickemonGo
             Move move = null;
             if (m == 1)
             {
-                textboxwords.AppendText(A.GetName() + " used " + A.GetMove1().GetName() + "!");
+                textboxwords.Text=(A.GetName() + " used " + A.GetMove1().GetName() + "!\n");
                 move = A.GetMove1();
                 Console.WriteLine(A.GetMove1());
             }
             else if (m == 2)
             {
-                textboxwords.AppendText(A.GetName() + " used " + A.GetMove2().GetName() + "!");
+                textboxwords.Text = (A.GetName() + " used " + A.GetMove2().GetName() + "!\n");
                 move = A.GetMove2();
                 Console.WriteLine(A.GetMove2());
             }
             else if (m == 3)
             {
-                textboxwords.AppendText(A.GetName() + " used " + A.GetMove3().GetName() + "!");
+                textboxwords.Text = (A.GetName() + " used " + A.GetMove3().GetName() + "!\n");
                 move = A.GetMove3();
                 Console.WriteLine(A.GetMove3());
             }
             else if (m == 4)
             {
-                textboxwords.AppendText(A.GetName() + " used " + A.GetMove4().GetName() + "!");
+                textboxwords.Text = (A.GetName() + " used " + A.GetMove4().GetName() + "!\n");
                 move = A.GetMove4();
                 Console.WriteLine(A.GetMove4());
             }
@@ -364,14 +327,14 @@ namespace BrickemonGo
             if (x == T1)
             {
                 P1 = T1.GetPartyAt(y);
-                Console.WriteLine(T1.GetName() + ": Go! " + P1.GetName() + "!");
-                textboxwords.AppendText(T1.GetName() + ": Go! " + P1.GetName() + "!");
+                Console.WriteLine(T1.GetName() + ": Go! " + P1.GetName() + "!\n");
+                textboxwords.Text = (T1.GetName() + ": Go! " + P1.GetName() + "!\n");
             }
             if (x == T2)
             {
                 P2 = T2.GetPartyAt(y);
-                Console.WriteLine(T2.GetName() + ": Go! " + P2.GetName() + "!");
-                textboxwords.AppendText(T2.GetName() + ": Go! " + P2.GetName() + "!");
+                Console.WriteLine(T2.GetName() + ": Go! " + P2.GetName() + "!\n");
+                textboxwords.Text = (T2.GetName() + ": Go! " + P2.GetName() + "!\n");
             }
         }
 
