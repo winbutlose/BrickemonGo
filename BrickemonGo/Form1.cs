@@ -52,7 +52,7 @@ namespace BrickemonGo
                 Console.WriteLine(ex);
             }
             //name text box
-            NameLabel.Text = "#"+poke.GetDexNum()+"  "+poke.GetName();
+            NameLabel.Text = "#" + poke.GetDexNum() + "  " + poke.GetName();
             //do calculations
             float hp = (float)(poke.GetBaseHp() * 2);
             float atk = (float)(poke.GetBaseAtk() * 2);
@@ -298,7 +298,7 @@ namespace BrickemonGo
             Label FormesLabel = new Label();
             PictureBox formePicBox = new PictureBox();
             String[] formelist = new String[2];
-            if(poke.HasMega() == 0)
+            if (poke.HasMega() == 0)
             {
                 formeTablePanel.Controls.Clear();
                 return;
@@ -348,12 +348,12 @@ namespace BrickemonGo
             {
                 return;
             }
-            FormePanel x = new FormePanel(0,this.poke, "res/sprites/sugimori/" + poke.GetDexNum() + "-" + formeList[0] + ".png");
+            FormePanel x = new FormePanel(0, this.poke, "res/sprites/sugimori/" + poke.GetDexNum() + "-" + formeList[0] + ".png");
             formeTablePanel.Controls.Add(x);
             Console.WriteLine(formeList[0]);
             if (formeList[1] == null)
                 return;
-            FormePanel y = new FormePanel(1,this.poke, "res/sprites/sugimori/" + poke.GetDexNum() + "-" + formeList[1] + ".png");
+            FormePanel y = new FormePanel(1, this.poke, "res/sprites/sugimori/" + poke.GetDexNum() + "-" + formeList[1] + ".png");
             formeTablePanel.Controls.Add(y);
             Console.WriteLine(formeList[1]);
 
@@ -370,14 +370,52 @@ namespace BrickemonGo
             Size s = new Size(25, 25);
             foreach (KeyValuePair<int, Move> entry in MoveDictionary)
             {
-                MoveTablePanel.Controls.Add(new TextBox() { Text = entry.Value.GetName(), ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 150, BorderStyle = BorderStyle.None }, 2, iterator);
+                MoveTablePanel.Controls.Add(new TextBox() { Text = entry.Value.GetName(), ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 150, BorderStyle = BorderStyle.None, }, 2, iterator);
                 MoveTablePanel.Controls.Add(new TextBox() { Text = "" + entry.Key, ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 25, BorderStyle = BorderStyle.None }, 0, iterator);
                 MoveTablePanel.Controls.Add(new PictureBox() { ImageLocation = @"res/type circles/" + entry.Value.GetType().GetPrimaryTypeString().ToLower() + ".png", SizeMode = PictureBoxSizeMode.Zoom, Size = s }, 1, iterator);
                 MoveTablePanel.Controls.Add(new TextBox() { Text = "" + entry.Value.GetDamage(), ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 25, BorderStyle = BorderStyle.None }, 3, iterator);
                 MoveTablePanel.Controls.Add(new TextBox() { Text = "" + entry.Value.GetAccuracy() + "%", ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 40, BorderStyle = BorderStyle.None }, 4, iterator);
                 MoveTablePanel.Controls.Add(new TextBox() { Text = "" + entry.Value.GetMoveCategoryString(), ReadOnly = true, BackColor = SystemColors.ControlDarkDark, Width = 75, BorderStyle = BorderStyle.None }, 5, iterator);
+                PictureBox checkmark = new PictureBox();
+                checkmark.SizeMode = PictureBoxSizeMode.Zoom;
+                checkmark.ImageLocation = @"res/symbols/yes.png";
+                checkmark.Size = s;
+                checkmark.MouseHover += Checkmark_hover;
+                MoveTablePanel.Controls.Add(checkmark,6,iterator);
                 iterator++;
             }
+        }
+
+        private void Checkmark_hover(object sender, EventArgs e)
+        {
+            //int rowIndex = MoveTablePanel.HitTest(e.X, e.Y).RowIndex;
+            //Console.WriteLine(rowIndex):
+        }
+
+        //thank you stack overflow :)
+        public Point? GetIndex(TableLayoutPanel tlp, Point point)
+        {
+            // Method adapted from: stackoverflow.com/a/15449969
+            if (point.X > tlp.Width || point.Y > tlp.Height)
+                return null;
+
+            int w = 0, h = 0;
+            int[] widths = tlp.GetColumnWidths(), heights = tlp.GetRowHeights();
+
+            int i;
+            for (i = 0; i < widths.Length && point.X > w; i++)
+            {
+                w += widths[i];
+            }
+            int col = i - 1;
+
+            for (i = 0; i < heights.Length && point.Y + tlp.VerticalScroll.Value > h; i++)
+            {
+                h += heights[i];
+            }
+            int row = i - 1;
+
+            return new Point(col, row);
         }
     }
 }

@@ -67,9 +67,9 @@
             this.SpriteboxBack = new System.Windows.Forms.PictureBox();
             this.SpriteboxFrontShiny = new System.Windows.Forms.PictureBox();
             this.SpriteboxFront = new System.Windows.Forms.PictureBox();
+            this.FormesTab = new System.Windows.Forms.TabPage();
             this.rightButton = new System.Windows.Forms.Button();
             this.leftButton = new System.Windows.Forms.Button();
-            this.FormesTab = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.StatPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -132,7 +132,7 @@
             this.StatPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.StatPanel.Location = new System.Drawing.Point(3, 3);
             this.StatPanel.Name = "StatPanel";
-            this.StatPanel.Size = new System.Drawing.Size(539, 444);
+            this.StatPanel.Size = new System.Drawing.Size(594, 444);
             this.StatPanel.TabIndex = 2;
             // 
             // TotalLabel
@@ -395,7 +395,7 @@
             this.StatsTab.Location = new System.Drawing.Point(4, 31);
             this.StatsTab.Name = "StatsTab";
             this.StatsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.StatsTab.Size = new System.Drawing.Size(545, 450);
+            this.StatsTab.Size = new System.Drawing.Size(600, 450);
             this.StatsTab.TabIndex = 1;
             this.StatsTab.Text = "Stats";
             // 
@@ -405,7 +405,7 @@
             this.MegasTab.Controls.Add(this.formtabpanel);
             this.MegasTab.Location = new System.Drawing.Point(4, 31);
             this.MegasTab.Name = "MegasTab";
-            this.MegasTab.Size = new System.Drawing.Size(545, 450);
+            this.MegasTab.Size = new System.Drawing.Size(600, 450);
             this.MegasTab.TabIndex = 2;
             this.MegasTab.Text = "Mega";
             // 
@@ -416,7 +416,7 @@
             this.formtabpanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.formtabpanel.Location = new System.Drawing.Point(0, 0);
             this.formtabpanel.Name = "formtabpanel";
-            this.formtabpanel.Size = new System.Drawing.Size(545, 450);
+            this.formtabpanel.Size = new System.Drawing.Size(600, 450);
             this.formtabpanel.TabIndex = 0;
             // 
             // formeTablePanel
@@ -436,7 +436,7 @@
             this.formeTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.formeTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.formeTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.formeTablePanel.Size = new System.Drawing.Size(545, 454);
+            this.formeTablePanel.Size = new System.Drawing.Size(600, 454);
             this.formeTablePanel.TabIndex = 3;
             // 
             // MovesTab
@@ -444,7 +444,7 @@
             this.MovesTab.Controls.Add(this.MovesPanel);
             this.MovesTab.Location = new System.Drawing.Point(4, 31);
             this.MovesTab.Name = "MovesTab";
-            this.MovesTab.Size = new System.Drawing.Size(545, 450);
+            this.MovesTab.Size = new System.Drawing.Size(600, 450);
             this.MovesTab.TabIndex = 3;
             this.MovesTab.Text = "Moves";
             this.MovesTab.UseVisualStyleBackColor = true;
@@ -456,7 +456,7 @@
             this.MovesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MovesPanel.Location = new System.Drawing.Point(0, 0);
             this.MovesPanel.Name = "MovesPanel";
-            this.MovesPanel.Size = new System.Drawing.Size(545, 450);
+            this.MovesPanel.Size = new System.Drawing.Size(600, 450);
             this.MovesPanel.TabIndex = 3;
             // 
             // MoveTablePanel
@@ -482,7 +482,7 @@
             this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.MoveTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.MoveTablePanel.Size = new System.Drawing.Size(545, 454);
+            this.MoveTablePanel.Size = new System.Drawing.Size(600, 454);
             this.MoveTablePanel.TabIndex = 4;
             // 
             // SpritesTab
@@ -490,7 +490,7 @@
             this.SpritesTab.Controls.Add(this.spritestabPanel);
             this.SpritesTab.Location = new System.Drawing.Point(4, 31);
             this.SpritesTab.Name = "SpritesTab";
-            this.SpritesTab.Size = new System.Drawing.Size(545, 450);
+            this.SpritesTab.Size = new System.Drawing.Size(600, 450);
             this.SpritesTab.TabIndex = 4;
             this.SpritesTab.Text = "Sprites";
             this.SpritesTab.UseVisualStyleBackColor = true;
@@ -505,7 +505,7 @@
             this.spritestabPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spritestabPanel.Location = new System.Drawing.Point(0, 0);
             this.spritestabPanel.Name = "spritestabPanel";
-            this.spritestabPanel.Size = new System.Drawing.Size(545, 450);
+            this.spritestabPanel.Size = new System.Drawing.Size(600, 450);
             this.spritestabPanel.TabIndex = 1;
             // 
             // SpriteboxBackShiny
@@ -540,6 +540,15 @@
             this.SpriteboxFront.TabIndex = 0;
             this.SpriteboxFront.TabStop = false;
             // 
+            // FormesTab
+            // 
+            this.FormesTab.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.FormesTab.Location = new System.Drawing.Point(4, 31);
+            this.FormesTab.Name = "FormesTab";
+            this.FormesTab.Size = new System.Drawing.Size(600, 450);
+            this.FormesTab.TabIndex = 5;
+            this.FormesTab.Text = "Formes";
+            // 
             // rightButton
             // 
             this.rightButton.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -565,15 +574,6 @@
             this.leftButton.TabIndex = 6;
             this.leftButton.UseVisualStyleBackColor = false;
             this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
-            // 
-            // FormesTab
-            // 
-            this.FormesTab.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.FormesTab.Location = new System.Drawing.Point(4, 58);
-            this.FormesTab.Name = "FormesTab";
-            this.FormesTab.Size = new System.Drawing.Size(545, 423);
-            this.FormesTab.TabIndex = 5;
-            this.FormesTab.Text = "Formes";
             // 
             // Form1
             // 

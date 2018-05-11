@@ -955,7 +955,6 @@ namespace BrickemonGo
                 this.lastAddedMoveIndex = 1;
                 return true;
             }
-            //should never return this but java makes me put it here lol
             return false;
         }
 
