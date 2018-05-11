@@ -1,5 +1,6 @@
 ﻿//Matthew Silbermann Shea Luskey Ryan Maurer 7/28/17
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -71,18 +72,15 @@ namespace BrickemonGo
             moveT1 = -1;
             moveT2 = 3;//-1;
 
+            updateButtons();
             //main battle loop
             //while (fighting)
-            {
-               
-
-
-            }
+            //{
+            //}
         }
 
         public void CheckFainted()
         {
-
             Console.WriteLine(P1 + "\n" + P1.HpString());
             Console.WriteLine(P2 + "\n" + P2.HpString());
             Console.WriteLine("CHECKING WIN CONDITION");
@@ -334,6 +332,56 @@ namespace BrickemonGo
             B.SetRemainingHp(B.GetRemainingHp() - (int)damage);
         }
 
+        
+        private void updateButtons()
+        {
+            List<Control> list = new List<Control>();
+            ArrayList buttons = new ArrayList();
+
+            GetAllControl(this, list);
+
+            foreach (Control control in list)
+            {
+                if (control.GetType() == typeof(Button))
+                {
+                    buttons.Add((Button)control);
+                }
+            }
+
+            for (int i = 0; i < buttons.Count; i++)
+            {
+                Button b = (Button)buttons[i];
+                switch (i)
+                {
+                    case 0:
+                        b.Text = P1.GetMove4().GetName();
+                        break;
+                    case 1:
+                        b.Text = P1.GetMove2().GetName();
+                        break;
+                    case 2:
+                        b.Text = P1.GetMove3().GetName();
+                        break;
+                    case 3:
+                        b.Text = P1.GetMove1().GetName();
+                        break;
+                }
+            }
+        }
+
+        
+        private void GetAllControl(Control c, List<Control> list)
+        {
+            foreach (Control control in c.Controls)
+            {
+                list.Add(control);
+
+                if (control.GetType() == typeof(Panel))
+                    GetAllControl(control, list);
+            }
+        }
+        
+
         private void button1_Click(object sender, EventArgs e)
         {
             moveT1 = 1;
@@ -402,6 +450,7 @@ namespace BrickemonGo
                 P1 = T1.GetPartyAt(y);
                 Console.WriteLine(T1.GetName() + ": Go! " + P1.GetName() + "!\n");
                 textboxwords.Text = (T1.GetName() + ": Go! " + P1.GetName() + "!\n");
+                updateButtons();
             }
             if (x == T2)
             {
