@@ -25,7 +25,7 @@ namespace BrickemonGo
             //Console.WriteLine("-----------------");
             //Console.WriteLine(x.Data());
             //Application.Run(new Form1(x));
-            Application.Run(new DeckMaker());    
+            //Application.Run(new DeckMaker());    
             Pokemon pokeA = new Pokemon(6, 50);
             Pokemon pokeA2 = new Pokemon(483, 50);
             Pokemon pokeA3 = new Pokemon(493, 50);
