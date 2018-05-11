@@ -53,7 +53,8 @@ namespace BrickemonGo
             SolidBrush brush = new SolidBrush(Color.Black);
             e.Graphics.FillRectangle(brush, 0, 305, P1.GetRemainingHp(), 10);
             e.Graphics.FillRectangle(brush, 900, 305, P2.GetRemainingHp(), 10);
-
+            e.Graphics.DrawString(P1.GetRemainingHp()+ "/" + P1.GetHp(), new Font("Arial", 24), brush, 10, 330);
+            e.Graphics.DrawString(P2.GetRemainingHp() + "/" + P2.GetHp(), new Font("Arial", 24), brush, 910, 330);
             //buttons
 
         }
@@ -89,14 +90,18 @@ namespace BrickemonGo
             if (T1.IsBlackedOut())
             {
                 Refresh();
+                textboxwords.Text = (T2.GetName() + " Wins!");
                 MessageBox.Show(T2.GetName() + " Wins!");
                 System.Windows.Forms.Application.Exit();
+                return;
             }
             if (T2.IsBlackedOut())
             {
                 Refresh();
+                textboxwords.Text = (T1.GetName() + " Wins!");
                 MessageBox.Show(T1.GetName() + " Wins!");
                 System.Windows.Forms.Application.Exit();
+                return;
             }
 
             //check fainted
@@ -105,7 +110,7 @@ namespace BrickemonGo
                 Console.WriteLine(P1.GetName() + " fainted!");
                 textboxwords.Text = (P1.GetName() + " fainted!");
                 //switch T1
-                SwitchPoke(T1, findValidSwitch(T2, 0));
+                SwitchPoke(T1, findValidSwitch(T1, 0));
             }
             if (P2.isFainted())
             {
@@ -228,12 +233,22 @@ namespace BrickemonGo
                     {
                         Attack(P1, moveT1, P2);
                         Thread.Sleep(500);
+                        if (P2.isFainted())
+                        {
+                            CheckFainted();
+                            break;
+                        }
                         Attack(P2, moveT2, P1);
                     }
                     else
                     {
                         Attack(P2, moveT2, P1);
                         Thread.Sleep(500);
+                        if (P1.isFainted())
+                        {
+                            CheckFainted();
+                            break;
+                        }
                         Attack(P1, moveT1, P2);
                     }
                     break;
@@ -317,7 +332,6 @@ namespace BrickemonGo
             Console.WriteLine("Did " + damage + " damage");
 
             B.SetRemainingHp(B.GetRemainingHp() - (int)damage);
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -369,11 +383,11 @@ namespace BrickemonGo
             int swap = y;
             while (x.GetPartyAt(swap).isFainted() && !x.IsBlackedOut())
             {
-                Console.WriteLine(x.GetPartyAt(swap).GetHp());
                 if (swap < 5)
                     swap++;
                 else
                     swap = 0;
+                Console.WriteLine("Checking to swap to: "+x.GetPartyAt(swap).GetName() + " Remaining HP: " + x.GetPartyAt(swap).GetRemainingHp());
                 if (!x.GetPartyAt(swap).isFainted())
                     break;
             }
