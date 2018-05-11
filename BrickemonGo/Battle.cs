@@ -81,6 +81,24 @@ namespace BrickemonGo
 
         public void CheckFainted()
         {
+
+            Console.WriteLine(P1 + "\n" + P1.HpString());
+            Console.WriteLine(P2 + "\n" + P2.HpString());
+            Console.WriteLine("CHECKING WIN CONDITION");
+            //check if trainer is blacked out
+            if (T1.IsBlackedOut())
+            {
+                Refresh();
+                MessageBox.Show(T2.GetName() + " Wins!");
+                System.Windows.Forms.Application.Exit();
+            }
+            if (T2.IsBlackedOut())
+            {
+                Refresh();
+                MessageBox.Show(T1.GetName() + " Wins!");
+                System.Windows.Forms.Application.Exit();
+            }
+
             //check fainted
             if (P1.isFainted())
             {
@@ -95,21 +113,6 @@ namespace BrickemonGo
                 textboxwords.Text = (P2.GetName() + " fainted!");
                 //switch T2
                 SwitchPoke(T2, findValidSwitch(T2, 0));
-            }
-
-            Console.WriteLine(P1 + "\n" + P1.HpString());
-            Console.WriteLine(P2 + "\n" + P2.HpString());
-            Console.WriteLine("CHECKING WIN CONDITION");
-            //check if trainer is blacked out
-            if (T1.IsBlackedOut())
-            {
-                MessageBox.Show(T2.GetName() + " Wins!");
-                System.Windows.Forms.Application.Exit();
-            }
-            if (T2.IsBlackedOut())
-            {
-                MessageBox.Show(T1.GetName() + " Wins!");
-                System.Windows.Forms.Application.Exit();
             }
         }
 
