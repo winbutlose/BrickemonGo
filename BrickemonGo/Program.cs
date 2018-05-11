@@ -16,6 +16,7 @@ namespace BrickemonGo
 
         static void Main()
         {
+            Random rand = new Random();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Pokemon x = new Pokemon(157, 100);
@@ -34,9 +35,13 @@ namespace BrickemonGo
             Pokemon pokeA6 = new Pokemon(157, 50);
             Pokemon[] ATeam = { pokeA, pokeA2, pokeA3, pokeA4, pokeA5, pokeA6 };
             Trainer A = new Trainer("player1", ATeam, null, 0, 0);
-            Pokemon pokeY = new Pokemon(9, 50);
-            Pokemon pokeYY = new Pokemon(234, 50);
-            Pokemon[] BTeam = { pokeY, pokeYY };
+            Pokemon pokeB = new Pokemon(rand.Next(1,501), 50);
+            Pokemon pokeB2 = new Pokemon(rand.Next(1, 501), 50);
+            Pokemon pokeB3 = new Pokemon(rand.Next(1, 501), 50);
+            Pokemon pokeB4 = new Pokemon(rand.Next(1, 501), 50);
+            Pokemon pokeB5 = new Pokemon(rand.Next(1, 501), 50);
+            Pokemon pokeB6 = new Pokemon(rand.Next(1, 501), 50);
+            Pokemon[] BTeam = { pokeB, pokeB2, pokeB3, pokeB4, pokeB5, pokeB6 };
             Trainer B = new Trainer("player2", BTeam, null, 0, 0);
             Application.Run(new Battle(A, B));
 

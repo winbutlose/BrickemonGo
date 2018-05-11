@@ -82,19 +82,19 @@ namespace BrickemonGo
         public void CheckFainted()
         {
             //check fainted
-            if (P1.GetRemainingHp() == 0)
+            if (P1.isFainted())
             {
                 Console.WriteLine(P1.GetName() + " fainted!");
                 textboxwords.Text = (P1.GetName() + " fainted!");
                 //switch T1
-                SwitchPoke(T1, 1);
+                SwitchPoke(T1, findValidSwitch(T2, 0));
             }
-            if (P2.GetRemainingHp() == 0)
+            if (P2.isFainted())
             {
                 Console.WriteLine(P2.GetName() + " fainted!");
                 textboxwords.Text = (P2.GetName() + " fainted!");
                 //switch T2
-                SwitchPoke(T2, 1);
+                SwitchPoke(T2, findValidSwitch(T2, 0));
             }
 
             Console.WriteLine(P1 + "\n" + P1.HpString());
@@ -360,7 +360,22 @@ namespace BrickemonGo
             Console.WriteLine(x.GetName() + " opened their bag... thats it lmao");
         }
 
-
+        //loops through the party in ascending order until it finds a valid pokemon to switch to
+        int findValidSwitch(Trainer x, int y)
+        {
+            int swap = y;
+            while (x.GetPartyAt(swap).isFainted() && !x.IsBlackedOut())
+            {
+                Console.WriteLine(x.GetPartyAt(swap).GetHp());
+                if (swap < 5)
+                    swap++;
+                else
+                    swap = 0;
+                if (!x.GetPartyAt(swap).isFainted())
+                    break;
+            }
+            return swap;
+        }
 
         //switch
         void SwitchPoke(Trainer x, int y)

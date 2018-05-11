@@ -461,6 +461,11 @@ namespace BrickemonGo
         {
             return level;
         }
+        //returns true if the pokemon is fained, false if it is alive
+        public bool isFainted()
+        {
+            return remainingHp <= 0;
+        }
         //sets level and exp required to be at this level;
         public void SetLevel(int L)
         {
