@@ -19,6 +19,7 @@ namespace BrickemonGo
         private Pokemon P1, P2;
         private int choiceT1, choiceT2;
         private int moveT1, moveT2;
+        private int turn = 1;
 
         public Battle(Trainer a, Trainer b)
         {
@@ -89,6 +90,7 @@ namespace BrickemonGo
             {
                 Refresh();
                 textboxwords.Text = (T2.GetName() + " Wins!");
+                outputbox.AppendText(T2.GetName() + " Wins!" + "\n");
                 MessageBox.Show(T2.GetName() + " Wins!");
                 System.Windows.Forms.Application.Exit();
                 return;
@@ -97,6 +99,7 @@ namespace BrickemonGo
             {
                 Refresh();
                 textboxwords.Text = (T1.GetName() + " Wins!");
+                outputbox.AppendText(T1.GetName() + " Wins!" + "\n");
                 MessageBox.Show(T1.GetName() + " Wins!");
                 System.Windows.Forms.Application.Exit();
                 return;
@@ -107,6 +110,7 @@ namespace BrickemonGo
             {
                 Console.WriteLine(P1.GetName() + " fainted!");
                 textboxwords.Text = (P1.GetName() + " fainted!");
+                outputbox.AppendText(P1.GetName() + " fainted!" + "\n");
                 //switch T1
                 SwitchPoke(T1, findValidSwitch(T1, 0));
             }
@@ -114,6 +118,7 @@ namespace BrickemonGo
             {
                 Console.WriteLine(P2.GetName() + " fainted!");
                 textboxwords.Text = (P2.GetName() + " fainted!");
+                outputbox.AppendText(P2.GetName() + " fainted!"+"\n");
                 //switch T2
                 SwitchPoke(T2, findValidSwitch(T2, 0));
             }
@@ -265,35 +270,20 @@ namespace BrickemonGo
         {
             //which move is it?
             Move move = null;
-            if (m == 1)
-            {
-                textboxwords.Text = (A.GetName() + " used " + A.GetMove1().GetName() + "!\n");
+            if (m == 1 && A.GetMove1() != null)
                 move = A.GetMove1();
-                Console.WriteLine(A.GetMove1());
-            }
-            else if (m == 2)
-            {
-                textboxwords.Text = (A.GetName() + " used " + A.GetMove2().GetName() + "!\n");
+            else if (m == 2 && A.GetMove2() != null)
                 move = A.GetMove2();
-                Console.WriteLine(A.GetMove2());
-            }
-            else if (m == 3)
-            {
-                textboxwords.Text = (A.GetName() + " used " + A.GetMove3().GetName() + "!\n");
+            else if (m == 3 && A.GetMove3() != null)
                 move = A.GetMove3();
-                Console.WriteLine(A.GetMove3());
-            }
-            else if (m == 4)
-            {
-                textboxwords.Text = (A.GetName() + " used " + A.GetMove4().GetName() + "!\n");
+            else if (m == 4 && A.GetMove4() != null)
                 move = A.GetMove4();
-                Console.WriteLine(A.GetMove4());
-            }
             else
             {
-                Console.WriteLine("Invalid Move entered for " + A.GetName());
-                return;
+                Console.WriteLine("Invalid Move entered for " + A.GetName() + ", Defaulting to Move1");
+                move = A.GetMove1();
             }
+
             Thread.Sleep(500);
 
             //calculate modifiers
@@ -324,12 +314,17 @@ namespace BrickemonGo
                 Console.WriteLine("B def: " + B.GetSpDef());
                 damage = ((((((2 * (double)A.GetLevel()) / 5) + 2) * (move.GetDamage()) * ((double)A.GetSpAtk() / (double)B.GetSpDef())) / 50) + 2) * modifier;
             }
+            Console.WriteLine(move);
             Console.WriteLine(A.GetName() + " used " + move.GetName() + "!");
+            textboxwords.Text = (A.GetName() + " used " + move.GetName() + "!\n");
+            outputbox.AppendText(A.GetName() + " used " + move.GetName() + "!\n");
             Console.WriteLine("eff: " + effectiveness);
             Console.WriteLine("MOD: " + modifier);
             Console.WriteLine("Did " + damage + " damage");
+            outputbox.AppendText("Did " + damage + " damage" + "!\n");
 
             B.SetRemainingHp(B.GetRemainingHp() - (int)damage);
+            Refresh();
         }
 
         
@@ -385,44 +380,48 @@ namespace BrickemonGo
         private void button1_Click(object sender, EventArgs e)
         {
             moveT1 = 1;
-            processChoice();
-            CheckFainted();
-            //update GUI
-            Refresh();
+            doTurn();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             moveT1 = 2;
-            processChoice();
-            CheckFainted();
-            //update GUI
-            Refresh();
+            doTurn();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             moveT1 = 3;
-            processChoice();
-            CheckFainted();
-            //update GUI
-            Refresh();
+            doTurn();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             moveT1 = 4;
+            doTurn();
+        }
+
+        private void doTurn()
+        {
+            outputbox.AppendText("-----TURN "+turn+"-----\n");
             processChoice();
             CheckFainted();
             //update GUI
             Refresh();
+            turn++;
         }
-
 
         //bag
         void Bag(Trainer x)
         {
             Console.WriteLine(x.GetName() + " opened their bag... thats it lmao");
+        }
+
+        private void outputbox_TextChanged(object sender, EventArgs e)
+        {
+            //automatically scrolls to the bottom
+            outputbox.SelectionStart = outputbox.Text.Length;
+            outputbox.ScrollToCaret();
         }
 
         //loops through the party in ascending order until it finds a valid pokemon to switch to
@@ -450,6 +449,7 @@ namespace BrickemonGo
                 P1 = T1.GetPartyAt(y);
                 Console.WriteLine(T1.GetName() + ": Go! " + P1.GetName() + "!\n");
                 textboxwords.Text = (T1.GetName() + ": Go! " + P1.GetName() + "!\n");
+                outputbox.AppendText(T1.GetName() + ": Go! " + P1.GetName() + "!\n");
                 updateButtons();
             }
             if (x == T2)
@@ -457,6 +457,7 @@ namespace BrickemonGo
                 P2 = T2.GetPartyAt(y);
                 Console.WriteLine(T2.GetName() + ": Go! " + P2.GetName() + "!\n");
                 textboxwords.Text = (T2.GetName() + ": Go! " + P2.GetName() + "!\n");
+                outputbox.AppendText(T2.GetName() + ": Go! " + P2.GetName() + "!\n");
             }
         }
 
@@ -470,7 +471,7 @@ namespace BrickemonGo
         {
             Console.WriteLine("waiting for user input...");
 
-            outputbox.Text = P1 + "\r\n" + P1.HpString() + "\r\n" + P2 + "\r\n" + P2.HpString();
+            //outputbox.Text = P1 + "\r\n" + P1.HpString() + "\r\n" + P2 + "\r\n" + P2.HpString();
 
 
             //for now

@@ -35,7 +35,7 @@ namespace BrickemonGo
             Pokemon pokeA6 = new Pokemon(157, 50);
             Pokemon[] ATeam = { pokeA, pokeA2, pokeA3, pokeA4, pokeA5, pokeA6 };
             Trainer A = new Trainer("player1", ATeam, null, 0, 0);
-            Pokemon pokeB = new Pokemon(rand.Next(1,501), 50);
+            Pokemon pokeB = new Pokemon(374, 50);
             Pokemon pokeB2 = new Pokemon(rand.Next(1, 501), 50);
             Pokemon pokeB3 = new Pokemon(rand.Next(1, 501), 50);
             Pokemon pokeB4 = new Pokemon(rand.Next(1, 501), 50);

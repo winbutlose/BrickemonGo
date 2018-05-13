@@ -36,7 +36,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textboxwords = new System.Windows.Forms.TextBox();
-            this.outputbox = new System.Windows.Forms.TextBox();
+            this.outputbox = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOppPoke)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxUserPoke)).BeginInit();
             this.MainPanel.SuspendLayout();
@@ -130,10 +130,11 @@
             // 
             this.outputbox.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.outputbox.Location = new System.Drawing.Point(268, 3);
-            this.outputbox.Multiline = true;
             this.outputbox.Name = "outputbox";
             this.outputbox.Size = new System.Drawing.Size(739, 139);
             this.outputbox.TabIndex = 2;
+            this.outputbox.Text = "";
+            this.outputbox.TextChanged += new System.EventHandler(this.outputbox_TextChanged);
             // 
             // Battle
             // 
@@ -158,7 +159,7 @@
         private System.Windows.Forms.PictureBox PictureBoxOppPoke;
         private System.Windows.Forms.PictureBox PictureBoxUserPoke;
         private System.Windows.Forms.Panel MainPanel;
-        private System.Windows.Forms.TextBox outputbox;
+        private System.Windows.Forms.RichTextBox outputbox;
         private System.Windows.Forms.TextBox textboxwords;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
