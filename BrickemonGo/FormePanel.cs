@@ -50,7 +50,7 @@ namespace BrickemonGo
             {
                 PictureBox type1 = new PictureBox()
                 {
-                    ImageLocation = @"res/type circles/" + poke.GetMegaType().GetPrimaryTypeString().ToLower() + ".png",
+                    ImageLocation = @"res/type circles/" + poke.GetMegaType().getPrimaryTypeAsString().ToLower() + ".png",
                     Size = new Size(25, 25),
                     SizeMode = PictureBoxSizeMode.Zoom,
                     Location = new Point(200, 5)
@@ -61,7 +61,7 @@ namespace BrickemonGo
                 {
                     PictureBox type2 = new PictureBox()
                     {
-                        ImageLocation = @"res/type circles/" + poke.GetMegaType().GetSecondaryTypeString().ToLower() + ".png",
+                        ImageLocation = @"res/type circles/" + poke.GetMegaType().getSecondaryTypeAsString().ToLower() + ".png",
                         Size = new Size(25, 25),
                         SizeMode = PictureBoxSizeMode.Zoom,
                         Location = new Point(230, 5)
@@ -73,7 +73,7 @@ namespace BrickemonGo
             {
                 PictureBox type1 = new PictureBox()
                 {
-                    ImageLocation = @"res/type circles/" + poke.GetMegaTypeY().GetPrimaryTypeString().ToLower() + ".png",
+                    ImageLocation = @"res/type circles/" + poke.GetMegaTypeY().getPrimaryTypeAsString().ToLower() + ".png",
                     Size = new Size(25, 25),
                     SizeMode = PictureBoxSizeMode.Zoom,
                     Location = new Point(200, 5)
@@ -84,7 +84,7 @@ namespace BrickemonGo
                 {
                     PictureBox type2 = new PictureBox()
                     {
-                        ImageLocation = @"res/type circles/" + poke.GetMegaTypeY().GetSecondaryTypeString().ToLower() + ".png",
+                        ImageLocation = @"res/type circles/" + poke.GetMegaTypeY().getSecondaryTypeAsString().ToLower() + ".png",
                         Size = new Size(25, 25),
                         SizeMode = PictureBoxSizeMode.Zoom,
                         Location = new Point(230, 5)

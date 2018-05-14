@@ -29,8 +29,8 @@ namespace BrickemonGo
             P2 = T2.GetPartyAt(0);
             InitializeComponent();
             this.Shown += Battle_shown;
-
         }
+
         private void Battle_shown(Object sender, EventArgs e)
         {
 
@@ -39,12 +39,14 @@ namespace BrickemonGo
             DoBattle();
 
         }
+
         public void CreateBattle()
         {
             this.MainPanel.Paint += new PaintEventHandler(Main_paint);
             PictureBoxOppPoke.Update();
             Refresh();
         }
+
         private void Main_paint(object sender, PaintEventArgs e)
         {
             PictureBoxUserPoke.ImageLocation = (@"res/sprites/sugimori/" + P1.GetDexNum() + ".png");
@@ -53,6 +55,8 @@ namespace BrickemonGo
             PictureBoxOppPoke.SizeMode = PictureBoxSizeMode.Zoom;
             //hp bars hehe
             SolidBrush brush = new SolidBrush(Color.Black);
+            e.Graphics.DrawString(P1.GetName(), new Font("Arial", 24), brush, 10, 265);
+            e.Graphics.DrawString(P2.GetName(), new Font("Arial", 24), brush, 910, 265);
             e.Graphics.FillRectangle(brush, 0, 305, P1.GetRemainingHp(), 10);
             e.Graphics.FillRectangle(brush, 900, 305, P2.GetRemainingHp(), 10);
             e.Graphics.DrawString(P1.GetRemainingHp()+ "/" + P1.GetHp(), new Font("Arial", 24), brush, 10, 330);
@@ -262,9 +266,6 @@ namespace BrickemonGo
             }
         }
 
-
-
-
         //attack
         public void Attack(Pokemon A, int m, Pokemon B)
         {
@@ -318,6 +319,13 @@ namespace BrickemonGo
             Console.WriteLine(A.GetName() + " used " + move.GetName() + "!");
             textboxwords.Text = (A.GetName() + " used " + move.GetName() + "!\n");
             outputbox.AppendText(A.GetName() + " used " + move.GetName() + "!\n");
+            if(effectiveness == 0 && move.GetMoveCategory() != 3)
+                outputbox.AppendText("It doesn't effect "+P2.GetName()+"\n");
+            else if(effectiveness>1 && move.GetMoveCategory() != 3)
+                     outputbox.AppendText("It's super effective!\n");
+            else if(effectiveness<1 && move.GetMoveCategory() != 3)
+                     outputbox.AppendText("It's not very effective...\n");
+
             Console.WriteLine("eff: " + effectiveness);
             Console.WriteLine("MOD: " + modifier);
             Console.WriteLine("Did " + damage + " damage");
@@ -375,7 +383,6 @@ namespace BrickemonGo
                     GetAllControl(control, list);
             }
         }
-        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -403,7 +410,7 @@ namespace BrickemonGo
 
         private void doTurn()
         {
-            outputbox.AppendText("-----TURN "+turn+"-----\n");
+            outputbox.AppendText("-----TURN " + turn + "-----\n");
             processChoice();
             CheckFainted();
             //update GUI
