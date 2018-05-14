@@ -102,6 +102,7 @@
     </Compile>
     <Compile Include="Trainer.cs" />
     <Compile Include="type.cs" />
+    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Battle.resx">
       <DependentUpon>Battle.cs</DependentUpon>
     </EmbeddedResource>

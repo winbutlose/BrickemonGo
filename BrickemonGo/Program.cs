@@ -16,6 +16,8 @@ namespace BrickemonGo
 
         static void Main()
         {
+            Utils.InitTypeChart();
+            //Utils.printTypeChart();
             Random rand = new Random();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
