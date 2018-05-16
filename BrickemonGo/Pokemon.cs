@@ -8,9 +8,9 @@ namespace BrickemonGo
 {
     public class Pokemon
     {
-
+        //TEXT FILE WITH ALL POKEMON
         private readonly String textFile = "res/pokemon.txt";
-
+        //MISC
         private String name; //actual name of the pokemon eg. Charizard
         private String nickname; //nickname of the pokemon given by the player
         private String gender; //gender of the pokemon
@@ -18,6 +18,7 @@ namespace BrickemonGo
         private Nature nature; //nature of the pokemon
         private Boolean shiny; //whether the pokemon is shiny or not
         private Type type; // typing of the pokemon
+        //STATS
         private int dexNum; //can also be used as ID for pokemon
         private int baseHp; //base HP of the pokemon
         private int baseAtk; //base Atk of the pokemon
@@ -31,6 +32,7 @@ namespace BrickemonGo
         private int spAtk; //actual SpAtk stat of the pokemon
         private int spDef; //actual SpDef stat of the pokemon
         private int speed; //actual Speed stat of the pokemon
+        //MOVES
         private Move move1; //move#1 of current pokemon
         private Move move2; //move#2 of current pokemon
         private Move move3; //move#3 of current pokemon

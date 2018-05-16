@@ -101,7 +101,7 @@
       <DependentUpon>SwitchChoiceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Trainer.cs" />
-    <Compile Include="type.cs" />
+    <Compile Include="Type.cs" />
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Battle.resx">
       <DependentUpon>Battle.cs</DependentUpon>

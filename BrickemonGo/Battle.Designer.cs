@@ -31,6 +31,10 @@
             this.PictureBoxOppPoke = new System.Windows.Forms.PictureBox();
             this.PictureBoxUserPoke = new System.Windows.Forms.PictureBox();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.pokemonBType2 = new System.Windows.Forms.PictureBox();
+            this.pokemonBType1 = new System.Windows.Forms.PictureBox();
+            this.pokemonAType2 = new System.Windows.Forms.PictureBox();
+            this.pokemonAType1 = new System.Windows.Forms.PictureBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -40,6 +44,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOppPoke)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxUserPoke)).BeginInit();
             this.MainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pokemonBType2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pokemonBType1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pokemonAType2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pokemonAType1)).BeginInit();
             this.SuspendLayout();
             // 
             // PictureBoxOppPoke
@@ -61,6 +69,10 @@
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.pokemonBType2);
+            this.MainPanel.Controls.Add(this.pokemonBType1);
+            this.MainPanel.Controls.Add(this.pokemonAType2);
+            this.MainPanel.Controls.Add(this.pokemonAType1);
             this.MainPanel.Controls.Add(this.button4);
             this.MainPanel.Controls.Add(this.button2);
             this.MainPanel.Controls.Add(this.button3);
@@ -74,6 +86,38 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1280, 720);
             this.MainPanel.TabIndex = 2;
+            // 
+            // pokemonBType2
+            // 
+            this.pokemonBType2.Location = new System.Drawing.Point(911, 148);
+            this.pokemonBType2.Name = "pokemonBType2";
+            this.pokemonBType2.Size = new System.Drawing.Size(45, 45);
+            this.pokemonBType2.TabIndex = 13;
+            this.pokemonBType2.TabStop = false;
+            // 
+            // pokemonBType1
+            // 
+            this.pokemonBType1.Location = new System.Drawing.Point(962, 149);
+            this.pokemonBType1.Name = "pokemonBType1";
+            this.pokemonBType1.Size = new System.Drawing.Size(45, 45);
+            this.pokemonBType1.TabIndex = 12;
+            this.pokemonBType1.TabStop = false;
+            // 
+            // pokemonAType2
+            // 
+            this.pokemonAType2.Location = new System.Drawing.Point(320, 149);
+            this.pokemonAType2.Name = "pokemonAType2";
+            this.pokemonAType2.Size = new System.Drawing.Size(45, 45);
+            this.pokemonAType2.TabIndex = 11;
+            this.pokemonAType2.TabStop = false;
+            // 
+            // pokemonAType1
+            // 
+            this.pokemonAType1.Location = new System.Drawing.Point(269, 149);
+            this.pokemonAType1.Name = "pokemonAType1";
+            this.pokemonAType1.Size = new System.Drawing.Size(45, 45);
+            this.pokemonAType1.TabIndex = 10;
+            this.pokemonAType1.TabStop = false;
             // 
             // button4
             // 
@@ -131,6 +175,7 @@
             this.outputbox.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.outputbox.Location = new System.Drawing.Point(268, 3);
             this.outputbox.Name = "outputbox";
+            this.outputbox.ReadOnly = true;
             this.outputbox.Size = new System.Drawing.Size(739, 139);
             this.outputbox.TabIndex = 2;
             this.outputbox.Text = "";
@@ -150,6 +195,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxUserPoke)).EndInit();
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pokemonBType2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pokemonBType1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pokemonAType2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pokemonAType1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -165,5 +214,9 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.PictureBox pokemonBType2;
+        private System.Windows.Forms.PictureBox pokemonBType1;
+        private System.Windows.Forms.PictureBox pokemonAType2;
+        private System.Windows.Forms.PictureBox pokemonAType1;
     }
 }

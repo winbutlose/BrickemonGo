@@ -175,9 +175,7 @@ namespace BrickemonGo
                     this.SetAccuracy(int.Parse(split[6]));
             }
         }
-
-
-
+        
         public String ReadMovesFromFile()
         {
             string[] allmoves = System.IO.File.ReadAllLines(@"res/moves.txt");

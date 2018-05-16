@@ -79,13 +79,9 @@ namespace BrickemonGo
         public void CheckMonotype()
         {
             if (primaryType == secondaryType || secondaryType == -1)
-            {
                 monotype = true;
-            }
             else
-            {
                 monotype = false;
-            }
         }
 
         //checking if this typing is super effective against type T
