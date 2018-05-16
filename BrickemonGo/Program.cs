@@ -29,12 +29,12 @@ namespace BrickemonGo
             //Console.WriteLine(x.Data());
             //Application.Run(new Form1(x));
             //Application.Run(new DeckMaker());    
-            Pokemon pokeA = new Pokemon(365, 100);
-            Pokemon pokeA2 = new Pokemon(483, 100);
-            Pokemon pokeA3 = new Pokemon(493, 100);
-            Pokemon pokeA4 = new Pokemon(389, 100);
-            Pokemon pokeA5 = new Pokemon(25, 100);
-            Pokemon pokeA6 = new Pokemon(157, 100);
+            Pokemon pokeA = new Pokemon(rand.Next(1, 721), 100);
+            Pokemon pokeA2 = new Pokemon(rand.Next(1, 721), 100);
+            Pokemon pokeA3 = new Pokemon(rand.Next(1, 721), 100);
+            Pokemon pokeA4 = new Pokemon(rand.Next(1, 721), 100);
+            Pokemon pokeA5 = new  Pokemon(rand.Next(1, 721), 100);
+            Pokemon pokeA6 = new  Pokemon(rand.Next(1, 721), 100);
             Pokemon[] ATeam = { pokeA, pokeA2, pokeA3, pokeA4, pokeA5, pokeA6 };
             Trainer A = new Trainer("player1", ATeam, null, 0, 0);
             Pokemon pokeB = new Pokemon(rand.Next(1, 721), 100);

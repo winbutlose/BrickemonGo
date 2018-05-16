@@ -54,36 +54,17 @@ namespace BrickemonGo
             PictureBoxUserPoke.SizeMode = PictureBoxSizeMode.Zoom;
             PictureBoxOppPoke.ImageLocation = (@"res/sprites/sugimori/" + P2.GetDexNum() + ".png");
             PictureBoxOppPoke.SizeMode = PictureBoxSizeMode.Zoom;
-            //Pokemon Type Pictures
-            pokemonAType1.ImageLocation = (@"res/type circles/" + P1.GetType().getPrimaryTypeAsString().ToLower() + ".png");
-            pokemonAType1.SizeMode = PictureBoxSizeMode.Zoom;
-            pokemonBType1.ImageLocation = (@"res/type circles/" + P2.GetType().getPrimaryTypeAsString().ToLower() + ".png");
-            pokemonBType1.SizeMode = PictureBoxSizeMode.Zoom;
-            if (!P1.GetType().GetMonotype())
-            {
-                pokemonAType2.ImageLocation = (@"res/type circles/" + P1.GetType().getSecondaryTypeAsString().ToLower() + ".png");
-                pokemonAType2.SizeMode = PictureBoxSizeMode.Zoom;
-            }
-            else
-                pokemonAType2.ImageLocation = null;
-            if (!P2.GetType().GetMonotype())
-            {
-                pokemonBType2.ImageLocation = (@"res/type circles/" + P2.GetType().getSecondaryTypeAsString().ToLower() + ".png");
-                pokemonBType2.SizeMode = PictureBoxSizeMode.Zoom;
-            }
-            else
-                pokemonBType2.ImageLocation = null;
 
             //hp bars hehe
             SolidBrush brush = new SolidBrush(Color.Black);
             e.Graphics.DrawString(P1.GetName(), new Font("Arial", 24), brush, 10, 265);
-            e.Graphics.DrawString(P2.GetName(), new Font("Arial", 24), brush, 910, 265);
+            e.Graphics.DrawString(P2.GetName(), new Font("Arial", 24), brush, 650, 265);
             e.Graphics.FillRectangle(brush, 0, 305, P1.GetRemainingHp(), 10);
-            e.Graphics.FillRectangle(brush, 900, 305, P2.GetRemainingHp(), 10);
+            e.Graphics.FillRectangle(brush, 650, 305, P2.GetRemainingHp(), 10);
             e.Graphics.DrawString(P1.GetRemainingHp()+ "/" + P1.GetHp(), new Font("Arial", 24), brush, 10, 330);
-            e.Graphics.DrawString(P2.GetRemainingHp() + "/" + P2.GetHp(), new Font("Arial", 24), brush, 910, 330);
+            e.Graphics.DrawString(P2.GetRemainingHp() + "/" + P2.GetHp(), new Font("Arial", 24), brush, 650, 330);
             e.Graphics.DrawString("Shiny: " + P1.GetShiny(), new Font("Arial", 24), brush, 10, 355);
-            e.Graphics.DrawString("Shiny: " + P2.GetShiny(), new Font("Arial", 24), brush, 910, 355);
+            e.Graphics.DrawString("Shiny: " + P2.GetShiny(), new Font("Arial", 24), brush, 650, 355);
             //buttons
 
         }
