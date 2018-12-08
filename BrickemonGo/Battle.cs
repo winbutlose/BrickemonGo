@@ -81,7 +81,7 @@ namespace BrickemonGo
             moveT1 = -1;
             moveT2 = 3;//-1;
 
-            updateButtons();
+            UpdateButtons();
             //main battle loop
             //while (fighting)
             //{
@@ -116,26 +116,30 @@ namespace BrickemonGo
             //check fainted
             if (P1.isFainted())
             {
-                Console.WriteLine(P1.GetName() + " fainted!");
-                textboxwords.Text = (P1.GetName() + " fainted!");
-                outputbox.AppendText(P1.GetName() + " fainted!" + "\n");
+                PrintToTextBox(P1.GetName() + " fainted!");
+                //Console.WriteLine(P1.GetName() + " fainted!");
+                //textboxwords.Text = (P1.GetName() + " fainted!");
+                //outputbox.AppendText(P1.GetName() + " fainted!" + "\n");
+
                 //switch T1
                 SwitchPoke(T1, findValidSwitch(T1, 0));
             }
             if (P2.isFainted())
             {
-                Console.WriteLine(P2.GetName() + " fainted!");
-                textboxwords.Text = (P2.GetName() + " fainted!");
-                outputbox.AppendText(P2.GetName() + " fainted!"+"\n");
+                PrintToTextBox(P2.GetName() + " fainted!");
+                //Console.WriteLine(P2.GetName() + " fainted!");
+                //textboxwords.Text = (P2.GetName() + " fainted!");
+                //outputbox.AppendText(P2.GetName() + " fainted!"+"\n");
+
                 //switch T2
                 SwitchPoke(T2, findValidSwitch(T2, 0));
             }
         }
 
-        public void processChoice()
+        public void ProcessChoice()
         {
             //*********
-            // DO SHIT
+            // DO STUFF
             //*********
 
 
@@ -320,15 +324,16 @@ namespace BrickemonGo
                 damage = ((((((2 * (double)A.GetLevel()) / 5) + 2) * (move.GetDamage()) * ((double)A.GetSpAtk() / (double)B.GetSpDef())) / 50) + 2) * modifier;
             }
             Console.WriteLine(move);
-            Console.WriteLine(A.GetName() + " used " + move.GetName() + "!");
-            textboxwords.Text = (A.GetName() + " used " + move.GetName() + "!\n");
-            outputbox.AppendText(A.GetName() + " used " + move.GetName() + "!\n");
+            //Console.WriteLine(A.GetName() + " used " + move.GetName() + "!");
+            //textboxwords.Text = (A.GetName() + " used " + move.GetName() + "!\n");
+            //outputbox.AppendText(A.GetName() + " used " + move.GetName() + "!\n");
+            PrintToTextBox(A.GetName() + " used " + move.GetName() + "!");
             if(effectiveness == 0 && move.GetMoveCategory() != 3)
-                outputbox.AppendText("It doesn't effect "+P2.GetName()+"\n");
+                PrintToTextBox("It doesn't effect "+P2.GetName()+"\n");
             else if(effectiveness>1 && move.GetMoveCategory() != 3)
-                     outputbox.AppendText("It's super effective!\n");
+                PrintToTextBox("It's super effective!\n");
             else if(effectiveness<1 && move.GetMoveCategory() != 3)
-                     outputbox.AppendText("It's not very effective...\n");
+                PrintToTextBox("It's not very effective...\n");
 
             Console.WriteLine("eff: " + effectiveness);
             Console.WriteLine("MOD: " + modifier);
@@ -340,7 +345,7 @@ namespace BrickemonGo
         }
 
         
-        private void updateButtons()
+        private void UpdateButtons()
         {
             List<Control> list = new List<Control>();
             ArrayList buttons = new ArrayList();
@@ -391,34 +396,35 @@ namespace BrickemonGo
         private void button1_Click(object sender, EventArgs e)
         {
             moveT1 = 1;
-            doTurn();
+            DoTurn();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             moveT1 = 2;
-            doTurn();
+            DoTurn();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             moveT1 = 3;
-            doTurn();
+            DoTurn();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             moveT1 = 4;
-            doTurn();
+            DoTurn();
         }
 
-        private void doTurn()
+        private void DoTurn()
         {
             outputbox.AppendText("-----TURN " + turn + "-----\n");
-            processChoice();
+            ProcessChoice();
             CheckFainted();
             //update GUI
             Refresh();
+            PrintToTextBox("What will "+P1.GetName()+" do?");
             turn++;
         }
 
@@ -458,17 +464,20 @@ namespace BrickemonGo
             if (x == T1)
             {
                 P1 = T1.GetPartyAt(y);
-                Console.WriteLine(T1.GetName() + ": Go! " + P1.GetName() + "!\n");
-                textboxwords.Text = (T1.GetName() + ": Go! " + P1.GetName() + "!\n");
-                outputbox.AppendText(T1.GetName() + ": Go! " + P1.GetName() + "!\n");
-                updateButtons();
+                PrintToTextBox(T1.GetName() + ": Go! " + P1.GetName() + "!\n");
+                //Console.WriteLine(T1.GetName() + ": Go! " + P1.GetName() + "!\n");
+                //textboxwords.Text = (T1.GetName() + ": Go! " + P1.GetName() + "!\n");
+                //outputbox.AppendText(T1.GetName() + ": Go! " + P1.GetName() + "!\n");
+                UpdateButtons();
+                //Thread.Sleep(5000);
             }
             if (x == T2)
             {
                 P2 = T2.GetPartyAt(y);
-                Console.WriteLine(T2.GetName() + ": Go! " + P2.GetName() + "!\n");
-                textboxwords.Text = (T2.GetName() + ": Go! " + P2.GetName() + "!\n");
-                outputbox.AppendText(T2.GetName() + ": Go! " + P2.GetName() + "!\n");
+                PrintToTextBox(T2.GetName() + ": Go! " + P2.GetName() + "!\n");
+                //Console.WriteLine(T2.GetName() + ": Go! " + P2.GetName() + "!\n");
+                //textboxwords.Text = (T2.GetName() + ": Go! " + P2.GetName() + "!\n");
+                //outputbox.AppendText(T2.GetName() + ": Go! " + P2.GetName() + "!\n");
             }
         }
 
@@ -498,6 +507,15 @@ namespace BrickemonGo
 
             Console.WriteLine("CHOICET1=" + choiceT1);
             moveT2 = 3; //for testing
+        }
+
+        //for printing to the main text box, with delay
+        public void PrintToTextBox(string text)
+        {
+            textboxwords.Text = (text);
+            Thread.Sleep(1000);
+            Console.WriteLine(text);
+            outputbox.AppendText(text);
         }
     }
 }
