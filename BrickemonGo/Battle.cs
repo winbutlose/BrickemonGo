@@ -274,7 +274,7 @@ namespace BrickemonGo
             }
         }
 
-        //attack
+        //attack (A attacks B)
         public void Attack(Pokemon A, int m, Pokemon B)
         {
             //which move is it?
@@ -304,6 +304,30 @@ namespace BrickemonGo
             modifier *= effectiveness;
 
 
+            //Does the move hit? or Miss? P = M x A x (1-E)
+
+            if (move.GetAccuracy() < 0)
+            {
+                Console.WriteLine("This Atk never misses, skipping accuracy calc");
+            }
+            else
+            { //moves with -1 accuracy will always hit and are exempt from this calculation
+                double moveHitChance = (move.GetAccuracy() * A.GetAccuracy() * (1 - B.GetEvasion()) / 100.0);
+                Random random = new Random();
+                int randomNumber = random.Next(0, 100);
+                Console.WriteLine("Chance for atk to hit = " + moveHitChance + "%, randomNum = " + randomNumber);
+                if (randomNumber < moveHitChance)//atk hits
+                {
+                    Console.WriteLine("Atk hits!");
+                }
+                else
+                {
+                    Console.WriteLine("Atk Misses!");
+                    PrintToTextBox(A.GetName() + "'s attack missed!");
+                    return;
+                }
+            }
+
             //calculate damage
             double damage = 0;
             if (move.GetMoveCategory() == 1)
@@ -314,7 +338,6 @@ namespace BrickemonGo
                 Console.WriteLine("move dmg: " + move.GetDamage());
 
                 damage = ((((((2 * (double)A.GetLevel()) / 5) + 2) * (move.GetDamage()) * ((double)A.GetAtk() / (double)B.GetDef())) / 50) + 2) * modifier;
-                //936
             }
             if (move.GetMoveCategory() == 2)
             {//special

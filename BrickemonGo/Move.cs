@@ -169,11 +169,11 @@ namespace BrickemonGo
             else
             {
                 this.SetDamage(int.Parse(split[5]));
-                if (split[6].Equals("-") || split[6].Equals("- "))
-                    this.SetAccuracy(100);
-                else
-                    this.SetAccuracy(int.Parse(split[6]));
             }
+            if (split[6].Equals("-") || split[6].Equals("- "))
+                this.SetAccuracy(-1); //these moves never miss and are exempt from accuracy calculations
+             else
+                 this.SetAccuracy(int.Parse(split[6]));
         }
         
         public String ReadMovesFromFile()

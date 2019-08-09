@@ -32,11 +32,16 @@ namespace BrickemonGo
         private int spAtk; //actual SpAtk stat of the pokemon
         private int spDef; //actual SpDef stat of the pokemon
         private int speed; //actual Speed stat of the pokemon
+
+        //TEMPORARY BATTLE STATS
+        private double accuracy;
+        private double evasion;
+
         //MOVES
         private Move move1; //move#1 of current pokemon
-        private Move move2; //move#2 of current pokemon
-        private Move move3; //move#3 of current pokemon
-        private Move move4; //move#4 of current pokemon
+        private Move move2; //   ' ' etc
+        private Move move3; 
+        private Move move4; 
 
         //mega pokemon stuff (separate stats for mega pokemon)
 
@@ -116,6 +121,8 @@ namespace BrickemonGo
             int shinyint = random.Next(1, 4097);
             if (shinyint == 4096) { shiny = true; }
             this.exp = 0;
+            this.accuracy = 100;
+            this.evasion = 0;
             this.GenerateMoveset();
             this.remainingHp = this.hp;
         }
@@ -451,6 +458,22 @@ namespace BrickemonGo
             return megaTypeY;
         }
         //other stuff
+        public double GetAccuracy()
+        {
+            return accuracy;
+        }
+        public double GetEvasion()
+        {
+            return evasion;
+        }
+        public void SetAccuracy(double x)
+        {
+            accuracy=x;
+        }
+        public void SetEvasion(double x)
+        {
+            evasion=x;
+        }
         public Boolean GetShiny()
         {
             return shiny;
