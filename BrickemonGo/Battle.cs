@@ -114,7 +114,7 @@ namespace BrickemonGo
             }
 
             //check fainted
-            if (P1.isFainted())
+            if (P1.IsFainted())
             {
                 PrintToTextBox(P1.GetName() + " fainted!");
                 //Console.WriteLine(P1.GetName() + " fainted!");
@@ -124,7 +124,7 @@ namespace BrickemonGo
                 //switch T1
                 SwitchPoke(T1, findValidSwitch(T1, 0));
             }
-            if (P2.isFainted())
+            if (P2.IsFainted())
             {
                 PrintToTextBox(P2.GetName() + " fainted!");
                 //Console.WriteLine(P2.GetName() + " fainted!");
@@ -248,7 +248,7 @@ namespace BrickemonGo
                     {
                         Attack(P1, moveT1, P2);
                         Thread.Sleep(500);
-                        if (P2.isFainted())
+                        if (P2.IsFainted())
                         {
                             CheckFainted();
                             break;
@@ -259,7 +259,7 @@ namespace BrickemonGo
                     {
                         Attack(P2, moveT2, P1);
                         Thread.Sleep(500);
-                        if (P1.isFainted())
+                        if (P1.IsFainted())
                         {
                             CheckFainted();
                             break;
@@ -322,7 +322,7 @@ namespace BrickemonGo
                 }
                 else
                 {
-                    Console.WriteLine("Atk Misses!");
+                    Console.WriteLine("Atk Misses!"); 
                     PrintToTextBox(A.GetName() + "'s attack missed!");
                     return;
                 }
@@ -468,14 +468,14 @@ namespace BrickemonGo
         int findValidSwitch(Trainer x, int y)
         {
             int swap = y;
-            while (x.GetPartyAt(swap).isFainted() && !x.IsBlackedOut())
+            while (x.GetPartyAt(swap).IsFainted() && !x.IsBlackedOut())
             {
                 if (swap < 5)
                     swap++;
                 else
                     swap = 0;
                 Console.WriteLine("Checking to swap to: "+x.GetPartyAt(swap).GetName() + " Remaining HP: " + x.GetPartyAt(swap).GetRemainingHp());
-                if (!x.GetPartyAt(swap).isFainted())
+                if (!x.GetPartyAt(swap).IsFainted())
                     break;
             }
             return swap;
@@ -483,31 +483,38 @@ namespace BrickemonGo
 
         //switch
         void SwitchPoke(Trainer x, int y)
-        {//if y > 5 this will crash. on purpose. this method shouldnt do the error handling bruh. it doesnt bruh lol 
+        {   //if y > 5 exit, there are only 6 pokemon on a team
+            if (y > 5)
+            {
+                throw new Exception("Tried to switch to a pokemon that doesn't exist (array out of bounds, >5)");
+            }
             if (x == T1)
             {
+                //reset appropriate stats of poke that fainted/switched out
+                P1.ResetStageMultipliers();
+                P1.SetAccuracy(100);
+                P1.SetEvasion(0);
+                //find new pokemon to switch in
                 P1 = T1.GetPartyAt(y);
                 PrintToTextBox(T1.GetName() + ": Go! " + P1.GetName() + "!\n");
-                //Console.WriteLine(T1.GetName() + ": Go! " + P1.GetName() + "!\n");
-                //textboxwords.Text = (T1.GetName() + ": Go! " + P1.GetName() + "!\n");
-                //outputbox.AppendText(T1.GetName() + ": Go! " + P1.GetName() + "!\n");
                 UpdateButtons();
-                //Thread.Sleep(5000);
             }
             if (x == T2)
             {
+                //reset appropriate stats of poke that fainted/switched out
+                P2.ResetStageMultipliers();
+                P1.SetAccuracy(100);
+                P1.SetEvasion(0);
+                //find new pokemon to switch in
                 P2 = T2.GetPartyAt(y);
                 PrintToTextBox(T2.GetName() + ": Go! " + P2.GetName() + "!\n");
-                //Console.WriteLine(T2.GetName() + ": Go! " + P2.GetName() + "!\n");
-                //textboxwords.Text = (T2.GetName() + ": Go! " + P2.GetName() + "!\n");
-                //outputbox.AppendText(T2.GetName() + ": Go! " + P2.GetName() + "!\n");
             }
         }
 
         //run
         void Run(Trainer x)
         {//for the wild method
-
+            Console.WriteLine("Run?");
         }
 
         public void GetInput()

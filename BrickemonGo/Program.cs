@@ -1,5 +1,4 @@
-﻿//now on github!
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,13 +20,14 @@ namespace BrickemonGo
             Random rand = new Random();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Pokemon x = new Pokemon(157, 100);
+            Pokemon x = new Pokemon(384, 100);
+            Application.Run(new BreakInPanel(x));
             //Console.WriteLine(x);
             //x.GiveExp(1000000);
             //Console.WriteLine(x.EstimateLevel());
             //Console.WriteLine("-----------------");
             //Console.WriteLine(x.Data());
-            //Application.Run(new Form1(x));
+            Application.Run(new Form1(x));
             //Application.Run(new DeckMaker());    
             Pokemon pokeA = new Pokemon(rand.Next(1, 721), 100);
             Pokemon pokeA2 = new Pokemon(rand.Next(1, 721), 100);

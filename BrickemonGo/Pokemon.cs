@@ -18,6 +18,7 @@ namespace BrickemonGo
         private Nature nature; //nature of the pokemon
         private Boolean shiny; //whether the pokemon is shiny or not
         private Type type; // typing of the pokemon
+
         //STATS
         private int dexNum; //can also be used as ID for pokemon
         private int baseHp; //base HP of the pokemon
@@ -32,6 +33,15 @@ namespace BrickemonGo
         private int spAtk; //actual SpAtk stat of the pokemon
         private int spDef; //actual SpDef stat of the pokemon
         private int speed; //actual Speed stat of the pokemon
+
+        //TEMPORARY STAT MODIFIERS 
+        private int atkStageMultiplier; //atk boost from moves / items (only lasts until faint/switch)
+        private int defStageMultiplier; 
+        private int spAtkStageMultiplier; 
+        private int spDefStageMultiplier; 
+        private int speedStageMultiplier;
+
+        private readonly double[] statModTable = { 0.25, 0.29, 0.33, 0.4, 0.5, 0.66, 1, 1.5, 2, 2.5, 3, 3.5, 4 };
 
         //TEMPORARY BATTLE STATS
         private double accuracy;
@@ -258,6 +268,35 @@ namespace BrickemonGo
         {
             return this.megaBaseAtkY;
         }
+        public int GetAtkStageMultiplier()
+        {
+            return this.atkStageMultiplier;
+        }
+        public void SetAtkStageMultiplier(int x)   //WARNING we should limit these so only -6 < x < 6 is allowed 
+        {
+            this.atkStageMultiplier = x;
+            this.CalculateStats();
+        }
+        public Boolean IncrementAtkStageMultiplier()
+        {
+            if (this.atkStageMultiplier < 6)
+            {
+                this.atkStageMultiplier++;
+                this.CalculateStats();
+                return true;
+            }
+            return false;
+        }
+        public Boolean DecrementAtkStageMultiplier()
+        {
+            if (this.atkStageMultiplier > -6)
+            {
+                this.atkStageMultiplier--;
+                this.CalculateStats();
+                return true;
+            }
+            return false;
+        }
         //DEFENSE
         public int GetDef()
         {
@@ -294,6 +333,35 @@ namespace BrickemonGo
         public int GetMegaBaseDefY()
         {
             return this.megaBaseDefY;
+        }
+        public int GetDefStageMultiplier()
+        {
+            return this.defStageMultiplier;
+        }
+        public void SetDefStageMultiplier(int x)
+        {
+            this.defStageMultiplier = x;
+            this.CalculateStats();
+        }
+        public Boolean IncrementDefStageMultiplier()
+        {
+            if (this.defStageMultiplier < 6)
+            {
+                this.defStageMultiplier++;
+                this.CalculateStats();
+                return true;
+            }
+            return false;
+        }
+        public Boolean DecrementDefStageMultiplier()
+        {
+            if (this.defStageMultiplier > -6)
+            {
+                this.defStageMultiplier--;
+                this.CalculateStats();
+                return true;
+            }
+            return false;
         }
         //SPECIAL ATTACK
         public int GetSpAtk()
@@ -332,6 +400,35 @@ namespace BrickemonGo
         {
             return this.megaBaseSpAtkY;
         }
+        public int GetSpAtkStageMultiplier()
+        {
+            return this.spAtkStageMultiplier;
+        }
+        public void SetSpAtkStageMultiplier(int x)
+        {
+            this.spAtkStageMultiplier = x;
+            this.CalculateStats();
+        }
+        public Boolean IncrementSpAtkStageMultiplier()
+        {
+            if (this.spAtkStageMultiplier < 6)
+            {
+                this.spAtkStageMultiplier++;
+                this.CalculateStats();
+                return true;
+            }
+            return false;
+        }
+        public Boolean DecrementSpAtkStageMultiplier()
+        {
+            if (this.spAtkStageMultiplier > -6)
+            {
+                this.spAtkStageMultiplier--;
+                this.CalculateStats();
+                return true;
+            }
+            return false;
+        }
         //SPECIAL DEFENCE
         public int GetSpDef()
         {
@@ -369,6 +466,35 @@ namespace BrickemonGo
         {
             return this.megaBaseSpDefY;
         }
+        public int GetSpDefStageMultiplier()
+        {
+            return this.spDefStageMultiplier;
+        }
+        public void SetSpDefStageMultiplier(int x)
+        {
+            this.spDefStageMultiplier = x;
+            this.CalculateStats();
+        }
+        public Boolean IncrementSpDefStageMultiplier()
+        {
+            if (this.spDefStageMultiplier < 6)
+            {
+                this.spDefStageMultiplier++;
+                this.CalculateStats();
+                return true;
+            }
+            return false;
+        }
+        public Boolean DecrementSpDefStageMultiplier()
+        {
+            if (this.spDefStageMultiplier > -6)
+            {
+                this.spDefStageMultiplier--;
+                this.CalculateStats();
+                return true;
+            }
+            return false;
+        }
         //SPEED
         public int GetSpeed()
         {
@@ -405,6 +531,35 @@ namespace BrickemonGo
         public int GetMegaBaseSpeedY()
         {
             return this.megaBaseSpeedY;
+        }
+        public int GetSpeedStageMultiplier()
+        {
+            return this.speedStageMultiplier;
+        }
+        public void SetSpeedStageMultiplier(int x)
+        {
+            this.speedStageMultiplier = x;
+            this.CalculateStats();
+        }
+        public Boolean IncrementSpeedStageMultiplier()
+        {
+            if (this.speedStageMultiplier < 6)
+            {
+                this.speedStageMultiplier++;
+                this.CalculateStats();
+                return true;
+            }
+            return false;
+        }
+        public Boolean DecrementSpeedStageMultiplier()
+        {
+            if (this.speedStageMultiplier > -6)
+            {
+                this.speedStageMultiplier--;
+                this.CalculateStats();
+                return true;
+            }
+            return false;
         }
         //MOVES
         public Move GetMove1()
@@ -486,8 +641,17 @@ namespace BrickemonGo
         {
             return level;
         }
+        public void ResetStageMultipliers() //resets all Stat Stage Multipliers
+        {
+            this.SetAtkStageMultiplier(0);
+            this.SetDefStageMultiplier(0);
+            this.SetSpAtkStageMultiplier(0);
+            this.SetSpDefStageMultiplier(0);
+            this.SetSpeedStageMultiplier(0);
+            this.CalculateStats();
+        }
         //returns true if the pokemon is fained, false if it is alive
-        public bool isFainted()
+        public bool IsFainted()
         {
             return remainingHp <= 0;
         }
@@ -721,7 +885,7 @@ namespace BrickemonGo
         //this is called either after experience (and EVs) is earned or after pokemon levels up (our choice later)
         public void CalculateStats()
         {
-            //first find which stats are boosted
+            //first find which stats are boosted by nature
             double atkBoost = 1, defBoost = 1, spaBoost = 1, spdBoost = 1, speBoost = 1;
             switch (this.nature.GetBoostedStat())
             {
@@ -763,19 +927,20 @@ namespace BrickemonGo
                 default: //default means we got a nature that doesn't boost or reduce anything
                     break;
             }
-            Double atkplaceholder = (((((2 * this.baseAtk) + this.atkIV + (this.atkEV / 4)) * this.level) / 100) + 5) * atkBoost;
+            //stage multiplier is for in-battle boosts from moves like howl or ancient power 
+            Double atkplaceholder = (((((2 * this.baseAtk) + this.atkIV + (this.atkEV / 4)) * this.level) / 100) + 5) * atkBoost * statModTable[atkStageMultiplier+6];
             this.atk = Convert.ToInt32(atkplaceholder);
 
-            Double defplaceholder = (((((2 * this.baseDef) + this.defIV + (this.defEV / 4)) * this.level) / 100) + 5) * defBoost;
+            Double defplaceholder = (((((2 * this.baseDef) + this.defIV + (this.defEV / 4)) * this.level) / 100) + 5) * defBoost * statModTable[defStageMultiplier + 6];
             this.def = Convert.ToInt32(defplaceholder);
 
-            Double spaplaceholder = (((((2 * this.baseSpAtk) + this.spaIV + (this.spaEV / 4)) * this.level) / 100) + 5) * spaBoost;
+            Double spaplaceholder = (((((2 * this.baseSpAtk) + this.spaIV + (this.spaEV / 4)) * this.level) / 100) + 5) * spaBoost * statModTable[spAtkStageMultiplier + 6];
             this.spAtk = Convert.ToInt32(spaplaceholder);
 
-            Double spdplaceholder = (((((2 * this.baseSpDef) + this.spdIV + (this.spdEV / 4)) * this.level) / 100) + 5) * spdBoost;
+            Double spdplaceholder = (((((2 * this.baseSpDef) + this.spdIV + (this.spdEV / 4)) * this.level) / 100) + 5) * spdBoost * statModTable[spDefStageMultiplier + 6];
             this.spDef = Convert.ToInt32(spdplaceholder);
 
-            Double speplaceholder = (((((2 * this.baseSpeed) + this.speIV + (this.speEV / 4)) * this.level) / 100) + 5) * speBoost;
+            Double speplaceholder = (((((2 * this.baseSpeed) + this.speIV + (this.speEV / 4)) * this.level) / 100) + 5) * speBoost * statModTable[speedStageMultiplier + 6];
             this.speed = Convert.ToInt32(speplaceholder);
 
             //HP is calculated differently
