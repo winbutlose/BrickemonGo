@@ -50,7 +50,10 @@ namespace BrickemonGo
         private void Main_paint(object sender, PaintEventArgs e)
         {
             //Pokemon Pictures
-            PictureBoxUserPoke.ImageLocation = (@"res/sprites/sugimori/" + P1.GetDexNum() + ".png");
+            Bitmap bm1 = new Bitmap(@"res/sprites/sugimori/" + this.P1.GetDexNum() + ".png"); //flip user pkmn to face opponent
+            bm1.RotateFlip(RotateFlipType.Rotate180FlipY);
+            this.PictureBoxUserPoke.Image = bm1;
+            //PictureBoxUserPoke.ImageLocation = (@"res/sprites/sugimori/" + P1.GetDexNum() + ".png");
             PictureBoxUserPoke.SizeMode = PictureBoxSizeMode.Zoom;
             PictureBoxOppPoke.ImageLocation = (@"res/sprites/sugimori/" + P2.GetDexNum() + ".png");
             PictureBoxOppPoke.SizeMode = PictureBoxSizeMode.Zoom;

@@ -11,6 +11,7 @@ namespace BrickemonGo
         private String name; //the name of the move
         private Type type; //type of the move ie. fire, electric, etc.
         private int moveId; //ID of the move 
+        private int effectId; //ID mapping move's secondary effect to a function call
         private int damage; //damage of the move
         private int accuracy; //accuracy of the move
         private int moveCategory; //is the move physical or special or status?
@@ -80,6 +81,15 @@ namespace BrickemonGo
         public void SetAccuracy(int accuracy)
         {
             this.accuracy = accuracy;
+        }
+        //EFFECT ID
+        public int GetEffectId()
+        {
+            return this.effectId;
+        }
+        public void SetEffectId(int eff)
+        {
+            this.effectId = eff;
         }
         //MOVE CATEGORY INT
         public int GetMoveCategory()

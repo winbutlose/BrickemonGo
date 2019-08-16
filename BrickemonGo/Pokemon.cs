@@ -641,6 +641,10 @@ namespace BrickemonGo
         {
             return level;
         }
+        public Nature GetNature()
+        {
+            return this.nature;
+        }
         public void ResetStageMultipliers() //resets all Stat Stage Multipliers
         {
             this.SetAtkStageMultiplier(0);

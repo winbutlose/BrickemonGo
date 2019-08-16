@@ -21,13 +21,12 @@ namespace BrickemonGo
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Pokemon x = new Pokemon(384, 100);
-            Application.Run(new BreakInPanel(x));
             //Console.WriteLine(x);
             //x.GiveExp(1000000);
             //Console.WriteLine(x.EstimateLevel());
             //Console.WriteLine("-----------------");
             //Console.WriteLine(x.Data());
-            Application.Run(new Form1(x));
+            //Application.Run(new Form1(x));
             //Application.Run(new DeckMaker());    
             Pokemon pokeA = new Pokemon(rand.Next(1, 721), 100);
             Pokemon pokeA2 = new Pokemon(rand.Next(1, 721), 100);
@@ -45,6 +44,9 @@ namespace BrickemonGo
             Pokemon pokeB6 = new Pokemon(rand.Next(1, 721), 100);
             Pokemon[] BTeam = { pokeB, pokeB2, pokeB3, pokeB4, pokeB5, pokeB6 };
             Trainer B = new Trainer("player2", BTeam, null, 0, 0);
+
+            Application.Run(new BreakInPanel(A,B));
+
             Application.Run(new Battle(A, B));
 
             ////test all mega formes

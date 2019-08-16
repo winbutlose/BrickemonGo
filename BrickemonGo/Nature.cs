@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BrickemonGo
 {
-    class Nature
+    public class Nature
     {
             private String name; //name of the nature
             private int id; //ID of the nature (will be ordered alphabetically)
