@@ -231,6 +231,35 @@ namespace BrickemonGo
         {
             return this.baseHp;
         }
+        public int GetHpIV()
+        {
+            return this.hpIV;
+        }
+        public void SetHpIV(int x)
+        {
+            if (x > 31 | x < 0)
+            {
+                Console.WriteLine("pokemon.sethpIV: IVs Must be in range 0<=x<=31, did not update IV");
+                return;
+            }
+            this.hpIV = x;
+            Console.WriteLine(this.GetName() + "'s hp IV is now " + this.hpIV);
+        }
+        public int GetHpEV()
+        {
+            return this.hpEV;
+        }
+        public void SetHpEV(int x)
+        {
+            if (x > 252 | x < 0)
+            {
+                Console.WriteLine("pokemon.sethpEV: EVs Must be in range 0<=x<=252, did not update EV");
+                return;
+            }
+            this.hpEV = x;
+            Console.WriteLine(this.GetName() + "'s hp EV is now " + this.hpEV);
+        }
+
         //ATTACK
         public int GetAtk()
         {
@@ -296,6 +325,34 @@ namespace BrickemonGo
                 return true;
             }
             return false;
+        }
+        public int GetAtkIV()
+        {
+            return this.atkIV;
+        }
+        public void SetAtkIV(int x)
+        {
+            if(x>31 | x < 0)
+            {
+                Console.WriteLine("pokemon.setatkIV: IVs Must be in range 0<=x<=31, did not update IV");
+                return;
+            }
+            this.atkIV = x;
+            Console.WriteLine(this.GetName()+"'s attack IV is now "+this.atkIV);
+        }
+        public int GetAtkEV()
+        {
+            return this.atkEV;
+        }
+        public void SetAtkEV(int x)
+        {
+            if (x > 252 | x < 0)
+            {
+                Console.WriteLine("pokemon.setatkEV: EVs Must be in range 0<=x<=252, did not update EV");
+                return;
+            }
+            this.atkEV = x;
+            Console.WriteLine(this.GetName() + "'s attack EV is now " + this.atkEV);
         }
         //DEFENSE
         public int GetDef()
@@ -363,6 +420,35 @@ namespace BrickemonGo
             }
             return false;
         }
+        public int GetDefIV()
+        {
+            return this.defIV;
+        }
+        public void SetDefIV(int x)
+        {
+            if (x > 31 | x < 0)
+            {
+                Console.WriteLine("pokemon.setdefIV: IVs Must be in range 0<=x<=31, did not update IV");
+                return;
+            }
+            this.defIV = x;
+            Console.WriteLine(this.GetName() + "'s defense IV is now " + this.defIV);
+        }
+        public int GetDefEV()
+        {
+            return this.defEV;
+        }
+        public void SetDefEV(int x)
+        {
+            if (x > 252 | x < 0)
+            {
+                Console.WriteLine("pokemon.setdefEV: EVs Must be in range 0<=x<=252, did not update EV");
+                return;
+            }
+            this.defEV = x;
+            Console.WriteLine(this.GetName() + "'s defense EV is now " + this.defEV);
+        }
+
         //SPECIAL ATTACK
         public int GetSpAtk()
         {
@@ -429,6 +515,35 @@ namespace BrickemonGo
             }
             return false;
         }
+        public int GetSpAtkIV()
+        {
+            return this.spaIV;
+        }
+        public void SetSpAtkIV(int x)
+        {
+            if (x > 31 | x < 0)
+            {
+                Console.WriteLine("pokemon.setspaIV: IVs Must be in range 0<=x<=31, did not update IV");
+                return;
+            }
+            this.spaIV = x;
+            Console.WriteLine(this.GetName() + "'s spatk IV is now " + this.spaIV);
+        }
+        public int GetSpAtkEV()
+        {
+            return this.spaEV;
+        }
+        public void SetSpAtkEV(int x)
+        {
+            if (x > 252 | x < 0)
+            {
+                Console.WriteLine("pokemon.setspaEV: EVs Must be in range 0<=x<=252, did not update EV");
+                return;
+            }
+            this.spaEV = x;
+            Console.WriteLine(this.GetName() + "'s spatk EV is now " + this.spaEV);
+        }
+
         //SPECIAL DEFENCE
         public int GetSpDef()
         {
@@ -495,6 +610,35 @@ namespace BrickemonGo
             }
             return false;
         }
+        public int GetSpDefIV()
+        {
+            return this.spdIV;
+        }
+        public void SetSpDefIV(int x)
+        {
+            if (x > 31 | x < 0)
+            {
+                Console.WriteLine("pokemon.setspdIV: IVs Must be in range 0<=x<=31, did not update IV");
+                return;
+            }
+            this.spdIV = x;
+            Console.WriteLine(this.GetName() + "'s spdef IV is now " + this.spdIV);
+        }
+        public int GetSpDefEV()
+        {
+            return this.spdEV;
+        }
+        public void SetSpDefEV(int x)
+        {
+            if (x > 252 | x < 0)
+            {
+                Console.WriteLine("pokemon.setspdEV: EVs Must be in range 0<=x<=252, did not update EV");
+                return;
+            }
+            this.spdEV = x;
+            Console.WriteLine(this.GetName() + "'s spdef EV is now " + this.spdEV);
+        }
+
         //SPEED
         public int GetSpeed()
         {
@@ -561,6 +705,35 @@ namespace BrickemonGo
             }
             return false;
         }
+        public int GetSpeedIV()
+        {
+            return this.speIV;
+        }
+        public void SetSpeedIV(int x)
+        {
+            if (x > 31 | x < 0)
+            {
+                Console.WriteLine("pokemon.setspeIV: IVs Must be in range 0<=x<=31, did not update IV");
+                return;
+            }
+            this.speIV = x;
+            Console.WriteLine(this.GetName() + "'s speed IV is now " + this.speIV);
+        }
+        public int GetSpeedEV()
+        {
+            return this.speEV;
+        }
+        public void SetSpeedEV(int x)
+        {
+            if (x > 252 | x < 0)
+            {
+                Console.WriteLine("pokemon.setspeEV: EVs Must be in range 0<=x<=252, did not update EV");
+                return;
+            }
+            this.speEV = x;
+            Console.WriteLine(this.GetName() + "'s speed EV is now " + this.speEV);
+        }
+
         //MOVES
         public Move GetMove1()
         {
@@ -644,6 +817,11 @@ namespace BrickemonGo
         public Nature GetNature()
         {
             return this.nature;
+        }
+
+        public void SetNature(int x) //supply an int for Nature ID and new nature is generated and set
+        {
+            this.nature = new Nature(x);
         }
         public void ResetStageMultipliers() //resets all Stat Stage Multipliers
         {

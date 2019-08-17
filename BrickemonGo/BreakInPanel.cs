@@ -14,6 +14,7 @@ namespace BrickemonGo
     {
         private Pokemon poke1;
         private Trainer T1, T2;
+        private Nature[] natureList;
         public BreakInPanel(Trainer Tr1, Trainer Tr2)
         {
             CreateForm(Tr1,Tr2);
@@ -34,6 +35,7 @@ namespace BrickemonGo
             this.spdefPanel.Paint += new PaintEventHandler(spdefPanel_Paint);
             this.speedPanel.Paint += new PaintEventHandler(speedPanel_Paint);
             this.naturepanel.Paint += new PaintEventHandler(naturepanel_Paint);
+            this.IVEVPanel.Paint += new PaintEventHandler(IVEVPanel_Paint);
             this.m1panel.Paint += new PaintEventHandler(m1panel_Paint);
             this.m2panel.Paint += new PaintEventHandler(m2panel_Paint);
             this.m3panel.Paint += new PaintEventHandler(m3panel_Paint);
@@ -43,6 +45,14 @@ namespace BrickemonGo
             {
                 this.pokeComboBox.Items.Add(y.GetName());
             }
+            natureList = new Nature[25];
+            for(int i=1; i<26; i++)
+            {
+                this.natureList[i-1] = new Nature(i);
+                naturecombobox.Items.Add(natureList[i-1].GetName());
+            }
+
+            updateIvevpanel();
 
             Refresh();
         }
@@ -115,6 +125,18 @@ namespace BrickemonGo
         }
         private void m4panel_Paint(object sender, PaintEventArgs e)
         {
+            if (poke1.GetMove4() == null)
+            {
+                m4dmg.Text = "No Move 4";
+                m4acc.Text = "";
+                m4cat.Text = "";
+                m4name.Text = "";
+                m4pp.Text = "";
+                m4effid.Text = "";
+                m4pic.ImageLocation = "";
+                m4id.Text = "";
+                return;
+            }
             Move m = poke1.GetMove4();
             m4dmg.Text = "" + m.GetDamage() + " dmg";
             m4acc.Text = "" + m.GetAccuracy() + "% acc";
@@ -149,8 +171,12 @@ namespace BrickemonGo
         private void naturepanel_Paint(object sender, PaintEventArgs e)
         {
             naturelabel.Text = poke1.GetNature().GetName();
-            npluslabel.Text = "+ "+poke1.GetNature().GetBoostedStat();
-            nminuslabel.Text = "- " + poke1.GetNature().GetReducedStat();
+            npluslabel.Text = "+ "+poke1.GetNature().GetBoostedStatString();
+            nminuslabel.Text = "- " + poke1.GetNature().GetReducedStatString();
+        }
+        private void IVEVPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
 
@@ -224,10 +250,66 @@ namespace BrickemonGo
             //Refresh();
         }
 
+        private void Naturecombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            poke1.SetNature(naturecombobox.SelectedIndex+1);
+            Refresh();
+        }
+
+        private void Ivevupdatebtn_Click(object sender, EventArgs e)
+        {
+            //int num;
+            //bool success = Int32.TryParse(x, out num);
+            //if (!success)
+            //{
+            //    Console.WriteLine("pokemon.setatkEV: Value is not a number, did not update atk EV");
+            //    return;
+            //}
+
+            //if these are not numbers this will crash
+            poke1.SetHpIV(Convert.ToInt32(ivhpbox.Text));
+            poke1.SetAtkIV(Convert.ToInt32(ivatkbox.Text));
+            poke1.SetDefIV(Convert.ToInt32(ivdefbox.Text));
+            poke1.SetSpAtkIV(Convert.ToInt32(ivspabox.Text));
+            poke1.SetSpDefIV(Convert.ToInt32(ivspdbox.Text));
+            poke1.SetSpeedIV(Convert.ToInt32(ivspebox.Text));
+
+            poke1.SetHpEV(Convert.ToInt32(evhpbox.Text));
+            poke1.SetAtkEV(Convert.ToInt32(evatkbox.Text));
+            poke1.SetDefEV(Convert.ToInt32(evdefbox.Text));
+            poke1.SetSpAtkEV(Convert.ToInt32(evspabox.Text));
+            poke1.SetSpDefEV(Convert.ToInt32(evspdbox.Text));
+            poke1.SetSpeedEV(Convert.ToInt32(evspebox.Text)); //we need to effectively cap total EVs at 510
+
+            poke1.CalculateStats();
+            updateIvevpanel();
+            Refresh();
+            Console.WriteLine(poke1.GetName()+"'s atk stat is now "+poke1.GetAtk());
+        }
+
         private void pokeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             poke1 = T1.GetPartyAt(pokeComboBox.SelectedIndex);
             Refresh();
+            updateIvevpanel();
+        }
+
+        private void updateIvevpanel()
+        {//update the text boxes used to manipulate IVs and EVs manually because repaint (refresh) is too fast
+
+            ivhpbox.Text = "" + poke1.GetHpIV();
+            ivatkbox.Text = "" + poke1.GetAtkIV();
+            ivdefbox.Text = "" + poke1.GetDefIV();
+            ivspabox.Text = "" + poke1.GetSpAtkIV();
+            ivspdbox.Text = "" + poke1.GetSpDefIV();
+            ivspebox.Text = "" + poke1.GetSpeedIV();
+
+            evhpbox.Text = "" + poke1.GetHpEV();
+            evatkbox.Text = "" + poke1.GetAtkEV();
+            evdefbox.Text = "" + poke1.GetDefEV();
+            evspabox.Text = "" + poke1.GetSpAtkEV();
+            evspdbox.Text = "" + poke1.GetSpDefEV();
+            evspebox.Text = "" + poke1.GetSpeedEV();
         }
     }
 }

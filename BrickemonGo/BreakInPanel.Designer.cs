@@ -30,7 +30,32 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pokeComboBox = new System.Windows.Forms.ComboBox();
             this.T1panel = new System.Windows.Forms.Panel();
+            this.IVEVPanel = new System.Windows.Forms.Panel();
+            this.ivspdbox = new System.Windows.Forms.TextBox();
+            this.ivspabox = new System.Windows.Forms.TextBox();
+            this.ivdefbox = new System.Windows.Forms.TextBox();
+            this.ivatkbox = new System.Windows.Forms.TextBox();
+            this.ivspebox = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.IVslabl = new System.Windows.Forms.Label();
+            this.naturepanel = new System.Windows.Forms.Panel();
+            this.nminuslabel = new System.Windows.Forms.Label();
+            this.npluslabel = new System.Windows.Forms.Label();
+            this.naturecombobox = new System.Windows.Forms.ComboBox();
+            this.naturelabel = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.movesPanel = new System.Windows.Forms.Panel();
             this.m4panel = new System.Windows.Forms.Panel();
             this.m4effid = new System.Windows.Forms.Label();
@@ -125,16 +150,21 @@
             this.type1PicBox = new System.Windows.Forms.PictureBox();
             this.mainPicBox = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.pokeComboBox = new System.Windows.Forms.ComboBox();
-            this.naturepanel = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.naturecombobox = new System.Windows.Forms.ComboBox();
-            this.npluslabel = new System.Windows.Forms.Label();
-            this.naturelabel = new System.Windows.Forms.Label();
-            this.nminuslabel = new System.Windows.Forms.Label();
+            this.evspdbox = new System.Windows.Forms.TextBox();
+            this.evspabox = new System.Windows.Forms.TextBox();
+            this.evdefbox = new System.Windows.Forms.TextBox();
+            this.evatkbox = new System.Windows.Forms.TextBox();
+            this.evspebox = new System.Windows.Forms.TextBox();
+            this.ivevupdatebtn = new System.Windows.Forms.Button();
+            this.evhpbox = new System.Windows.Forms.TextBox();
+            this.ivhpbox = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.T1panel.SuspendLayout();
+            this.IVEVPanel.SuspendLayout();
+            this.naturepanel.SuspendLayout();
             this.movesPanel.SuspendLayout();
             this.m4panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m4pic)).BeginInit();
@@ -153,7 +183,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.type2PicBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.type1PicBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPicBox)).BeginInit();
-            this.naturepanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -183,9 +212,22 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Trainer 1";
             // 
+            // pokeComboBox
+            // 
+            this.pokeComboBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pokeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.pokeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pokeComboBox.FormattingEnabled = true;
+            this.pokeComboBox.Location = new System.Drawing.Point(3, 3);
+            this.pokeComboBox.Name = "pokeComboBox";
+            this.pokeComboBox.Size = new System.Drawing.Size(400, 33);
+            this.pokeComboBox.TabIndex = 7;
+            this.pokeComboBox.SelectedIndexChanged += new System.EventHandler(this.pokeComboBox_SelectedIndexChanged);
+            // 
             // T1panel
             // 
             this.T1panel.AutoScroll = true;
+            this.T1panel.Controls.Add(this.IVEVPanel);
             this.T1panel.Controls.Add(this.naturepanel);
             this.T1panel.Controls.Add(this.movesPanel);
             this.T1panel.Controls.Add(this.statsPanel);
@@ -202,13 +244,280 @@
             this.T1panel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.T1panel_Scroll);
             this.T1panel.Click += new System.EventHandler(this.T1panel_Click);
             // 
+            // IVEVPanel
+            // 
+            this.IVEVPanel.Controls.Add(this.evhpbox);
+            this.IVEVPanel.Controls.Add(this.ivhpbox);
+            this.IVEVPanel.Controls.Add(this.label33);
+            this.IVEVPanel.Controls.Add(this.label34);
+            this.IVEVPanel.Controls.Add(this.ivevupdatebtn);
+            this.IVEVPanel.Controls.Add(this.evspdbox);
+            this.IVEVPanel.Controls.Add(this.evspabox);
+            this.IVEVPanel.Controls.Add(this.evdefbox);
+            this.IVEVPanel.Controls.Add(this.evatkbox);
+            this.IVEVPanel.Controls.Add(this.evspebox);
+            this.IVEVPanel.Controls.Add(this.ivspdbox);
+            this.IVEVPanel.Controls.Add(this.ivspabox);
+            this.IVEVPanel.Controls.Add(this.ivdefbox);
+            this.IVEVPanel.Controls.Add(this.ivatkbox);
+            this.IVEVPanel.Controls.Add(this.ivspebox);
+            this.IVEVPanel.Controls.Add(this.label24);
+            this.IVEVPanel.Controls.Add(this.label25);
+            this.IVEVPanel.Controls.Add(this.label30);
+            this.IVEVPanel.Controls.Add(this.label31);
+            this.IVEVPanel.Controls.Add(this.label32);
+            this.IVEVPanel.Controls.Add(this.label23);
+            this.IVEVPanel.Controls.Add(this.label18);
+            this.IVEVPanel.Controls.Add(this.label17);
+            this.IVEVPanel.Controls.Add(this.label16);
+            this.IVEVPanel.Controls.Add(this.label7);
+            this.IVEVPanel.Controls.Add(this.label6);
+            this.IVEVPanel.Controls.Add(this.IVslabl);
+            this.IVEVPanel.Location = new System.Drawing.Point(5, 916);
+            this.IVEVPanel.Name = "IVEVPanel";
+            this.IVEVPanel.Size = new System.Drawing.Size(360, 267);
+            this.IVEVPanel.TabIndex = 8;
+            // 
+            // ivspdbox
+            // 
+            this.ivspdbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ivspdbox.Location = new System.Drawing.Point(255, 65);
+            this.ivspdbox.Name = "ivspdbox";
+            this.ivspdbox.Size = new System.Drawing.Size(38, 29);
+            this.ivspdbox.TabIndex = 31;
+            this.ivspdbox.Text = "0";
+            this.ivspdbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ivspabox
+            // 
+            this.ivspabox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ivspabox.Location = new System.Drawing.Point(187, 65);
+            this.ivspabox.Name = "ivspabox";
+            this.ivspabox.Size = new System.Drawing.Size(38, 29);
+            this.ivspabox.TabIndex = 30;
+            this.ivspabox.Text = "0";
+            this.ivspabox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ivdefbox
+            // 
+            this.ivdefbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ivdefbox.Location = new System.Drawing.Point(122, 65);
+            this.ivdefbox.Name = "ivdefbox";
+            this.ivdefbox.Size = new System.Drawing.Size(38, 29);
+            this.ivdefbox.TabIndex = 29;
+            this.ivdefbox.Text = "0";
+            this.ivdefbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ivatkbox
+            // 
+            this.ivatkbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ivatkbox.Location = new System.Drawing.Point(64, 65);
+            this.ivatkbox.Name = "ivatkbox";
+            this.ivatkbox.Size = new System.Drawing.Size(38, 29);
+            this.ivatkbox.TabIndex = 28;
+            this.ivatkbox.Text = "0";
+            this.ivatkbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ivspebox
+            // 
+            this.ivspebox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ivspebox.Location = new System.Drawing.Point(316, 65);
+            this.ivspebox.Name = "ivspebox";
+            this.ivspebox.Size = new System.Drawing.Size(38, 29);
+            this.ivspebox.TabIndex = 27;
+            this.ivspebox.Text = "0";
+            this.ivspebox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(312, 131);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(47, 24);
+            this.label24.TabIndex = 26;
+            this.label24.Text = "SPE";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(251, 131);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(47, 24);
+            this.label25.TabIndex = 25;
+            this.label25.Text = "SPD";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(183, 131);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(47, 24);
+            this.label30.TabIndex = 24;
+            this.label30.Text = "SPA";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(113, 131);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(48, 24);
+            this.label31.TabIndex = 23;
+            this.label31.Text = "DEF";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(60, 131);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(47, 24);
+            this.label32.TabIndex = 22;
+            this.label32.Text = "ATK";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(312, 28);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(47, 24);
+            this.label23.TabIndex = 21;
+            this.label23.Text = "SPE";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(251, 28);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(47, 24);
+            this.label18.TabIndex = 20;
+            this.label18.Text = "SPD";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(183, 28);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(47, 24);
+            this.label17.TabIndex = 19;
+            this.label17.Text = "SPA";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(118, 28);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(48, 24);
+            this.label16.TabIndex = 18;
+            this.label16.Text = "DEF";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(62, 28);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(47, 24);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "ATK";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(5, 105);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 25);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "EVs";
+            // 
+            // IVslabl
+            // 
+            this.IVslabl.AutoSize = true;
+            this.IVslabl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IVslabl.Location = new System.Drawing.Point(8, 0);
+            this.IVslabl.Name = "IVslabl";
+            this.IVslabl.Size = new System.Drawing.Size(42, 25);
+            this.IVslabl.TabIndex = 16;
+            this.IVslabl.Text = "IVs";
+            // 
+            // naturepanel
+            // 
+            this.naturepanel.Controls.Add(this.nminuslabel);
+            this.naturepanel.Controls.Add(this.npluslabel);
+            this.naturepanel.Controls.Add(this.naturecombobox);
+            this.naturepanel.Controls.Add(this.naturelabel);
+            this.naturepanel.Controls.Add(this.label5);
+            this.naturepanel.Location = new System.Drawing.Point(5, 741);
+            this.naturepanel.Name = "naturepanel";
+            this.naturepanel.Size = new System.Drawing.Size(360, 160);
+            this.naturepanel.TabIndex = 7;
+            // 
+            // nminuslabel
+            // 
+            this.nminuslabel.AutoSize = true;
+            this.nminuslabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nminuslabel.Location = new System.Drawing.Point(177, 104);
+            this.nminuslabel.Name = "nminuslabel";
+            this.nminuslabel.Size = new System.Drawing.Size(20, 24);
+            this.nminuslabel.TabIndex = 18;
+            this.nminuslabel.Text = "0";
+            this.nminuslabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // npluslabel
+            // 
+            this.npluslabel.AutoSize = true;
+            this.npluslabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.npluslabel.Location = new System.Drawing.Point(18, 104);
+            this.npluslabel.Name = "npluslabel";
+            this.npluslabel.Size = new System.Drawing.Size(20, 24);
+            this.npluslabel.TabIndex = 10;
+            this.npluslabel.Text = "0";
+            this.npluslabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // naturecombobox
+            // 
+            this.naturecombobox.FormattingEnabled = true;
+            this.naturecombobox.Location = new System.Drawing.Point(129, 16);
+            this.naturecombobox.Name = "naturecombobox";
+            this.naturecombobox.Size = new System.Drawing.Size(208, 24);
+            this.naturecombobox.TabIndex = 17;
+            this.naturecombobox.SelectedIndexChanged += new System.EventHandler(this.Naturecombobox_SelectedIndexChanged);
+            // 
+            // naturelabel
+            // 
+            this.naturelabel.AutoSize = true;
+            this.naturelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.naturelabel.Location = new System.Drawing.Point(18, 57);
+            this.naturelabel.Name = "naturelabel";
+            this.naturelabel.Size = new System.Drawing.Size(69, 24);
+            this.naturelabel.TabIndex = 9;
+            this.naturelabel.Text = "nname";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(15, 15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(76, 25);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Nature";
+            // 
             // movesPanel
             // 
             this.movesPanel.Controls.Add(this.m4panel);
             this.movesPanel.Controls.Add(this.m3panel);
             this.movesPanel.Controls.Add(this.m2panel);
             this.movesPanel.Controls.Add(this.m1panel);
-            this.movesPanel.Location = new System.Drawing.Point(5, 907);
+            this.movesPanel.Location = new System.Drawing.Point(5, 1189);
             this.movesPanel.Name = "movesPanel";
             this.movesPanel.Size = new System.Drawing.Size(360, 443);
             this.movesPanel.TabIndex = 6;
@@ -1222,83 +1531,111 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(402, 715);
+            this.tabPage2.Size = new System.Drawing.Size(406, 715);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Trainer 2";
             // 
-            // pokeComboBox
+            // evspdbox
             // 
-            this.pokeComboBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pokeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.pokeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pokeComboBox.FormattingEnabled = true;
-            this.pokeComboBox.Location = new System.Drawing.Point(3, 3);
-            this.pokeComboBox.Name = "pokeComboBox";
-            this.pokeComboBox.Size = new System.Drawing.Size(400, 33);
-            this.pokeComboBox.TabIndex = 7;
-            this.pokeComboBox.SelectedIndexChanged += new System.EventHandler(this.pokeComboBox_SelectedIndexChanged);
+            this.evspdbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.evspdbox.Location = new System.Drawing.Point(255, 168);
+            this.evspdbox.Name = "evspdbox";
+            this.evspdbox.Size = new System.Drawing.Size(38, 29);
+            this.evspdbox.TabIndex = 36;
+            this.evspdbox.Text = "0";
+            this.evspdbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // naturepanel
+            // evspabox
             // 
-            this.naturepanel.Controls.Add(this.nminuslabel);
-            this.naturepanel.Controls.Add(this.npluslabel);
-            this.naturepanel.Controls.Add(this.naturecombobox);
-            this.naturepanel.Controls.Add(this.naturelabel);
-            this.naturepanel.Controls.Add(this.label5);
-            this.naturepanel.Location = new System.Drawing.Point(5, 741);
-            this.naturepanel.Name = "naturepanel";
-            this.naturepanel.Size = new System.Drawing.Size(360, 160);
-            this.naturepanel.TabIndex = 7;
+            this.evspabox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.evspabox.Location = new System.Drawing.Point(187, 168);
+            this.evspabox.Name = "evspabox";
+            this.evspabox.Size = new System.Drawing.Size(38, 29);
+            this.evspabox.TabIndex = 35;
+            this.evspabox.Text = "0";
+            this.evspabox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label5
+            // evdefbox
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(15, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 25);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Nature";
+            this.evdefbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.evdefbox.Location = new System.Drawing.Point(122, 168);
+            this.evdefbox.Name = "evdefbox";
+            this.evdefbox.Size = new System.Drawing.Size(38, 29);
+            this.evdefbox.TabIndex = 34;
+            this.evdefbox.Text = "0";
+            this.evdefbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // naturecombobox
+            // evatkbox
             // 
-            this.naturecombobox.FormattingEnabled = true;
-            this.naturecombobox.Location = new System.Drawing.Point(129, 16);
-            this.naturecombobox.Name = "naturecombobox";
-            this.naturecombobox.Size = new System.Drawing.Size(208, 24);
-            this.naturecombobox.TabIndex = 17;
+            this.evatkbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.evatkbox.Location = new System.Drawing.Point(64, 168);
+            this.evatkbox.Name = "evatkbox";
+            this.evatkbox.Size = new System.Drawing.Size(38, 29);
+            this.evatkbox.TabIndex = 33;
+            this.evatkbox.Text = "0";
+            this.evatkbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // npluslabel
+            // evspebox
             // 
-            this.npluslabel.AutoSize = true;
-            this.npluslabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.npluslabel.Location = new System.Drawing.Point(18, 104);
-            this.npluslabel.Name = "npluslabel";
-            this.npluslabel.Size = new System.Drawing.Size(20, 24);
-            this.npluslabel.TabIndex = 10;
-            this.npluslabel.Text = "0";
-            this.npluslabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.evspebox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.evspebox.Location = new System.Drawing.Point(316, 168);
+            this.evspebox.Name = "evspebox";
+            this.evspebox.Size = new System.Drawing.Size(38, 29);
+            this.evspebox.TabIndex = 32;
+            this.evspebox.Text = "0";
+            this.evspebox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // naturelabel
+            // ivevupdatebtn
             // 
-            this.naturelabel.AutoSize = true;
-            this.naturelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.naturelabel.Location = new System.Drawing.Point(18, 57);
-            this.naturelabel.Name = "naturelabel";
-            this.naturelabel.Size = new System.Drawing.Size(69, 24);
-            this.naturelabel.TabIndex = 9;
-            this.naturelabel.Text = "nname";
+            this.ivevupdatebtn.Location = new System.Drawing.Point(97, 228);
+            this.ivevupdatebtn.Name = "ivevupdatebtn";
+            this.ivevupdatebtn.Size = new System.Drawing.Size(154, 39);
+            this.ivevupdatebtn.TabIndex = 37;
+            this.ivevupdatebtn.Text = "Update IVs/EVs";
+            this.ivevupdatebtn.UseVisualStyleBackColor = true;
+            this.ivevupdatebtn.Click += new System.EventHandler(this.Ivevupdatebtn_Click);
             // 
-            // nminuslabel
+            // evhpbox
             // 
-            this.nminuslabel.AutoSize = true;
-            this.nminuslabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nminuslabel.Location = new System.Drawing.Point(71, 104);
-            this.nminuslabel.Name = "nminuslabel";
-            this.nminuslabel.Size = new System.Drawing.Size(20, 24);
-            this.nminuslabel.TabIndex = 18;
-            this.nminuslabel.Text = "0";
-            this.nminuslabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.evhpbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.evhpbox.Location = new System.Drawing.Point(11, 168);
+            this.evhpbox.Name = "evhpbox";
+            this.evhpbox.Size = new System.Drawing.Size(38, 29);
+            this.evhpbox.TabIndex = 41;
+            this.evhpbox.Text = "0";
+            this.evhpbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ivhpbox
+            // 
+            this.ivhpbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ivhpbox.Location = new System.Drawing.Point(11, 65);
+            this.ivhpbox.Name = "ivhpbox";
+            this.ivhpbox.Size = new System.Drawing.Size(38, 29);
+            this.ivhpbox.TabIndex = 40;
+            this.ivhpbox.Text = "0";
+            this.ivhpbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(13, 130);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(36, 24);
+            this.label33.TabIndex = 39;
+            this.label33.Text = "HP";
+            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(14, 28);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(36, 24);
+            this.label34.TabIndex = 38;
+            this.label34.Text = "HP";
+            this.label34.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // BreakInPanel
             // 
@@ -1314,6 +1651,10 @@
             this.tabPage1.ResumeLayout(false);
             this.T1panel.ResumeLayout(false);
             this.T1panel.PerformLayout();
+            this.IVEVPanel.ResumeLayout(false);
+            this.IVEVPanel.PerformLayout();
+            this.naturepanel.ResumeLayout(false);
+            this.naturepanel.PerformLayout();
             this.movesPanel.ResumeLayout(false);
             this.m4panel.ResumeLayout(false);
             this.m4panel.PerformLayout();
@@ -1341,8 +1682,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.type2PicBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.type1PicBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPicBox)).EndInit();
-            this.naturepanel.ResumeLayout(false);
-            this.naturepanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1452,5 +1791,33 @@
         private System.Windows.Forms.Label nminuslabel;
         private System.Windows.Forms.Label npluslabel;
         private System.Windows.Forms.Label naturelabel;
+        private System.Windows.Forms.Panel IVEVPanel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label IVslabl;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox ivspdbox;
+        private System.Windows.Forms.TextBox ivspabox;
+        private System.Windows.Forms.TextBox ivdefbox;
+        private System.Windows.Forms.TextBox ivatkbox;
+        private System.Windows.Forms.TextBox ivspebox;
+        private System.Windows.Forms.TextBox evspdbox;
+        private System.Windows.Forms.TextBox evspabox;
+        private System.Windows.Forms.TextBox evdefbox;
+        private System.Windows.Forms.TextBox evatkbox;
+        private System.Windows.Forms.TextBox evspebox;
+        private System.Windows.Forms.Button ivevupdatebtn;
+        private System.Windows.Forms.TextBox evhpbox;
+        private System.Windows.Forms.TextBox ivhpbox;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label34;
     }
 }
