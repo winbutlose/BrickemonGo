@@ -28,11 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.pokeComboBox = new System.Windows.Forms.ComboBox();
             this.T1panel = new System.Windows.Forms.Panel();
+            this.statuspanel = new System.Windows.Forms.Panel();
+            this.statuslabel = new System.Windows.Forms.Label();
+            this.statuscombobox = new System.Windows.Forms.ComboBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.statuspicbox = new System.Windows.Forms.PictureBox();
             this.IVEVPanel = new System.Windows.Forms.Panel();
+            this.evhpbox = new System.Windows.Forms.TextBox();
+            this.ivhpbox = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.ivevupdatebtn = new System.Windows.Forms.Button();
+            this.evspdbox = new System.Windows.Forms.TextBox();
+            this.evspabox = new System.Windows.Forms.TextBox();
+            this.evdefbox = new System.Windows.Forms.TextBox();
+            this.evatkbox = new System.Windows.Forms.TextBox();
+            this.evspebox = new System.Windows.Forms.TextBox();
             this.ivspdbox = new System.Windows.Forms.TextBox();
             this.ivspabox = new System.Windows.Forms.TextBox();
             this.ivdefbox = new System.Windows.Forms.TextBox();
@@ -149,20 +161,10 @@
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.type1PicBox = new System.Windows.Forms.PictureBox();
             this.mainPicBox = new System.Windows.Forms.PictureBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.evspdbox = new System.Windows.Forms.TextBox();
-            this.evspabox = new System.Windows.Forms.TextBox();
-            this.evdefbox = new System.Windows.Forms.TextBox();
-            this.evatkbox = new System.Windows.Forms.TextBox();
-            this.evspebox = new System.Windows.Forms.TextBox();
-            this.ivevupdatebtn = new System.Windows.Forms.Button();
-            this.evhpbox = new System.Windows.Forms.TextBox();
-            this.ivhpbox = new System.Windows.Forms.TextBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.pokeComboBox = new System.Windows.Forms.ComboBox();
             this.T1panel.SuspendLayout();
+            this.statuspanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statuspicbox)).BeginInit();
             this.IVEVPanel.SuspendLayout();
             this.naturepanel.SuspendLayout();
             this.movesPanel.SuspendLayout();
@@ -185,48 +187,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainPicBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.ItemSize = new System.Drawing.Size(100, 25);
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(414, 748);
-            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
-            this.tabControl1.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.Color.DimGray;
-            this.tabPage1.Controls.Add(this.pokeComboBox);
-            this.tabPage1.Controls.Add(this.T1panel);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(406, 715);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Trainer 1";
-            // 
-            // pokeComboBox
-            // 
-            this.pokeComboBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pokeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.pokeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pokeComboBox.FormattingEnabled = true;
-            this.pokeComboBox.Location = new System.Drawing.Point(3, 3);
-            this.pokeComboBox.Name = "pokeComboBox";
-            this.pokeComboBox.Size = new System.Drawing.Size(400, 33);
-            this.pokeComboBox.TabIndex = 7;
-            this.pokeComboBox.SelectedIndexChanged += new System.EventHandler(this.pokeComboBox_SelectedIndexChanged);
-            // 
             // T1panel
             // 
             this.T1panel.AutoScroll = true;
+            this.T1panel.Controls.Add(this.statuspanel);
             this.T1panel.Controls.Add(this.IVEVPanel);
             this.T1panel.Controls.Add(this.naturepanel);
             this.T1panel.Controls.Add(this.movesPanel);
@@ -237,12 +201,61 @@
             this.T1panel.Controls.Add(this.type1PicBox);
             this.T1panel.Controls.Add(this.mainPicBox);
             this.T1panel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.T1panel.Location = new System.Drawing.Point(3, 42);
+            this.T1panel.Location = new System.Drawing.Point(0, 39);
             this.T1panel.Name = "T1panel";
-            this.T1panel.Size = new System.Drawing.Size(400, 670);
-            this.T1panel.TabIndex = 5;
-            this.T1panel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.T1panel_Scroll);
-            this.T1panel.Click += new System.EventHandler(this.T1panel_Click);
+            this.T1panel.Size = new System.Drawing.Size(414, 709);
+            this.T1panel.TabIndex = 6;
+            // 
+            // statuspanel
+            // 
+            this.statuspanel.Controls.Add(this.statuslabel);
+            this.statuspanel.Controls.Add(this.statuscombobox);
+            this.statuspanel.Controls.Add(this.label35);
+            this.statuspanel.Controls.Add(this.statuspicbox);
+            this.statuspanel.Location = new System.Drawing.Point(5, 233);
+            this.statuspanel.Name = "statuspanel";
+            this.statuspanel.Size = new System.Drawing.Size(359, 181);
+            this.statuspanel.TabIndex = 9;
+            // 
+            // statuslabel
+            // 
+            this.statuslabel.AutoSize = true;
+            this.statuslabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statuslabel.Location = new System.Drawing.Point(9, 133);
+            this.statuslabel.Name = "statuslabel";
+            this.statuslabel.Size = new System.Drawing.Size(57, 24);
+            this.statuslabel.TabIndex = 9;
+            this.statuslabel.Text = "status";
+            // 
+            // statuscombobox
+            // 
+            this.statuscombobox.FormattingEnabled = true;
+            this.statuscombobox.Location = new System.Drawing.Point(129, 66);
+            this.statuscombobox.Name = "statuscombobox";
+            this.statuscombobox.Size = new System.Drawing.Size(208, 21);
+            this.statuscombobox.TabIndex = 18;
+            this.statuscombobox.SelectedIndexChanged += new System.EventHandler(this.Statuscombobox_SelectedIndexChanged);
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Location = new System.Drawing.Point(6, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(79, 29);
+            this.label35.TabIndex = 9;
+            this.label35.Text = "Status";
+            // 
+            // statuspicbox
+            // 
+            this.statuspicbox.BackColor = System.Drawing.Color.Transparent;
+            this.statuspicbox.InitialImage = null;
+            this.statuspicbox.Location = new System.Drawing.Point(11, 66);
+            this.statuspicbox.Name = "statuspicbox";
+            this.statuspicbox.Size = new System.Drawing.Size(64, 64);
+            this.statuspicbox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.statuspicbox.TabIndex = 10;
+            this.statuspicbox.TabStop = false;
             // 
             // IVEVPanel
             // 
@@ -273,10 +286,112 @@
             this.IVEVPanel.Controls.Add(this.label7);
             this.IVEVPanel.Controls.Add(this.label6);
             this.IVEVPanel.Controls.Add(this.IVslabl);
-            this.IVEVPanel.Location = new System.Drawing.Point(5, 916);
+            this.IVEVPanel.Location = new System.Drawing.Point(5, 1037);
             this.IVEVPanel.Name = "IVEVPanel";
             this.IVEVPanel.Size = new System.Drawing.Size(360, 267);
             this.IVEVPanel.TabIndex = 8;
+            // 
+            // evhpbox
+            // 
+            this.evhpbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.evhpbox.Location = new System.Drawing.Point(11, 168);
+            this.evhpbox.Name = "evhpbox";
+            this.evhpbox.Size = new System.Drawing.Size(38, 29);
+            this.evhpbox.TabIndex = 41;
+            this.evhpbox.Text = "0";
+            this.evhpbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ivhpbox
+            // 
+            this.ivhpbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ivhpbox.Location = new System.Drawing.Point(11, 65);
+            this.ivhpbox.Name = "ivhpbox";
+            this.ivhpbox.Size = new System.Drawing.Size(38, 29);
+            this.ivhpbox.TabIndex = 40;
+            this.ivhpbox.Text = "0";
+            this.ivhpbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(13, 130);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(36, 24);
+            this.label33.TabIndex = 39;
+            this.label33.Text = "HP";
+            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(14, 28);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(36, 24);
+            this.label34.TabIndex = 38;
+            this.label34.Text = "HP";
+            this.label34.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // ivevupdatebtn
+            // 
+            this.ivevupdatebtn.Location = new System.Drawing.Point(97, 228);
+            this.ivevupdatebtn.Name = "ivevupdatebtn";
+            this.ivevupdatebtn.Size = new System.Drawing.Size(154, 39);
+            this.ivevupdatebtn.TabIndex = 37;
+            this.ivevupdatebtn.Text = "Update IVs/EVs";
+            this.ivevupdatebtn.UseVisualStyleBackColor = true;
+            this.ivevupdatebtn.Click += new System.EventHandler(this.Ivevupdatebtn_Click);
+            // 
+            // evspdbox
+            // 
+            this.evspdbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.evspdbox.Location = new System.Drawing.Point(255, 168);
+            this.evspdbox.Name = "evspdbox";
+            this.evspdbox.Size = new System.Drawing.Size(38, 29);
+            this.evspdbox.TabIndex = 36;
+            this.evspdbox.Text = "0";
+            this.evspdbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // evspabox
+            // 
+            this.evspabox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.evspabox.Location = new System.Drawing.Point(187, 168);
+            this.evspabox.Name = "evspabox";
+            this.evspabox.Size = new System.Drawing.Size(38, 29);
+            this.evspabox.TabIndex = 35;
+            this.evspabox.Text = "0";
+            this.evspabox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // evdefbox
+            // 
+            this.evdefbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.evdefbox.Location = new System.Drawing.Point(122, 168);
+            this.evdefbox.Name = "evdefbox";
+            this.evdefbox.Size = new System.Drawing.Size(38, 29);
+            this.evdefbox.TabIndex = 34;
+            this.evdefbox.Text = "0";
+            this.evdefbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // evatkbox
+            // 
+            this.evatkbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.evatkbox.Location = new System.Drawing.Point(64, 168);
+            this.evatkbox.Name = "evatkbox";
+            this.evatkbox.Size = new System.Drawing.Size(38, 29);
+            this.evatkbox.TabIndex = 33;
+            this.evatkbox.Text = "0";
+            this.evatkbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // evspebox
+            // 
+            this.evspebox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.evspebox.Location = new System.Drawing.Point(316, 168);
+            this.evspebox.Name = "evspebox";
+            this.evspebox.Size = new System.Drawing.Size(38, 29);
+            this.evspebox.TabIndex = 32;
+            this.evspebox.Text = "0";
+            this.evspebox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ivspdbox
             // 
@@ -455,9 +570,9 @@
             this.naturepanel.Controls.Add(this.naturecombobox);
             this.naturepanel.Controls.Add(this.naturelabel);
             this.naturepanel.Controls.Add(this.label5);
-            this.naturepanel.Location = new System.Drawing.Point(5, 741);
+            this.naturepanel.Location = new System.Drawing.Point(5, 885);
             this.naturepanel.Name = "naturepanel";
-            this.naturepanel.Size = new System.Drawing.Size(360, 160);
+            this.naturepanel.Size = new System.Drawing.Size(359, 146);
             this.naturepanel.TabIndex = 7;
             // 
             // nminuslabel
@@ -487,7 +602,7 @@
             this.naturecombobox.FormattingEnabled = true;
             this.naturecombobox.Location = new System.Drawing.Point(129, 16);
             this.naturecombobox.Name = "naturecombobox";
-            this.naturecombobox.Size = new System.Drawing.Size(208, 24);
+            this.naturecombobox.Size = new System.Drawing.Size(208, 21);
             this.naturecombobox.TabIndex = 17;
             this.naturecombobox.SelectedIndexChanged += new System.EventHandler(this.Naturecombobox_SelectedIndexChanged);
             // 
@@ -517,7 +632,7 @@
             this.movesPanel.Controls.Add(this.m3panel);
             this.movesPanel.Controls.Add(this.m2panel);
             this.movesPanel.Controls.Add(this.m1panel);
-            this.movesPanel.Location = new System.Drawing.Point(5, 1189);
+            this.movesPanel.Location = new System.Drawing.Point(5, 1310);
             this.movesPanel.Name = "movesPanel";
             this.movesPanel.Size = new System.Drawing.Size(360, 443);
             this.movesPanel.TabIndex = 6;
@@ -913,9 +1028,9 @@
             this.statsPanel.Controls.Add(this.spatkPanel);
             this.statsPanel.Controls.Add(this.defPanel);
             this.statsPanel.Controls.Add(this.atkPanel);
-            this.statsPanel.Location = new System.Drawing.Point(5, 277);
+            this.statsPanel.Location = new System.Drawing.Point(5, 420);
             this.statsPanel.Name = "statsPanel";
-            this.statsPanel.Size = new System.Drawing.Size(360, 456);
+            this.statsPanel.Size = new System.Drawing.Size(359, 459);
             this.statsPanel.TabIndex = 5;
             // 
             // speedPanel
@@ -1525,117 +1640,17 @@
             this.mainPicBox.TabIndex = 0;
             this.mainPicBox.TabStop = false;
             // 
-            // tabPage2
+            // pokeComboBox
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.DimGray;
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(406, 715);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Trainer 2";
-            // 
-            // evspdbox
-            // 
-            this.evspdbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.evspdbox.Location = new System.Drawing.Point(255, 168);
-            this.evspdbox.Name = "evspdbox";
-            this.evspdbox.Size = new System.Drawing.Size(38, 29);
-            this.evspdbox.TabIndex = 36;
-            this.evspdbox.Text = "0";
-            this.evspdbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // evspabox
-            // 
-            this.evspabox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.evspabox.Location = new System.Drawing.Point(187, 168);
-            this.evspabox.Name = "evspabox";
-            this.evspabox.Size = new System.Drawing.Size(38, 29);
-            this.evspabox.TabIndex = 35;
-            this.evspabox.Text = "0";
-            this.evspabox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // evdefbox
-            // 
-            this.evdefbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.evdefbox.Location = new System.Drawing.Point(122, 168);
-            this.evdefbox.Name = "evdefbox";
-            this.evdefbox.Size = new System.Drawing.Size(38, 29);
-            this.evdefbox.TabIndex = 34;
-            this.evdefbox.Text = "0";
-            this.evdefbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // evatkbox
-            // 
-            this.evatkbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.evatkbox.Location = new System.Drawing.Point(64, 168);
-            this.evatkbox.Name = "evatkbox";
-            this.evatkbox.Size = new System.Drawing.Size(38, 29);
-            this.evatkbox.TabIndex = 33;
-            this.evatkbox.Text = "0";
-            this.evatkbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // evspebox
-            // 
-            this.evspebox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.evspebox.Location = new System.Drawing.Point(316, 168);
-            this.evspebox.Name = "evspebox";
-            this.evspebox.Size = new System.Drawing.Size(38, 29);
-            this.evspebox.TabIndex = 32;
-            this.evspebox.Text = "0";
-            this.evspebox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // ivevupdatebtn
-            // 
-            this.ivevupdatebtn.Location = new System.Drawing.Point(97, 228);
-            this.ivevupdatebtn.Name = "ivevupdatebtn";
-            this.ivevupdatebtn.Size = new System.Drawing.Size(154, 39);
-            this.ivevupdatebtn.TabIndex = 37;
-            this.ivevupdatebtn.Text = "Update IVs/EVs";
-            this.ivevupdatebtn.UseVisualStyleBackColor = true;
-            this.ivevupdatebtn.Click += new System.EventHandler(this.Ivevupdatebtn_Click);
-            // 
-            // evhpbox
-            // 
-            this.evhpbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.evhpbox.Location = new System.Drawing.Point(11, 168);
-            this.evhpbox.Name = "evhpbox";
-            this.evhpbox.Size = new System.Drawing.Size(38, 29);
-            this.evhpbox.TabIndex = 41;
-            this.evhpbox.Text = "0";
-            this.evhpbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // ivhpbox
-            // 
-            this.ivhpbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ivhpbox.Location = new System.Drawing.Point(11, 65);
-            this.ivhpbox.Name = "ivhpbox";
-            this.ivhpbox.Size = new System.Drawing.Size(38, 29);
-            this.ivhpbox.TabIndex = 40;
-            this.ivhpbox.Text = "0";
-            this.ivhpbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(13, 130);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(36, 24);
-            this.label33.TabIndex = 39;
-            this.label33.Text = "HP";
-            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(14, 28);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(36, 24);
-            this.label34.TabIndex = 38;
-            this.label34.Text = "HP";
-            this.label34.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.pokeComboBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pokeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.pokeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pokeComboBox.FormattingEnabled = true;
+            this.pokeComboBox.Location = new System.Drawing.Point(0, 0);
+            this.pokeComboBox.Name = "pokeComboBox";
+            this.pokeComboBox.Size = new System.Drawing.Size(414, 33);
+            this.pokeComboBox.TabIndex = 8;
+            this.pokeComboBox.SelectedIndexChanged += new System.EventHandler(this.pokeComboBox_SelectedIndexChanged);
             // 
             // BreakInPanel
             // 
@@ -1644,13 +1659,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(414, 748);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.pokeComboBox);
+            this.Controls.Add(this.T1panel);
             this.Name = "BreakInPanel";
             this.Text = "BreakInPanel";
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.T1panel.ResumeLayout(false);
             this.T1panel.PerformLayout();
+            this.statuspanel.ResumeLayout(false);
+            this.statuspanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statuspicbox)).EndInit();
             this.IVEVPanel.ResumeLayout(false);
             this.IVEVPanel.PerformLayout();
             this.naturepanel.ResumeLayout(false);
@@ -1687,36 +1704,85 @@
         }
 
         #endregion
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.PictureBox type2PicBox;
-        private System.Windows.Forms.PictureBox type1PicBox;
-        private System.Windows.Forms.TextBox nicknameTextBox;
-        private System.Windows.Forms.TextBox nameTextBox;
-        private System.Windows.Forms.PictureBox mainPicBox;
-        public System.Windows.Forms.TabControl tabControl1;
+
         private System.Windows.Forms.Panel T1panel;
+        private System.Windows.Forms.Panel statuspanel;
+        private System.Windows.Forms.Label statuslabel;
+        private System.Windows.Forms.ComboBox statuscombobox;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.PictureBox statuspicbox;
+        private System.Windows.Forms.Panel IVEVPanel;
+        private System.Windows.Forms.TextBox evhpbox;
+        private System.Windows.Forms.TextBox ivhpbox;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Button ivevupdatebtn;
+        private System.Windows.Forms.TextBox evspdbox;
+        private System.Windows.Forms.TextBox evspabox;
+        private System.Windows.Forms.TextBox evdefbox;
+        private System.Windows.Forms.TextBox evatkbox;
+        private System.Windows.Forms.TextBox evspebox;
+        private System.Windows.Forms.TextBox ivspdbox;
+        private System.Windows.Forms.TextBox ivspabox;
+        private System.Windows.Forms.TextBox ivdefbox;
+        private System.Windows.Forms.TextBox ivatkbox;
+        private System.Windows.Forms.TextBox ivspebox;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label IVslabl;
+        private System.Windows.Forms.Panel naturepanel;
+        private System.Windows.Forms.Label nminuslabel;
+        private System.Windows.Forms.Label npluslabel;
+        private System.Windows.Forms.ComboBox naturecombobox;
+        private System.Windows.Forms.Label naturelabel;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel movesPanel;
+        private System.Windows.Forms.Panel m4panel;
+        private System.Windows.Forms.Label m4effid;
+        private System.Windows.Forms.Label m4id;
+        private System.Windows.Forms.Label m4pp;
+        private System.Windows.Forms.Label m4cat;
+        private System.Windows.Forms.Label m4acc;
+        private System.Windows.Forms.Label m4dmg;
+        private System.Windows.Forms.PictureBox m4pic;
+        private System.Windows.Forms.Label m4name;
+        private System.Windows.Forms.Panel m3panel;
+        private System.Windows.Forms.Label m3effid;
+        private System.Windows.Forms.Label m3id;
+        private System.Windows.Forms.Label m3pp;
+        private System.Windows.Forms.Label m3cat;
+        private System.Windows.Forms.Label m3acc;
+        private System.Windows.Forms.Label m3dmg;
+        private System.Windows.Forms.PictureBox m3pic;
+        private System.Windows.Forms.Label m3name;
+        private System.Windows.Forms.Panel m2panel;
+        private System.Windows.Forms.Label m2effid;
+        private System.Windows.Forms.Label m2id;
+        private System.Windows.Forms.Label m2pp;
+        private System.Windows.Forms.Label m2cat;
+        private System.Windows.Forms.Label m2acc;
+        private System.Windows.Forms.Label m2dmg;
+        private System.Windows.Forms.PictureBox m2pic;
+        private System.Windows.Forms.Label m2name;
+        private System.Windows.Forms.Panel m1panel;
+        private System.Windows.Forms.Label m1effid;
+        private System.Windows.Forms.Label m1id;
+        private System.Windows.Forms.Label m1pp;
+        private System.Windows.Forms.Label m1category;
+        private System.Windows.Forms.Label m1acclabel;
+        private System.Windows.Forms.Label m1dmglabel;
+        private System.Windows.Forms.PictureBox m1type;
+        private System.Windows.Forms.Label move1NameLabel;
         private System.Windows.Forms.Panel statsPanel;
-        private System.Windows.Forms.Panel atkPanel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label atkFinalLabel;
-        private System.Windows.Forms.Label atkStageLabel;
-        private System.Windows.Forms.Label atkBaseLabel;
-        private System.Windows.Forms.Button atkStageDecButton;
-        private System.Windows.Forms.Button atkStageIncButton;
-        private System.Windows.Forms.Panel defPanel;
-        private System.Windows.Forms.Button defStageDecButton;
-        private System.Windows.Forms.Button defStageIncButton;
-        private System.Windows.Forms.Label defFinalLabel;
-        private System.Windows.Forms.Label defStageLabel;
-        private System.Windows.Forms.Label defBaseLabel;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel speedPanel;
         private System.Windows.Forms.Button speedStageDecButton;
         private System.Windows.Forms.Button speedStageIncButton;
@@ -1747,77 +1813,31 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Panel movesPanel;
-        private System.Windows.Forms.Panel m1panel;
-        private System.Windows.Forms.Label move1NameLabel;
-        private System.Windows.Forms.PictureBox m1type;
-        private System.Windows.Forms.Label m1effid;
-        private System.Windows.Forms.Label m1id;
-        private System.Windows.Forms.Label m1pp;
-        private System.Windows.Forms.Label m1category;
-        private System.Windows.Forms.Label m1acclabel;
-        private System.Windows.Forms.Label m1dmglabel;
-        private System.Windows.Forms.Panel m2panel;
-        private System.Windows.Forms.Label m2effid;
-        private System.Windows.Forms.Label m2id;
-        private System.Windows.Forms.Label m2pp;
-        private System.Windows.Forms.Label m2cat;
-        private System.Windows.Forms.Label m2acc;
-        private System.Windows.Forms.Label m2dmg;
-        private System.Windows.Forms.PictureBox m2pic;
-        private System.Windows.Forms.Label m2name;
-        private System.Windows.Forms.Panel m4panel;
-        private System.Windows.Forms.Label m4effid;
-        private System.Windows.Forms.Label m4id;
-        private System.Windows.Forms.Label m4pp;
-        private System.Windows.Forms.Label m4cat;
-        private System.Windows.Forms.Label m4acc;
-        private System.Windows.Forms.Label m4dmg;
-        private System.Windows.Forms.PictureBox m4pic;
-        private System.Windows.Forms.Label m4name;
-        private System.Windows.Forms.Panel m3panel;
-        private System.Windows.Forms.Label m3effid;
-        private System.Windows.Forms.Label m3id;
-        private System.Windows.Forms.Label m3pp;
-        private System.Windows.Forms.Label m3cat;
-        private System.Windows.Forms.Label m3acc;
-        private System.Windows.Forms.Label m3dmg;
-        private System.Windows.Forms.PictureBox m3pic;
-        private System.Windows.Forms.Label m3name;
+        private System.Windows.Forms.Panel defPanel;
+        private System.Windows.Forms.Button defStageDecButton;
+        private System.Windows.Forms.Button defStageIncButton;
+        private System.Windows.Forms.Label defFinalLabel;
+        private System.Windows.Forms.Label defStageLabel;
+        private System.Windows.Forms.Label defBaseLabel;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel atkPanel;
+        private System.Windows.Forms.Button atkStageDecButton;
+        private System.Windows.Forms.Button atkStageIncButton;
+        private System.Windows.Forms.Label atkFinalLabel;
+        private System.Windows.Forms.Label atkStageLabel;
+        private System.Windows.Forms.Label atkBaseLabel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox nicknameTextBox;
+        private System.Windows.Forms.PictureBox type2PicBox;
+        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.PictureBox type1PicBox;
+        private System.Windows.Forms.PictureBox mainPicBox;
         private System.Windows.Forms.ComboBox pokeComboBox;
-        private System.Windows.Forms.Panel naturepanel;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox naturecombobox;
-        private System.Windows.Forms.Label nminuslabel;
-        private System.Windows.Forms.Label npluslabel;
-        private System.Windows.Forms.Label naturelabel;
-        private System.Windows.Forms.Panel IVEVPanel;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label IVslabl;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox ivspdbox;
-        private System.Windows.Forms.TextBox ivspabox;
-        private System.Windows.Forms.TextBox ivdefbox;
-        private System.Windows.Forms.TextBox ivatkbox;
-        private System.Windows.Forms.TextBox ivspebox;
-        private System.Windows.Forms.TextBox evspdbox;
-        private System.Windows.Forms.TextBox evspabox;
-        private System.Windows.Forms.TextBox evdefbox;
-        private System.Windows.Forms.TextBox evatkbox;
-        private System.Windows.Forms.TextBox evspebox;
-        private System.Windows.Forms.Button ivevupdatebtn;
-        private System.Windows.Forms.TextBox evhpbox;
-        private System.Windows.Forms.TextBox ivhpbox;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label34;
     }
 }

@@ -29,6 +29,7 @@ namespace BrickemonGo
 
             //Repaint Methods
             this.T1panel.Paint += new PaintEventHandler(T1panel_Paint);
+            this.statuspanel.Paint += new PaintEventHandler(statuspanel_Paint);
             this.atkPanel.Paint += new PaintEventHandler(atkPanel_Paint);
             this.defPanel.Paint += new PaintEventHandler(defPanel_Paint);
             this.spatkPanel.Paint += new PaintEventHandler(spatkPanel_Paint);
@@ -45,11 +46,21 @@ namespace BrickemonGo
             {
                 this.pokeComboBox.Items.Add(y.GetName());
             }
+            foreach (Pokemon y in T2.GetPokemonParty())
+            {
+                this.pokeComboBox.Items.Add(y.GetName());
+            }
             natureList = new Nature[25];
             for(int i=1; i<26; i++)
             {
                 this.natureList[i-1] = new Nature(i);
                 naturecombobox.Items.Add(natureList[i-1].GetName());
+            }
+
+            String[] statusList = {"None", "Burn", "Paralyze", "Poison", "Sleep", "Freeze","Badpoison" };
+            foreach (String x in statusList)
+            {
+                statuscombobox.Items.Add(x);
             }
 
             updateIvevpanel();
@@ -179,6 +190,11 @@ namespace BrickemonGo
 
         }
 
+        private void statuspanel_Paint(object sender, PaintEventArgs e)
+        {
+            statuslabel.Text = ""+poke1.GetStatusString();
+            statuspicbox.ImageLocation = @"res/" + poke1.GetStatus() + ".png";
+        }
 
             private void atkStageIncButton_Click(object sender, EventArgs e)
         {
@@ -258,15 +274,11 @@ namespace BrickemonGo
 
         private void Ivevupdatebtn_Click(object sender, EventArgs e)
         {
-            //int num;
-            //bool success = Int32.TryParse(x, out num);
-            //if (!success)
-            //{
-            //    Console.WriteLine("pokemon.setatkEV: Value is not a number, did not update atk EV");
-            //    return;
-            //}
+            if(Convert.ToInt32(evhpbox.Text)+ Convert.ToInt32(evatkbox.Text)+ Convert.ToInt32(evdefbox.Text)+ Convert.ToInt32(evspabox.Text)+ Convert.ToInt32(evspdbox.Text)+ Convert.ToInt32(evspebox.Text) > 510)
+            {
+                MessageBox.Show("EVs cannot exceed 510 total, did not update pokemon");
+            }
 
-            //if these are not numbers this will crash
             poke1.SetHpIV(Convert.ToInt32(ivhpbox.Text));
             poke1.SetAtkIV(Convert.ToInt32(ivatkbox.Text));
             poke1.SetDefIV(Convert.ToInt32(ivdefbox.Text));
@@ -289,9 +301,28 @@ namespace BrickemonGo
 
         private void pokeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            poke1 = T1.GetPartyAt(pokeComboBox.SelectedIndex);
+            int index = pokeComboBox.SelectedIndex;
+            if(index < 6)
+            {
+                poke1 = T1.GetPartyAt(index);
+            }
+            else
+            {
+                poke1 = T2.GetPartyAt(index-6);
+            }
             Refresh();
             updateIvevpanel();
+        }
+
+        private void Statuspicbox_Click(object sender, EventArgs e)
+        {
+            //intentionally left blank
+        }
+
+        private void Statuscombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            poke1.SetStatus(statuscombobox.SelectedIndex);
+            Refresh();
         }
 
         private void updateIvevpanel()

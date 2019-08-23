@@ -64,7 +64,7 @@ namespace BrickemonGo
             e.Graphics.DrawString(P2.GetName(), new Font("Arial", 24), brush, 650, 265);
             e.Graphics.FillRectangle(brush, 0, 305, P1.GetRemainingHp(), 10);
             e.Graphics.FillRectangle(brush, 650, 305, P2.GetRemainingHp(), 10);
-            e.Graphics.DrawString(P1.GetRemainingHp()+ "/" + P1.GetHp(), new Font("Arial", 24), brush, 10, 330);
+            e.Graphics.DrawString(P1.GetRemainingHp() + "/" + P1.GetHp(), new Font("Arial", 24), brush, 10, 330);
             e.Graphics.DrawString(P2.GetRemainingHp() + "/" + P2.GetHp(), new Font("Arial", 24), brush, 650, 330);
             e.Graphics.DrawString("Shiny: " + P1.GetShiny(), new Font("Arial", 24), brush, 10, 355);
             e.Graphics.DrawString("Shiny: " + P2.GetShiny(), new Font("Arial", 24), brush, 650, 355);
@@ -325,7 +325,7 @@ namespace BrickemonGo
                 }
                 else
                 {
-                    Console.WriteLine("Atk Misses!"); 
+                    Console.WriteLine("Atk Misses!");
                     PrintToTextBox(A.GetName() + "'s attack missed!");
                     return;
                 }
@@ -354,11 +354,11 @@ namespace BrickemonGo
             //textboxwords.Text = (A.GetName() + " used " + move.GetName() + "!\n");
             //outputbox.AppendText(A.GetName() + " used " + move.GetName() + "!\n");
             PrintToTextBox(A.GetName() + " used " + move.GetName() + "!");
-            if(effectiveness == 0 && move.GetMoveCategory() != 3)
-                PrintToTextBox("It doesn't effect "+P2.GetName()+"\n");
-            else if(effectiveness>1 && move.GetMoveCategory() != 3)
+            if (effectiveness == 0 && move.GetMoveCategory() != 3)
+                PrintToTextBox("It doesn't effect " + P2.GetName() + "\n");
+            else if (effectiveness > 1 && move.GetMoveCategory() != 3)
                 PrintToTextBox("It's super effective!\n");
-            else if(effectiveness<1 && move.GetMoveCategory() != 3)
+            else if (effectiveness < 1 && move.GetMoveCategory() != 3)
                 PrintToTextBox("It's not very effective...\n");
 
             Console.WriteLine("eff: " + effectiveness);
@@ -370,7 +370,7 @@ namespace BrickemonGo
             Refresh();
         }
 
-        
+
         private void UpdateButtons()
         {
             List<Control> list = new List<Control>();
@@ -407,7 +407,7 @@ namespace BrickemonGo
             }
         }
 
-        
+
         private void GetAllControl(Control c, List<Control> list)
         {
             foreach (Control control in c.Controls)
@@ -450,7 +450,7 @@ namespace BrickemonGo
             CheckFainted();
             //update GUI
             Refresh();
-            PrintToTextBox("What will "+P1.GetName()+" do?");
+            PrintToTextBox("What will " + P1.GetName() + " do?");
             turn++;
         }
 
@@ -477,7 +477,7 @@ namespace BrickemonGo
                     swap++;
                 else
                     swap = 0;
-                Console.WriteLine("Checking to swap to: "+x.GetPartyAt(swap).GetName() + " Remaining HP: " + x.GetPartyAt(swap).GetRemainingHp());
+                Console.WriteLine("Checking to swap to: " + x.GetPartyAt(swap).GetName() + " Remaining HP: " + x.GetPartyAt(swap).GetRemainingHp());
                 if (!x.GetPartyAt(swap).IsFainted())
                     break;
             }
@@ -549,6 +549,11 @@ namespace BrickemonGo
             Thread.Sleep(1000);
             Console.WriteLine(text);
             outputbox.AppendText(text);
+        }
+
+        private void BreakinToolStripMenuItem_Click(object sender, EventArgs e) //menu item to open the break-in panel
+        {
+            new BreakInPanel(T1,T2).Show();
         }
     }
 }

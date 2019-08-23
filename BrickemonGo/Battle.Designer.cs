@@ -37,9 +37,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textboxwords = new System.Windows.Forms.TextBox();
             this.outputbox = new System.Windows.Forms.RichTextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.breakinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOppPoke)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxUserPoke)).BeginInit();
             this.MainPanel.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // PictureBoxOppPoke
@@ -70,9 +74,9 @@
             this.MainPanel.Controls.Add(this.PictureBoxUserPoke);
             this.MainPanel.Controls.Add(this.PictureBoxOppPoke);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(0, 0);
+            this.MainPanel.Location = new System.Drawing.Point(0, 24);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1191, 720);
+            this.MainPanel.Size = new System.Drawing.Size(1191, 696);
             this.MainPanel.TabIndex = 2;
             // 
             // button4
@@ -137,6 +141,31 @@
             this.outputbox.Text = "";
             this.outputbox.TextChanged += new System.EventHandler(this.outputbox_TextChanged);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1191, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // menuToolStripMenuItem
+            // 
+            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.breakinToolStripMenuItem});
+            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.menuToolStripMenuItem.Text = "Menu";
+            // 
+            // breakinToolStripMenuItem
+            // 
+            this.breakinToolStripMenuItem.Name = "breakinToolStripMenuItem";
+            this.breakinToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.breakinToolStripMenuItem.Text = "Break-in";
+            this.breakinToolStripMenuItem.Click += new System.EventHandler(this.BreakinToolStripMenuItem_Click);
+            // 
             // Battle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -145,13 +174,18 @@
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(1191, 720);
             this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Battle";
             this.Text = "Battle";
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOppPoke)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxUserPoke)).EndInit();
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -166,5 +200,8 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem breakinToolStripMenuItem;
     }
 }

@@ -53,7 +53,7 @@ namespace BrickemonGo
             Pokemon[] BTeam = { pokeB, pokeB2, pokeB3, pokeB4, pokeB5, pokeB6 };
             Trainer B = new Trainer("player2", BTeam, null, 0, 0);
 
-            Application.Run(new BreakInPanel(A,B));
+            //Application.Run(new BreakInPanel(A,B));
 
             Application.Run(new Battle(A, B));
 

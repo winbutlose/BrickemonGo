@@ -18,6 +18,7 @@ namespace BrickemonGo
         private Nature nature; //nature of the pokemon
         private Boolean shiny; //whether the pokemon is shiny or not
         private Type type; // typing of the pokemon
+        private int status; //0=none 1=burn 2=parlyz 3=poison 4=frz 5=slp 6=badpoison
 
         //STATS
         private int dexNum; //can also be used as ID for pokemon
@@ -90,7 +91,6 @@ namespace BrickemonGo
         private int megaSpAtkY;
         private int megaSpDefY;
         private int megaSpeedY;
-
 
         private int remainingHp;
 
@@ -817,6 +817,38 @@ namespace BrickemonGo
         public Nature GetNature()
         {
             return this.nature;
+        }
+        public void SetStatus(int x)
+        {
+            this.status = x;
+            Console.WriteLine(this.GetName()+" status = "+this.status);
+        }
+        public int GetStatus()
+        {
+            return this.status;
+        }
+        
+        public String GetStatusString() // "None", "Burn", "Paralyze", "Poison", "Sleep", "Freeze","Badpoison"
+        {
+            switch (this.status)
+            {
+                case 0:
+                    return "None";
+                case 1:
+                    return "Burned";
+                case 2:
+                    return "Paralyzed";
+                case 3:
+                    return "Poisoned";
+                case 4:
+                    return "Sleep";
+                case 5:
+                    return "Frozen";
+                case 6:
+                    return "Badly Poisoned";
+                default:
+                    return "STATUS STRING ERROR";
+            }
         }
 
         public void SetNature(int x) //supply an int for Nature ID and new nature is generated and set
