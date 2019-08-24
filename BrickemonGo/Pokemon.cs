@@ -828,7 +828,7 @@ namespace BrickemonGo
             return this.status;
         }
         
-        public String GetStatusString() // "None", "Burn", "Paralyze", "Poison", "Sleep", "Freeze","Badpoison"
+        public String GetStatusString() // "None", "Burn", "Paralyze", "Poison", "Freeze", "Sleep","Badpoison"
         {
             switch (this.status)
             {
@@ -841,9 +841,9 @@ namespace BrickemonGo
                 case 3:
                     return "Poisoned";
                 case 4:
-                    return "Sleep";
-                case 5:
                     return "Frozen";
+                case 5:
+                    return "Sleep";
                 case 6:
                     return "Badly Poisoned";
                 default:

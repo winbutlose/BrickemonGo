@@ -68,8 +68,10 @@ namespace BrickemonGo
             e.Graphics.DrawString(P2.GetRemainingHp() + "/" + P2.GetHp(), new Font("Arial", 24), brush, 650, 330);
             e.Graphics.DrawString("Shiny: " + P1.GetShiny(), new Font("Arial", 24), brush, 10, 355);
             e.Graphics.DrawString("Shiny: " + P2.GetShiny(), new Font("Arial", 24), brush, 650, 355);
-            //buttons
-
+            
+            //status effect pictures
+            statuspicbox.ImageLocation = (@"res/status/" + P1.GetStatus() + ".png");
+            oppstatuspicbox.ImageLocation = (@"res/status/" + P2.GetStatus() + ".png");
         }
 
         public void DoBattle()

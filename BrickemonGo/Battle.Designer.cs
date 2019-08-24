@@ -40,10 +40,14 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.breakinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oppstatuspicbox = new System.Windows.Forms.PictureBox();
+            this.statuspicbox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOppPoke)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxUserPoke)).BeginInit();
             this.MainPanel.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.oppstatuspicbox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statuspicbox)).BeginInit();
             this.SuspendLayout();
             // 
             // PictureBoxOppPoke
@@ -65,6 +69,8 @@
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.statuspicbox);
+            this.MainPanel.Controls.Add(this.oppstatuspicbox);
             this.MainPanel.Controls.Add(this.button4);
             this.MainPanel.Controls.Add(this.button2);
             this.MainPanel.Controls.Add(this.button3);
@@ -166,6 +172,24 @@
             this.breakinToolStripMenuItem.Text = "Break-in";
             this.breakinToolStripMenuItem.Click += new System.EventHandler(this.BreakinToolStripMenuItem_Click);
             // 
+            // oppstatuspicbox
+            // 
+            this.oppstatuspicbox.Location = new System.Drawing.Point(594, 212);
+            this.oppstatuspicbox.Name = "oppstatuspicbox";
+            this.oppstatuspicbox.Size = new System.Drawing.Size(50, 50);
+            this.oppstatuspicbox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.oppstatuspicbox.TabIndex = 10;
+            this.oppstatuspicbox.TabStop = false;
+            // 
+            // statuspicbox
+            // 
+            this.statuspicbox.Location = new System.Drawing.Point(268, 212);
+            this.statuspicbox.Name = "statuspicbox";
+            this.statuspicbox.Size = new System.Drawing.Size(50, 50);
+            this.statuspicbox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.statuspicbox.TabIndex = 11;
+            this.statuspicbox.TabStop = false;
+            // 
             // Battle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,6 +208,8 @@
             this.MainPanel.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.oppstatuspicbox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statuspicbox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,5 +229,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem breakinToolStripMenuItem;
+        private System.Windows.Forms.PictureBox statuspicbox;
+        private System.Windows.Forms.PictureBox oppstatuspicbox;
     }
 }

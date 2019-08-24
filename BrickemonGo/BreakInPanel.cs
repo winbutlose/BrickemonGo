@@ -57,7 +57,7 @@ namespace BrickemonGo
                 naturecombobox.Items.Add(natureList[i-1].GetName());
             }
 
-            String[] statusList = {"None", "Burn", "Paralyze", "Poison", "Sleep", "Freeze","Badpoison" };
+            String[] statusList = {"None", "Burn", "Paralyze", "Poison", "Freeze", "Sleep","Badpoison" };
             foreach (String x in statusList)
             {
                 statuscombobox.Items.Add(x);
@@ -161,19 +161,22 @@ namespace BrickemonGo
         private void T1panel_Paint(object sender, PaintEventArgs e)
         { 
             nameTextBox.Text = poke1.GetName();
-            Bitmap bmMain = new Bitmap(@"res/sprites/sugimori/" + this.poke1.GetDexNum() + ".png");
-            this.mainPicBox.Image = bmMain;
+            //Bitmap bmMain = new Bitmap(@"res/sprites/sugimori/" + this.poke1.GetDexNum() + ".png");
+            //this.mainPicBox.Image = bmMain;
+            mainPicBox.ImageLocation = @"res/sprites/sugimori/" + this.poke1.GetDexNum() + ".png";
             Type ty = poke1.GetType();
-            Bitmap bm1 = new Bitmap(@"res/type circles/" + ty.getPrimaryTypeAsString() + ".png");
-            this.type1PicBox.Image = bm1;
+            //Bitmap bm1 = new Bitmap(@"res/type circles/" + ty.getPrimaryTypeAsString() + ".png");
+            //this.type1PicBox.Image = bm1;
+            type1PicBox.ImageLocation = @"res/type circles/" + ty.getPrimaryTypeAsString() + ".png";
             if (poke1.GetType().GetMonotype())
             {
                 this.type2PicBox.Image = null;
             }
             else
             {
-                Bitmap bm2 = new Bitmap(@"res/type circles/" + ty.getSecondaryTypeAsString() + ".png");
-                this.type2PicBox.Image = bm2;
+                //Bitmap bm2 = new Bitmap(@"res/type circles/" + ty.getSecondaryTypeAsString() + ".png");
+                //this.type2PicBox.Image = bm2;
+                type2PicBox.ImageLocation = @"res/type circles/" + ty.getSecondaryTypeAsString() + ".png";
             }
             type1PicBox.BackColor = Color.Transparent;
             type2PicBox.BackColor = Color.Transparent;
@@ -193,7 +196,7 @@ namespace BrickemonGo
         private void statuspanel_Paint(object sender, PaintEventArgs e)
         {
             statuslabel.Text = ""+poke1.GetStatusString();
-            statuspicbox.ImageLocation = @"res/" + poke1.GetStatus() + ".png";
+            statuspicbox.ImageLocation = @"res/status/" + poke1.GetStatus() + ".png";
         }
 
             private void atkStageIncButton_Click(object sender, EventArgs e)
@@ -276,7 +279,9 @@ namespace BrickemonGo
         {
             if(Convert.ToInt32(evhpbox.Text)+ Convert.ToInt32(evatkbox.Text)+ Convert.ToInt32(evdefbox.Text)+ Convert.ToInt32(evspabox.Text)+ Convert.ToInt32(evspdbox.Text)+ Convert.ToInt32(evspebox.Text) > 510)
             {
-                MessageBox.Show("EVs cannot exceed 510 total, did not update pokemon");
+                //MessageBox.Show("EVs cannot exceed 510 total, did not update pokemon");
+                Console.WriteLine("EVs cannot exceed 510 total, did not update pokemon");
+                return;
             }
 
             poke1.SetHpIV(Convert.ToInt32(ivhpbox.Text));
@@ -291,7 +296,7 @@ namespace BrickemonGo
             poke1.SetDefEV(Convert.ToInt32(evdefbox.Text));
             poke1.SetSpAtkEV(Convert.ToInt32(evspabox.Text));
             poke1.SetSpDefEV(Convert.ToInt32(evspdbox.Text));
-            poke1.SetSpeedEV(Convert.ToInt32(evspebox.Text)); //we need to effectively cap total EVs at 510
+            poke1.SetSpeedEV(Convert.ToInt32(evspebox.Text)); 
 
             poke1.CalculateStats();
             updateIvevpanel();
