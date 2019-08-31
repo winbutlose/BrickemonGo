@@ -92,6 +92,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Pokemon.cs" />
+    <Compile Include="PokeToolTip.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SellForm.cs">

@@ -68,7 +68,7 @@ namespace BrickemonGo
             this.pokeMoney = pM;
         }
 
-        //returns pokemon at specific location in party.
+        //returns pokemon at specific location in party. (0-5)
         public Pokemon GetPartyAt(int slotNum)
         {
             return this.pokemonParty[slotNum];

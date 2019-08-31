@@ -44,6 +44,18 @@ namespace BrickemonGo
         {
             this.MainPanel.Paint += new PaintEventHandler(Main_paint);
             PictureBoxOppPoke.Update();
+            pokett1 = new PokeToolTip(T1.GetPartyAt(0));
+            this.pokett1.SetToolTip(this.team1pic, "this is a test");
+            pokett2 = new PokeToolTip(T1.GetPartyAt(1));
+            this.pokett2.SetToolTip(this.team2pic, "this is a test");
+            pokett3 = new PokeToolTip(T1.GetPartyAt(2));
+            this.pokett3.SetToolTip(this.team3pic, "this is a test");
+            pokett4 = new PokeToolTip(T1.GetPartyAt(3));
+            this.pokett4.SetToolTip(this.team4pic, "this is a test");
+            pokett5 = new PokeToolTip(T1.GetPartyAt(4));
+            this.pokett5.SetToolTip(this.team5pic, "this is a test");
+            pokett6 = new PokeToolTip(T1.GetPartyAt(5));
+            this.pokett6.SetToolTip(this.team6pic, "this is a test");
             Refresh();
         }
 
@@ -62,6 +74,14 @@ namespace BrickemonGo
             opppokename.Text = "" + P2.GetName();
             pokehp.Text = "HP: " + P1.GetRemainingHp() + "/" + P1.GetHp();
             opppokehp.Text = "HP: " + P2.GetRemainingHp() + "/" + P2.GetHp();
+
+            //team boxes
+            team1pic.ImageLocation = (@"res/sprites/sugimori/" + T1.GetPartyAt(0).GetDexNum() + ".png");
+            team2pic.ImageLocation = (@"res/sprites/sugimori/" + T1.GetPartyAt(1).GetDexNum() + ".png");
+            team3pic.ImageLocation = (@"res/sprites/sugimori/" + T1.GetPartyAt(2).GetDexNum() + ".png");
+            team4pic.ImageLocation = (@"res/sprites/sugimori/" + T1.GetPartyAt(3).GetDexNum() + ".png");
+            team5pic.ImageLocation = (@"res/sprites/sugimori/" + T1.GetPartyAt(4).GetDexNum() + ".png");
+            team6pic.ImageLocation = (@"res/sprites/sugimori/" + T1.GetPartyAt(5).GetDexNum() + ".png");
 
             //hp bars hehe        <---put these back in later when this is closer to being done 
 
@@ -536,6 +556,11 @@ namespace BrickemonGo
                 P2 = T2.GetPartyAt(y);
                 PrintToTextBox(T2.GetName() + ": Go! " + P2.GetName() + "!\n");
             }
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
         }
 
         //run

@@ -28,9 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.PictureBoxOppPoke = new System.Windows.Forms.PictureBox();
             this.PictureBoxUserPoke = new System.Windows.Forms.PictureBox();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.team6pic = new System.Windows.Forms.PictureBox();
+            this.team5pic = new System.Windows.Forms.PictureBox();
+            this.team4pic = new System.Windows.Forms.PictureBox();
+            this.team3pic = new System.Windows.Forms.PictureBox();
+            this.team2pic = new System.Windows.Forms.PictureBox();
+            this.team1pic = new System.Windows.Forms.PictureBox();
+            this.opppokepanel = new System.Windows.Forms.Panel();
+            this.opppokehp = new System.Windows.Forms.Label();
+            this.opppokename = new System.Windows.Forms.Label();
+            this.pokeinfopanel = new System.Windows.Forms.Panel();
+            this.pokehp = new System.Windows.Forms.Label();
+            this.pokename = new System.Windows.Forms.Label();
             this.statuspicbox = new System.Windows.Forms.PictureBox();
             this.oppstatuspicbox = new System.Windows.Forms.PictureBox();
             this.button4 = new System.Windows.Forms.Button();
@@ -42,20 +55,26 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.breakinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pokeinfopanel = new System.Windows.Forms.Panel();
-            this.pokename = new System.Windows.Forms.Label();
-            this.pokehp = new System.Windows.Forms.Label();
-            this.opppokepanel = new System.Windows.Forms.Panel();
-            this.opppokehp = new System.Windows.Forms.Label();
-            this.opppokename = new System.Windows.Forms.Label();
+            this.pokett1 = new System.Windows.Forms.ToolTip(this.components);
+            this.pokett2 = new System.Windows.Forms.ToolTip(this.components);
+            this.pokett3 = new System.Windows.Forms.ToolTip(this.components);
+            this.pokett4 = new System.Windows.Forms.ToolTip(this.components);
+            this.pokett5 = new System.Windows.Forms.ToolTip(this.components);
+            this.pokett6 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOppPoke)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxUserPoke)).BeginInit();
             this.MainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.team6pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.team5pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.team4pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.team3pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.team2pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.team1pic)).BeginInit();
+            this.opppokepanel.SuspendLayout();
+            this.pokeinfopanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statuspicbox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.oppstatuspicbox)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            this.pokeinfopanel.SuspendLayout();
-            this.opppokepanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // PictureBoxOppPoke
@@ -77,6 +96,12 @@
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.team6pic);
+            this.MainPanel.Controls.Add(this.team5pic);
+            this.MainPanel.Controls.Add(this.team4pic);
+            this.MainPanel.Controls.Add(this.team3pic);
+            this.MainPanel.Controls.Add(this.team2pic);
+            this.MainPanel.Controls.Add(this.team1pic);
             this.MainPanel.Controls.Add(this.opppokepanel);
             this.MainPanel.Controls.Add(this.pokeinfopanel);
             this.MainPanel.Controls.Add(this.statuspicbox);
@@ -94,6 +119,118 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1504, 942);
             this.MainPanel.TabIndex = 2;
+            // 
+            // team6pic
+            // 
+            this.team6pic.Location = new System.Drawing.Point(12, 546);
+            this.team6pic.Name = "team6pic";
+            this.team6pic.Size = new System.Drawing.Size(50, 50);
+            this.team6pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.team6pic.TabIndex = 19;
+            this.team6pic.TabStop = false;
+            // 
+            // team5pic
+            // 
+            this.team5pic.Location = new System.Drawing.Point(12, 602);
+            this.team5pic.Name = "team5pic";
+            this.team5pic.Size = new System.Drawing.Size(50, 50);
+            this.team5pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.team5pic.TabIndex = 18;
+            this.team5pic.TabStop = false;
+            // 
+            // team4pic
+            // 
+            this.team4pic.Location = new System.Drawing.Point(12, 658);
+            this.team4pic.Name = "team4pic";
+            this.team4pic.Size = new System.Drawing.Size(50, 50);
+            this.team4pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.team4pic.TabIndex = 17;
+            this.team4pic.TabStop = false;
+            // 
+            // team3pic
+            // 
+            this.team3pic.Location = new System.Drawing.Point(12, 715);
+            this.team3pic.Name = "team3pic";
+            this.team3pic.Size = new System.Drawing.Size(50, 50);
+            this.team3pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.team3pic.TabIndex = 16;
+            this.team3pic.TabStop = false;
+            // 
+            // team2pic
+            // 
+            this.team2pic.Location = new System.Drawing.Point(12, 771);
+            this.team2pic.Name = "team2pic";
+            this.team2pic.Size = new System.Drawing.Size(50, 50);
+            this.team2pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.team2pic.TabIndex = 15;
+            this.team2pic.TabStop = false;
+            // 
+            // team1pic
+            // 
+            this.team1pic.Location = new System.Drawing.Point(12, 827);
+            this.team1pic.Name = "team1pic";
+            this.team1pic.Size = new System.Drawing.Size(50, 50);
+            this.team1pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.team1pic.TabIndex = 14;
+            this.team1pic.TabStop = false;
+            // 
+            // opppokepanel
+            // 
+            this.opppokepanel.Controls.Add(this.opppokehp);
+            this.opppokepanel.Controls.Add(this.opppokename);
+            this.opppokepanel.Location = new System.Drawing.Point(910, 191);
+            this.opppokepanel.Name = "opppokepanel";
+            this.opppokepanel.Size = new System.Drawing.Size(140, 96);
+            this.opppokepanel.TabIndex = 13;
+            // 
+            // opppokehp
+            // 
+            this.opppokehp.AutoSize = true;
+            this.opppokehp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.opppokehp.Location = new System.Drawing.Point(17, 39);
+            this.opppokehp.Name = "opppokehp";
+            this.opppokehp.Size = new System.Drawing.Size(52, 18);
+            this.opppokehp.TabIndex = 1;
+            this.opppokehp.Text = "hp: 0/0";
+            // 
+            // opppokename
+            // 
+            this.opppokename.AutoSize = true;
+            this.opppokename.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.opppokename.Location = new System.Drawing.Point(17, 10);
+            this.opppokename.Name = "opppokename";
+            this.opppokename.Size = new System.Drawing.Size(49, 18);
+            this.opppokename.TabIndex = 0;
+            this.opppokename.Text = "poke2";
+            // 
+            // pokeinfopanel
+            // 
+            this.pokeinfopanel.Controls.Add(this.pokehp);
+            this.pokeinfopanel.Controls.Add(this.pokename);
+            this.pokeinfopanel.Location = new System.Drawing.Point(419, 386);
+            this.pokeinfopanel.Name = "pokeinfopanel";
+            this.pokeinfopanel.Size = new System.Drawing.Size(137, 96);
+            this.pokeinfopanel.TabIndex = 12;
+            // 
+            // pokehp
+            // 
+            this.pokehp.AutoSize = true;
+            this.pokehp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pokehp.Location = new System.Drawing.Point(17, 39);
+            this.pokehp.Name = "pokehp";
+            this.pokehp.Size = new System.Drawing.Size(52, 18);
+            this.pokehp.TabIndex = 1;
+            this.pokehp.Text = "hp: 0/0";
+            // 
+            // pokename
+            // 
+            this.pokename.AutoSize = true;
+            this.pokename.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pokename.Location = new System.Drawing.Point(17, 10);
+            this.pokename.Name = "pokename";
+            this.pokename.Size = new System.Drawing.Size(49, 18);
+            this.pokename.TabIndex = 0;
+            this.pokename.Text = "poke1";
             // 
             // statuspicbox
             // 
@@ -200,64 +337,6 @@
             this.breakinToolStripMenuItem.Text = "Break-in";
             this.breakinToolStripMenuItem.Click += new System.EventHandler(this.BreakinToolStripMenuItem_Click);
             // 
-            // pokeinfopanel
-            // 
-            this.pokeinfopanel.Controls.Add(this.pokehp);
-            this.pokeinfopanel.Controls.Add(this.pokename);
-            this.pokeinfopanel.Location = new System.Drawing.Point(419, 386);
-            this.pokeinfopanel.Name = "pokeinfopanel";
-            this.pokeinfopanel.Size = new System.Drawing.Size(137, 96);
-            this.pokeinfopanel.TabIndex = 12;
-            // 
-            // pokename
-            // 
-            this.pokename.AutoSize = true;
-            this.pokename.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pokename.Location = new System.Drawing.Point(17, 10);
-            this.pokename.Name = "pokename";
-            this.pokename.Size = new System.Drawing.Size(49, 18);
-            this.pokename.TabIndex = 0;
-            this.pokename.Text = "poke1";
-            // 
-            // pokehp
-            // 
-            this.pokehp.AutoSize = true;
-            this.pokehp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pokehp.Location = new System.Drawing.Point(17, 39);
-            this.pokehp.Name = "pokehp";
-            this.pokehp.Size = new System.Drawing.Size(52, 18);
-            this.pokehp.TabIndex = 1;
-            this.pokehp.Text = "hp: 0/0";
-            // 
-            // opppokepanel
-            // 
-            this.opppokepanel.Controls.Add(this.opppokehp);
-            this.opppokepanel.Controls.Add(this.opppokename);
-            this.opppokepanel.Location = new System.Drawing.Point(910, 191);
-            this.opppokepanel.Name = "opppokepanel";
-            this.opppokepanel.Size = new System.Drawing.Size(140, 96);
-            this.opppokepanel.TabIndex = 13;
-            // 
-            // opppokehp
-            // 
-            this.opppokehp.AutoSize = true;
-            this.opppokehp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.opppokehp.Location = new System.Drawing.Point(17, 39);
-            this.opppokehp.Name = "opppokehp";
-            this.opppokehp.Size = new System.Drawing.Size(52, 18);
-            this.opppokehp.TabIndex = 1;
-            this.opppokehp.Text = "hp: 0/0";
-            // 
-            // opppokename
-            // 
-            this.opppokename.AutoSize = true;
-            this.opppokename.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.opppokename.Location = new System.Drawing.Point(17, 10);
-            this.opppokename.Name = "opppokename";
-            this.opppokename.Size = new System.Drawing.Size(49, 18);
-            this.opppokename.TabIndex = 0;
-            this.opppokename.Text = "poke2";
-            // 
             // Battle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,14 +353,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxUserPoke)).EndInit();
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.team6pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.team5pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.team4pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.team3pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.team2pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.team1pic)).EndInit();
+            this.opppokepanel.ResumeLayout(false);
+            this.opppokepanel.PerformLayout();
+            this.pokeinfopanel.ResumeLayout(false);
+            this.pokeinfopanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.statuspicbox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.oppstatuspicbox)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.pokeinfopanel.ResumeLayout(false);
-            this.pokeinfopanel.PerformLayout();
-            this.opppokepanel.ResumeLayout(false);
-            this.opppokepanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,5 +394,17 @@
         private System.Windows.Forms.Panel opppokepanel;
         private System.Windows.Forms.Label opppokehp;
         private System.Windows.Forms.Label opppokename;
+        private System.Windows.Forms.PictureBox team6pic;
+        private System.Windows.Forms.PictureBox team5pic;
+        private System.Windows.Forms.PictureBox team4pic;
+        private System.Windows.Forms.PictureBox team3pic;
+        private System.Windows.Forms.PictureBox team2pic;
+        private System.Windows.Forms.PictureBox team1pic;
+        private System.Windows.Forms.ToolTip pokett1;
+        private System.Windows.Forms.ToolTip pokett2;
+        private System.Windows.Forms.ToolTip pokett3;
+        private System.Windows.Forms.ToolTip pokett4;
+        private System.Windows.Forms.ToolTip pokett5;
+        private System.Windows.Forms.ToolTip pokett6;
     }
 }
