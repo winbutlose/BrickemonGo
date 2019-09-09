@@ -32,6 +32,7 @@
             this.PictureBoxOppPoke = new System.Windows.Forms.PictureBox();
             this.PictureBoxUserPoke = new System.Windows.Forms.PictureBox();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.switchbutton = new System.Windows.Forms.Button();
             this.team6pic = new System.Windows.Forms.PictureBox();
             this.team5pic = new System.Windows.Forms.PictureBox();
             this.team4pic = new System.Windows.Forms.PictureBox();
@@ -61,6 +62,7 @@
             this.pokett4 = new System.Windows.Forms.ToolTip(this.components);
             this.pokett5 = new System.Windows.Forms.ToolTip(this.components);
             this.pokett6 = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonpanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOppPoke)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxUserPoke)).BeginInit();
             this.MainPanel.SuspendLayout();
@@ -75,6 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.statuspicbox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.oppstatuspicbox)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.buttonpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // PictureBoxOppPoke
@@ -96,6 +99,7 @@
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.buttonpanel);
             this.MainPanel.Controls.Add(this.team6pic);
             this.MainPanel.Controls.Add(this.team5pic);
             this.MainPanel.Controls.Add(this.team4pic);
@@ -106,10 +110,6 @@
             this.MainPanel.Controls.Add(this.pokeinfopanel);
             this.MainPanel.Controls.Add(this.statuspicbox);
             this.MainPanel.Controls.Add(this.oppstatuspicbox);
-            this.MainPanel.Controls.Add(this.button4);
-            this.MainPanel.Controls.Add(this.button2);
-            this.MainPanel.Controls.Add(this.button3);
-            this.MainPanel.Controls.Add(this.button1);
             this.MainPanel.Controls.Add(this.textboxwords);
             this.MainPanel.Controls.Add(this.outputbox);
             this.MainPanel.Controls.Add(this.PictureBoxUserPoke);
@@ -119,6 +119,16 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1504, 942);
             this.MainPanel.TabIndex = 2;
+            // 
+            // switchbutton
+            // 
+            this.switchbutton.Location = new System.Drawing.Point(18, 14);
+            this.switchbutton.Name = "switchbutton";
+            this.switchbutton.Size = new System.Drawing.Size(186, 44);
+            this.switchbutton.TabIndex = 20;
+            this.switchbutton.Text = "switch";
+            this.switchbutton.UseVisualStyleBackColor = true;
+            this.switchbutton.Click += new System.EventHandler(this.switchbutton_Click);
             // 
             // team6pic
             // 
@@ -252,7 +262,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(978, 886);
+            this.button4.Location = new System.Drawing.Point(788, 14);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(186, 44);
             this.button4.TabIndex = 9;
@@ -262,7 +272,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(594, 886);
+            this.button2.Location = new System.Drawing.Point(402, 14);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(186, 44);
             this.button2.TabIndex = 8;
@@ -272,7 +282,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(786, 886);
+            this.button3.Location = new System.Drawing.Point(596, 14);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(186, 44);
             this.button3.TabIndex = 7;
@@ -282,7 +292,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(402, 886);
+            this.button1.Location = new System.Drawing.Point(210, 14);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(186, 44);
             this.button1.TabIndex = 4;
@@ -294,7 +304,7 @@
             // 
             this.textboxwords.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.textboxwords.Font = new System.Drawing.Font("Dubai", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textboxwords.Location = new System.Drawing.Point(317, 827);
+            this.textboxwords.Location = new System.Drawing.Point(308, 796);
             this.textboxwords.Name = "textboxwords";
             this.textboxwords.ReadOnly = true;
             this.textboxwords.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -337,6 +347,18 @@
             this.breakinToolStripMenuItem.Text = "Break-in";
             this.breakinToolStripMenuItem.Click += new System.EventHandler(this.BreakinToolStripMenuItem_Click);
             // 
+            // buttonpanel
+            // 
+            this.buttonpanel.Controls.Add(this.switchbutton);
+            this.buttonpanel.Controls.Add(this.button1);
+            this.buttonpanel.Controls.Add(this.button2);
+            this.buttonpanel.Controls.Add(this.button3);
+            this.buttonpanel.Controls.Add(this.button4);
+            this.buttonpanel.Location = new System.Drawing.Point(275, 855);
+            this.buttonpanel.Name = "buttonpanel";
+            this.buttonpanel.Size = new System.Drawing.Size(993, 75);
+            this.buttonpanel.TabIndex = 21;
+            // 
             // Battle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -367,6 +389,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.oppstatuspicbox)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.buttonpanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,5 +429,7 @@
         private System.Windows.Forms.ToolTip pokett4;
         private System.Windows.Forms.ToolTip pokett5;
         private System.Windows.Forms.ToolTip pokett6;
+        private System.Windows.Forms.Button switchbutton;
+        private System.Windows.Forms.Panel buttonpanel;
     }
 }

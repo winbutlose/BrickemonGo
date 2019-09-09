@@ -20,6 +20,7 @@ namespace BrickemonGo
         private int choiceT1, choiceT2;
         private int moveT1, moveT2;
         private int turn = 1;
+        private int P1SleepCounter, P2SleepCounter;
 
         public Battle(Trainer a, Trainer b)
         {
@@ -33,11 +34,8 @@ namespace BrickemonGo
 
         private void Battle_shown(Object sender, EventArgs e)
         {
-
-            //MessageBox.Show("You are in the Form.Shown event.");
             CreateBattle();
             DoBattle();
-
         }
 
         public void CreateBattle()
@@ -107,8 +105,8 @@ namespace BrickemonGo
             Boolean fighting = true;
 
             //reset button choices
-            choiceT1 = 4;//-1;
-            choiceT2 = 4;//-1;
+            choiceT1 = -1;
+            choiceT2 = 4;//should be -1 usually, changed for now for development;
             moveT1 = -1;
             moveT2 = 3;//-1;
 
@@ -259,7 +257,9 @@ namespace BrickemonGo
                     }
                     break;
                 case 34://t1 switch t2 attack
-                    SwitchPoke(T1, moveT1);
+                    SwitchChoiceForm sw = new SwitchChoiceForm(T1);
+                    var result = sw.ShowDialog();
+                    SwitchPoke(T1, sw.GetChoice());
                     Attack(P2, moveT2, P1);
                     break;
                 case 41://t1 attack t2 run
@@ -303,6 +303,8 @@ namespace BrickemonGo
                     Console.WriteLine("Invalid Entry");
                     break;
             }
+            CalculateStatusDamage();
+            UpdateButtons();
         }
 
         //attack (A attacks B)
@@ -325,6 +327,32 @@ namespace BrickemonGo
             }
 
             Thread.Sleep(500);
+
+            if (A.GetStatus() == 5)//sleep
+            {
+                if (P1SleepCounter <= 0)//sleep counter is up, wake up!
+                {
+                    PrintToTextBox(A.GetName() + " woke up!");
+                    A.SetStatus(0);
+                    P1SleepCounter = 3;
+                }
+                else
+                {
+                    Random slr = new Random();
+                    int randomNum = slr.Next(0, 100);  //TEST LEFT OFF HERE
+                    if (randomNum < 34)
+                    {
+                        PrintToTextBox(A.GetName() + "woke up!");
+                        A.SetStatus(0);
+                        P1SleepCounter = 3;
+                    }
+                    else
+                    {
+
+                    }
+                    P1SleepCounter--;
+                }
+            }
 
             //calculate modifiers
             double modifier = 1;//targets*weather*crit*random(85%-100%)*stab*type(effectiveness)*burn*other
@@ -399,7 +427,7 @@ namespace BrickemonGo
             //outputbox.AppendText(A.GetName() + " used " + move.GetName() + "!\n");
             PrintToTextBox(A.GetName() + " used " + move.GetName() + "!");
             if (effectiveness == 0 && move.GetMoveCategory() != 3)
-                PrintToTextBox("It doesn't effect " + P2.GetName() + "\n");
+                PrintToTextBox("It doesn't effect " + B.GetName() + "\n");
             else if (effectiveness > 1 && move.GetMoveCategory() != 3)
                 PrintToTextBox("It's super effective!\n");
             else if (effectiveness < 1 && move.GetMoveCategory() != 3)
@@ -414,41 +442,84 @@ namespace BrickemonGo
             Refresh();
         }
 
+        private void CalculateStatusDamage() //burn,psn,badpsn do damage per turn
+        {
+            //player one pokemon 
+            if (P1.GetStatus() == 1)
+            {
+                PrintToTextBox(P1.GetName() + " was hurt by burn! (" + P1.GetHp() / 16 + " damage)");
+                P1.SetRemainingHp(P1.GetRemainingHp()- P1.GetHp() / 16);
+            }
+            if (P1.GetStatus() == 3)
+            {
+                PrintToTextBox(P1.GetName() + " was hurt by poison! (" + P1.GetHp() / 16 + " damage)");
+                P1.SetRemainingHp(P1.GetRemainingHp() - P1.GetHp() / 16);
+            }
+            if (P1.GetStatus() == 6)
+            {
+                PrintToTextBox(P1.GetName() + " was hurt badly by poison! (" + P1.GetHp() / 8 + " damage)");
+                P1.SetRemainingHp(P1.GetRemainingHp() - P1.GetHp() / 8);
+            }
+
+            //player two pokemon
+            if (P2.GetStatus() == 1)
+            {
+                PrintToTextBox(P2.GetName() + " was hurt by burn! (" + P2.GetHp() / 16 + " damage)");
+                P2.SetRemainingHp(P2.GetRemainingHp() - P2.GetHp() / 16);
+            }
+            if (P2.GetStatus() == 3)
+            {
+                PrintToTextBox(P2.GetName() + " was hurt by poison! (" + P2.GetHp() / 16 + " damage)");
+                P2.SetRemainingHp(P2.GetRemainingHp() - P2.GetHp() / 16);
+            }
+            if (P2.GetStatus() == 6)
+            {
+                PrintToTextBox(P2.GetName() + " was hurt badly by poison! (" + P2.GetHp() / 8 + " damage)");
+                P2.SetRemainingHp(P2.GetRemainingHp() - P2.GetHp() / 8);
+            }
+        }
 
         private void UpdateButtons()
         {
-            List<Control> list = new List<Control>();
-            ArrayList buttons = new ArrayList();
+            //List<Control> list = new List<Control>();
+            //ArrayList buttons = new ArrayList();
 
-            GetAllControl(this, list);
+            //GetAllControl(this, list);
 
-            foreach (Control control in list)
-            {
-                if (control.GetType() == typeof(Button))
-                {
-                    buttons.Add((Button)control);
-                }
-            }
+            //foreach (Control control in list)
+            //{
+            //    if (control.GetType() == typeof(Button))
+            //    {
+            //        buttons.Add((Button)control);
+            //    }
+            //}
 
-            for (int i = 0; i < buttons.Count; i++)
-            {
-                Button b = (Button)buttons[i];
-                switch (i)
-                {
-                    case 0:
-                        b.Text = P1.GetMove4().GetName();
-                        break;
-                    case 1:
-                        b.Text = P1.GetMove2().GetName();
-                        break;
-                    case 2:
-                        b.Text = P1.GetMove3().GetName();
-                        break;
-                    case 3:
-                        b.Text = P1.GetMove1().GetName();
-                        break;
-                }
-            }
+            //for (int i = 0; i < buttons.Count; i++)
+            //{
+            //    Button b = (Button)buttons[i];
+            //    switch (i)
+            //    {
+            //        case 0:
+            //            b.Text = P1.GetMove4().GetName();
+            //            break;
+            //        case 1:
+            //            b.Text = P1.GetMove2().GetName();
+            //            break;
+            //        case 2:
+            //            b.Text = P1.GetMove3().GetName();
+            //            break;
+            //        case 3:
+            //            b.Text = P1.GetMove1().GetName();
+            //            break;
+            //    }
+            //}
+            button1.Text = P1.GetMove1().GetName();
+            button2.Text = P1.GetMove2().GetName();
+            button3.Text = P1.GetMove3().GetName();
+            button4.Text = P1.GetMove4().GetName();
+
+            buttonpanel.Visible = true;
+            Refresh();
         }
 
 
@@ -465,25 +536,39 @@ namespace BrickemonGo
 
         private void button1_Click(object sender, EventArgs e)
         {
+            choiceT1 = 4;
             moveT1 = 1;
+            buttonpanel.Visible = false;
             DoTurn();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            choiceT1 = 4;
             moveT1 = 2;
+            buttonpanel.Visible = false;
             DoTurn();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            choiceT1 = 4;
             moveT1 = 3;
+            buttonpanel.Visible = false;
             DoTurn();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            choiceT1 = 4;
             moveT1 = 4;
+            buttonpanel.Visible = false;
+            DoTurn();
+        }
+
+        private void switchbutton_Click(object sender, EventArgs e)
+        {
+            choiceT1 = 3;
             DoTurn();
         }
 
@@ -560,7 +645,7 @@ namespace BrickemonGo
 
         private void toolTip1_Popup(object sender, PopupEventArgs e)
         {
-
+            //intentionally left blank
         }
 
         //run
