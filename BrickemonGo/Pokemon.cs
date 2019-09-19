@@ -19,6 +19,7 @@ namespace BrickemonGo
         private Boolean shiny; //whether the pokemon is shiny or not
         private Type type; // typing of the pokemon
         private int status; //0=none 1=burn 2=parlyz 3=poison 4=frz 5=slp 6=badpoison
+        private int sleepCounter;
 
         //STATS
         private int dexNum; //can also be used as ID for pokemon
@@ -849,6 +850,28 @@ namespace BrickemonGo
                 default:
                     return "STATUS STRING ERROR";
             }
+        }
+
+        public int GetSleepCounter()
+        {
+            return this.sleepCounter;
+        }
+
+        public void DecrementSleepCounter()
+        {
+            if (this.sleepCounter > 0)
+            {
+                this.sleepCounter--;
+            }
+            else
+            {
+                Console.WriteLine("WARNING: attempted to decrement sleep counter of "+this.name+" below zero");
+            }
+        }
+
+        public void ResetSleepCounter()
+        {
+            this.sleepCounter = 3;
         }
 
         public void SetNature(int x) //supply an int for Nature ID and new nature is generated and set

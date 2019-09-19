@@ -20,7 +20,6 @@ namespace BrickemonGo
         private int choiceT1, choiceT2;
         private int moveT1, moveT2;
         private int turn = 1;
-        private int P1SleepCounter, P2SleepCounter;
 
         public Battle(Trainer a, Trainer b)
         {
@@ -330,11 +329,11 @@ namespace BrickemonGo
 
             if (A.GetStatus() == 5)//sleep
             {
-                if (P1SleepCounter <= 0)//sleep counter is up, wake up!
+                if (A.GetSleepCounter() <= 0)//sleep counter is up, wake up!
                 {
                     PrintToTextBox(A.GetName() + " woke up!");
                     A.SetStatus(0);
-                    P1SleepCounter = 3;
+                    A.ResetSleepCounter();
                 }
                 else
                 {
@@ -344,13 +343,15 @@ namespace BrickemonGo
                     {
                         PrintToTextBox(A.GetName() + "woke up!");
                         A.SetStatus(0);
-                        P1SleepCounter = 3;
+                        A.ResetSleepCounter();
                     }
                     else
                     {
-
+                        PrintToTextBox(A.GetName() + "is fast asleep...");
+                        A.DecrementSleepCounter();
+                        Console.WriteLine(A.GetName() + "'s sleepcounter (P1SleepCounter) = " +A.GetSleepCounter());
+                        return;
                     }
-                    P1SleepCounter--;
                 }
             }
 
