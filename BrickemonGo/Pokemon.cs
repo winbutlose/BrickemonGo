@@ -19,7 +19,7 @@ namespace BrickemonGo
         private Boolean shiny; //whether the pokemon is shiny or not
         private Type type; // typing of the pokemon
         private int status; //0=none 1=burn 2=parlyz 3=poison 4=frz 5=slp 6=badpoison
-        private int sleepCounter;
+        private int sleepCounter, freezeCounter;
 
         //STATS
         private int dexNum; //can also be used as ID for pokemon
@@ -136,6 +136,8 @@ namespace BrickemonGo
             this.evasion = 0;
             this.GenerateMoveset();
             this.remainingHp = this.hp;
+            this.ResetFreezeCounter();
+            this.ResetSleepCounter();
         }
 
         //constructor for nickname
@@ -872,6 +874,28 @@ namespace BrickemonGo
         public void ResetSleepCounter()
         {
             this.sleepCounter = 3;
+        }
+
+        public int GetFreezeCounter()
+        {
+            return this.freezeCounter;
+        }
+
+        public void DecrementFreezeCounter()
+        {
+            if (this.freezeCounter > 0)
+            {
+                this.freezeCounter--;
+            }
+            else
+            {
+                Console.WriteLine("WARNING: attempted to decrement freeze counter of " + this.name + " below zero");
+            }
+        }
+
+        public void ResetFreezeCounter()
+        {
+            this.freezeCounter = 3;
         }
 
         public void SetNature(int x) //supply an int for Nature ID and new nature is generated and set

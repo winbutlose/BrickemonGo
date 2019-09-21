@@ -54,6 +54,12 @@ namespace BrickemonGo
             pokett6 = new PokeToolTip(T1.GetPartyAt(5));
             this.pokett6.SetToolTip(this.team6pic, "this is a test");
             Refresh();
+            P1.ResetStageMultipliers();
+            P1.ResetFreezeCounter();
+            P1.ResetSleepCounter();
+            P2.ResetStageMultipliers();
+            P2.ResetFreezeCounter();
+            P2.ResetSleepCounter();
         }
 
         private void Main_paint(object sender, PaintEventArgs e)
@@ -325,35 +331,22 @@ namespace BrickemonGo
                 move = A.GetMove1();
             }
 
-            Thread.Sleep(500);
-
-            if (A.GetStatus() == 5)//sleep
+            Boolean slpp= false, frzz = false;
+            if (A.GetStatus() == 5) //sleep
             {
-                if (A.GetSleepCounter() <= 0)//sleep counter is up, wake up!
-                {
-                    PrintToTextBox(A.GetName() + " woke up!");
-                    A.SetStatus(0);
-                    A.ResetSleepCounter();
-                }
-                else
-                {
-                    Random slr = new Random();
-                    int randomNum = slr.Next(0, 100);  //TEST LEFT OFF HERE
-                    if (randomNum < 34)
-                    {
-                        PrintToTextBox(A.GetName() + "woke up!");
-                        A.SetStatus(0);
-                        A.ResetSleepCounter();
-                    }
-                    else
-                    {
-                        PrintToTextBox(A.GetName() + "is fast asleep...");
-                        A.DecrementSleepCounter();
-                        Console.WriteLine(A.GetName() + "'s sleepcounter (P1SleepCounter) = " +A.GetSleepCounter());
-                        return;
-                    }
-                }
+                slpp=CheckSleep(A);
             }
+            if (A.GetStatus() == 4) //frozen
+            {
+                frzz = CheckFrozen(A);
+            }
+
+            if (slpp == true || frzz== true)//if pokemon A is still asleep/frozen, skip their attack
+            {
+                return;
+            }
+
+            Thread.Sleep(500);
 
             //calculate modifiers
             double modifier = 1;//targets*weather*crit*random(85%-100%)*stab*type(effectiveness)*burn*other
@@ -689,6 +682,67 @@ namespace BrickemonGo
         private void BreakinToolStripMenuItem_Click(object sender, EventArgs e) //menu item to open the break-in panel
         {
             new BreakInPanel(T1,T2).Show();
+        }
+
+        public Boolean CheckSleep(Pokemon A)
+        {
+                if (A.GetSleepCounter() <= 0)//sleep counter is up, wake up!
+                {
+                    PrintToTextBox(A.GetName() + " woke up!");
+                    A.SetStatus(0);
+                    A.ResetSleepCounter();
+                    return false;
+                }
+                else
+                {
+                    Random slr = new Random();
+                    int randomNum = slr.Next(0, 100);
+                    Console.WriteLine("random sleep: " + randomNum + "/100 (need <34 to wake up)");
+                    if (randomNum < 34)
+                    {
+                        PrintToTextBox(A.GetName() + "woke up!");
+                        A.SetStatus(0);
+                        A.ResetSleepCounter();
+                        return false;
+                    }
+                    else
+                    {
+                        PrintToTextBox(A.GetName() + "is fast asleep...");
+                        A.DecrementSleepCounter();
+                        Console.WriteLine(A.GetName() + "'s sleepcounter (P1SleepCounter) = " + A.GetSleepCounter());
+                        return true;
+                    }
+                }
+        }
+        public Boolean CheckFrozen(Pokemon A)
+        {
+            if (A.GetFreezeCounter() <= 0)//freeze counter is up, wake up!
+            {
+                PrintToTextBox(A.GetName() + " thawed!");
+                A.SetStatus(0);
+                A.ResetFreezeCounter();
+                return false;
+            }
+            else
+            {
+                Random slr = new Random();
+                int randomNum = slr.Next(0, 100);
+                Console.WriteLine("random freeze: " + randomNum + "/100 (need <34 to thaw)");
+                if (randomNum < 34)
+                {
+                    PrintToTextBox(A.GetName() + "thawed!");
+                    A.SetStatus(0);
+                    A.ResetFreezeCounter();
+                    return false;
+                }
+                else
+                {
+                    PrintToTextBox(A.GetName() + "is frozen solid...");
+                    A.DecrementFreezeCounter();
+                    Console.WriteLine(A.GetName() + "'s freezecounter (P1FreezeCounter) = " + A.GetFreezeCounter());
+                    return true;
+                }
+            }
         }
     }
 }
