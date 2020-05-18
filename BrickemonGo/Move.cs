@@ -241,5 +241,10 @@ namespace BrickemonGo
             return bob.ToString();
 
         }
+
+        public void ReadMoveJson()
+        {
+
+        }
     }
 }

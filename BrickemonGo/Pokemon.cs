@@ -978,6 +978,12 @@ namespace BrickemonGo
             }
         }
 
+        //we going to use json soon
+        public void InitDefaultPokemonJSON(String textFile)
+        {
+
+        }
+
         //generate stats from text file
         public void InitDefaultPokemon(String textFile)
         {

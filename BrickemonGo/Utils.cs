@@ -4,12 +4,13 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace BrickemonGo
 {
     class Utils
     {
-        public static double[,] typeChart = new double[18,18]; //typing matchups of all pokemon
+        public static double[,] typeChart = new double[18, 18]; //typing matchups of all pokemon
 
         public static void InitTypeChart()
         {
@@ -39,5 +40,20 @@ namespace BrickemonGo
                 Console.WriteLine();
             }
         }
+
+        public static void ReadPokemonJson()
+        {
+            var rawjson = File.ReadAllText(@"res/Pokemon_JSON/pokedex.ts");
+            var serializer = new JavaScriptSerializer();
+            var pokedex = serializer.Deserialize<Dictionary<string, PokemonJSON>>(rawjson);
+        }
+
+        public static void ReadMoveJson()
+        {
+            var rawjson = File.ReadAllText(@"res/Pokemon_JSON/moves.ts");
+            var serializer = new JavaScriptSerializer();
+            var movedex = serializer.Deserialize<Dictionary<string, MoveJSON>>(rawjson);
+        } //help the moves "secondary" info isnt being parsed rn probably have to do it ourselves but aye good work! :D
     }
 }
+ 

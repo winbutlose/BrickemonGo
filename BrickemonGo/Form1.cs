@@ -203,96 +203,102 @@ namespace BrickemonGo
                 Rebuild(int.Parse(SearchBox.Text));
             }
         }
+
         private void GetAllInformation()
-        {//EXAMPLE: charizard:{num:6,species:"Charizard",types:["Fire","Flying"],genderRatio:{M:0.875,F:0.125},baseStats:{hp:78,atk:84,def:78,spa:109,spd:85,spe:100},abilities:{0:"Blaze",H:"Solar Power"},heightm:1.7,weightkg:90.5,color:"Red",prevo:"charmeleon",evoLevel:36,eggGroups:["Monster","Dragon"],otherFormes:["charizardmegax","charizardmegay"]},
-            string[] allInfo = System.IO.File.ReadAllLines(@"res/pokedex.txt");
-            String line = allInfo[poke.GetDexNum()];
-            Console.WriteLine(line);
-            //abilities
-            String formattedInfo = "";
-            String str = line.Substring(line.IndexOf("abilities:") + 11);
-            str = str.Substring(0, str.IndexOf("}"));
-            str = str.Replace("0", "Normal");
-            str = str.Replace("H", "Hidden");
-            str = str.Replace("\"", " ");
-            str = str.Replace(",", " ");
-            formattedInfo += "Abilities [ " + str + "]";
-            //height and weight
-            str = line.Substring(line.IndexOf("heightm:") + 8);
-            str = str.Substring(0, str.IndexOf(","));
-            formattedInfo += "\r\n" + "Height [ " + str + " Meters ]";
-            str = line.Substring(line.IndexOf("weightkg:") + 9);
-            str = str.Substring(0, str.IndexOf(","));
-            formattedInfo += "    Weight [ " + str + " Kg ]";
-            //color
-            str = line.Substring(line.IndexOf("color:") + 6);
-            str = str.Substring(0, str.IndexOf(","));
-            str = str.Replace("\"", " ");
-            formattedInfo += "\r\n" + "Color [" + str + "]";
-            //evos prevos
-            if (line.Contains("prevo"))
-            {
-                str = line.Substring(line.IndexOf("prevo:") + 6);
-                str = str.Substring(0, str.IndexOf(","));
-                str = str.Replace("\"", " ");
-                formattedInfo += "\r\n" + "Prevo [" + str + "]";
-            }
-            else
-            {
-                formattedInfo += "\r\n" + "Prevo [ none ]";
-            }
-            if (line.Contains("evos:"))
-            {
-                str = line.Substring(line.IndexOf("evos:") + 5);
-                str = str.Substring(0, str.IndexOf(","));
-                str = str.Replace("\"", " ");
-                str = str.Replace("[", "");
-                str = str.Replace("]", "");
-                formattedInfo += "\r\n" + "Evolutions [" + str + "]";
-            }
-            else
-            {
-                formattedInfo += "\r\n" + "Evolutions [ none ]";
-            }
-            //original game (later to support giving credit for fakemons too)
-            if (line.Contains("OriginalGame"))
-            {
-                str = line.Substring(line.IndexOf("OriginalGame") + 13);
-                str = str.Substring(0, str.IndexOf(","));
-                str = str.Replace("[", "");
-                str = str.Replace("]", "");
-                switch (str)
-                {
-                    case "Gen1":
-                        formattedInfo += "\r\n" + "Original Games: [ Red/Blue/Yellow ]";
-                        break;
-                    case "Gen2":
-                        formattedInfo += "\r\n" + "Original Games: [ Gold/Silver/Crystal ]";
-                        break;
-                    case "Gen3":
-                        formattedInfo += "\r\n" + "Original Games: [ Ruby/Sapphire/Emerald ]";
-                        break;
-                    case "Gen4":
-                        formattedInfo += "\r\n" + "Original Games: [ Diamond/Pearl/Platinum ]";
-                        break;
-                    case "Gen5":
-                        formattedInfo += "\r\n" + "Original Games: [ BLack/White ]";
-                        break;
-                    case "Gen6":
-                        formattedInfo += "\r\n" + "Original Games: [ X/Y ]";
-                        break;
-                    default:
-                        throw new Exception("Pokemon has unknown original game");
-                }
-            }
+        {
 
-
-
-
-
-
-            fullinfobox.Text = formattedInfo;
         }
+
+        //private void GetAllInformation()
+        //{//EXAMPLE: charizard:{num:6,species:"Charizard",types:["Fire","Flying"],genderRatio:{M:0.875,F:0.125},baseStats:{hp:78,atk:84,def:78,spa:109,spd:85,spe:100},abilities:{0:"Blaze",H:"Solar Power"},heightm:1.7,weightkg:90.5,color:"Red",prevo:"charmeleon",evoLevel:36,eggGroups:["Monster","Dragon"],otherFormes:["charizardmegax","charizardmegay"]},
+        //    string[] allInfo = System.IO.File.ReadAllLines(@"res/pokedex.txt");
+        //    String line = allInfo[poke.GetDexNum()];
+        //    Console.WriteLine(line);
+        //    //abilities
+        //    String formattedInfo = "";
+        //    String str = line.Substring(line.IndexOf("abilities:") + 11);
+        //    str = str.Substring(0, str.IndexOf("}"));
+        //    str = str.Replace("0", "Normal");
+        //    str = str.Replace("H", "Hidden");
+        //    str = str.Replace("\"", " ");
+        //    str = str.Replace(",", " ");
+        //    formattedInfo += "Abilities [ " + str + "]";
+        //    //height and weight
+        //    str = line.Substring(line.IndexOf("heightm:") + 8);
+        //    str = str.Substring(0, str.IndexOf(","));
+        //    formattedInfo += "\r\n" + "Height [ " + str + " Meters ]";
+        //    str = line.Substring(line.IndexOf("weightkg:") + 9);
+        //    str = str.Substring(0, str.IndexOf(","));
+        //    formattedInfo += "    Weight [ " + str + " Kg ]";
+        //    //color
+        //    str = line.Substring(line.IndexOf("color:") + 6);
+        //    str = str.Substring(0, str.IndexOf(","));
+        //    str = str.Replace("\"", " ");
+        //    formattedInfo += "\r\n" + "Color [" + str + "]";
+        //    //evos prevos
+        //    if (line.Contains("prevo"))
+        //    {
+        //        str = line.Substring(line.IndexOf("prevo:") + 6);
+        //        str = str.Substring(0, str.IndexOf(","));
+        //        str = str.Replace("\"", " ");
+        //        formattedInfo += "\r\n" + "Prevo [" + str + "]";
+        //    }
+        //    else
+        //    {
+        //        formattedInfo += "\r\n" + "Prevo [ none ]";
+        //    }
+        //    if (line.Contains("evos:"))
+        //    {
+        //        str = line.Substring(line.IndexOf("evos:") + 5);
+        //        str = str.Substring(0, str.IndexOf(","));
+        //        str = str.Replace("\"", " ");
+        //        str = str.Replace("[", "");
+        //        str = str.Replace("]", "");
+        //        formattedInfo += "\r\n" + "Evolutions [" + str + "]";
+        //    }
+        //    else
+        //    {
+        //        formattedInfo += "\r\n" + "Evolutions [ none ]";
+        //    }
+        //    //original game (later to support giving credit for fakemons too)
+        //    if (line.Contains("OriginalGame"))
+        //    {
+        //        str = line.Substring(line.IndexOf("OriginalGame") + 13);
+        //        str = str.Substring(0, str.IndexOf(","));
+        //        str = str.Replace("[", "");
+        //        str = str.Replace("]", "");
+        //        switch (str)
+        //        {
+        //            case "Gen1":
+        //                formattedInfo += "\r\n" + "Original Games: [ Red/Blue/Yellow ]";
+        //                break;
+        //            case "Gen2":
+        //                formattedInfo += "\r\n" + "Original Games: [ Gold/Silver/Crystal ]";
+        //                break;
+        //            case "Gen3":
+        //                formattedInfo += "\r\n" + "Original Games: [ Ruby/Sapphire/Emerald ]";
+        //                break;
+        //            case "Gen4":
+        //                formattedInfo += "\r\n" + "Original Games: [ Diamond/Pearl/Platinum ]";
+        //                break;
+        //            case "Gen5":
+        //                formattedInfo += "\r\n" + "Original Games: [ BLack/White ]";
+        //                break;
+        //            case "Gen6":
+        //                formattedInfo += "\r\n" + "Original Games: [ X/Y ]";
+        //                break;
+        //            default:
+        //                throw new Exception("Pokemon has unknown original game");
+        //        }
+        //    }
+
+
+
+
+
+
+        //    fullinfobox.Text = formattedInfo;
+        //}
         private void GetFormes()//populate formes tab with other formes of pokemon if necesscary 
         {
             Label FormesLabel = new Label();
