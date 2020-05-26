@@ -41,19 +41,26 @@ namespace BrickemonGo
             }
         }
 
-        public static void ReadPokemonJson()
+        public static Dictionary<string, PokemonJSON> ReadPokemonJson()
         {
             var rawjson = File.ReadAllText(@"res/Pokemon_JSON/pokedex.ts");
             var serializer = new JavaScriptSerializer();
             var pokedex = serializer.Deserialize<Dictionary<string, PokemonJSON>>(rawjson);
         }
 
-        public static void ReadMoveJson()
+        public static Dictionary<string, MoveJSON> ReadMoveJson()
         {
             var rawjson = File.ReadAllText(@"res/Pokemon_JSON/moves.ts");
             var serializer = new JavaScriptSerializer();
             var movedex = serializer.Deserialize<Dictionary<string, MoveJSON>>(rawjson);
-        } //help the moves "secondary" info isnt being parsed rn probably have to do it ourselves but aye good work! :D
+        } //help! the moves "secondary" info isnt being parsed rn probably have to do it ourselves but aye good work! :D
+        
+        public static Dictionary<string, LearnsetJSON> ReadLearnsetJSON()
+        {
+            var rawjson = File.ReadAllText(@"res/Pokemon_JSON/learnsets.ts");
+            var serializer = new JavaScriptSerializer();
+            var learnsetdex = serializer.Deserialize<Dictionary<string, LearnsetJSON>>(rawjson);
+        }
     }
 }
  

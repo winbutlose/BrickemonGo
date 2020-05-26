@@ -25,12 +25,6 @@ namespace BrickemonGo
         private List<string> formeOrder;
         private int evoLevel;
 
-        public PokemonJSON()
-        {
-            //readJSON();
-           // Account account = JsonConvert.DeserializeObject<Account>(json);
-        }
-
         public string Name { get => name; set => name = value; }
         public int Num { get => num; set => num = value; }
         public Dictionary<string, int> Basestats { get => basestats; set => basestats = value; }

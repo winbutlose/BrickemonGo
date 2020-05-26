@@ -90,6 +90,7 @@
       <DependentUpon>BreakInPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Card.cs" />
+    <Compile Include="LearnsetJSON.cs" />
     <Compile Include="MoveChoiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +125,7 @@
     <Compile Include="PokeCardBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Pokedex.cs" />
     <Compile Include="Pokemon.cs" />
     <Compile Include="PokemonJSON.cs" />
     <Compile Include="PokeToolTip.cs">

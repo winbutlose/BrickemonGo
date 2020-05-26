@@ -12,17 +12,17 @@ namespace BrickemonGo
 {
     public partial class Form1 : Form
     {
-        private Pokemon poke;
+        //private Pokemon poke;
         private Dictionary<int, Move> MoveDictionary;
-        public Form1(Pokemon x)
+        public Form1(int x)
         {
             CreateForm(x);
         }
-        public void CreateForm(Pokemon x)
+        public void CreateForm(int x)
         {
             //init
             InitializeComponent();
-            poke = x;
+            int pokenum = x;
             //set up paint methods below
             this.StatPanel.Paint += new PaintEventHandler(Form1_Paint);
             this.InfoPanel.Paint += new PaintEventHandler(Info_Paint);
@@ -45,7 +45,7 @@ namespace BrickemonGo
         {
             try
             {
-                pictureBox1.ImageLocation = (@"res/sprites/sugimori/" + this.poke.GetDexNum() + ".png");
+                pictureBox1.ImageLocation = (@"res/sprites/sugimori/" + this.pokenum.GetNum(poke) + ".png");
             }
             catch (Exception ex)
             {

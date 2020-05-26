@@ -16,7 +16,7 @@ namespace BrickemonGo
         static void Main()
         {
             //Utils.ReadPokemonJson();
-            Utils.ReadMoveJson();
+            Utils.ReadLearnsetJSON();
 
             Utils.InitTypeChart();
             //Utils.printTypeChart();
