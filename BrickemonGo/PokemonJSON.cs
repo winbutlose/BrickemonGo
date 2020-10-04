@@ -20,6 +20,7 @@ namespace BrickemonGo
         private Dictionary<string, string> abilities;
         private string baseForme;
         private string gender;
+        private Dictionary<string, double> genderRatio;
         private List<string> eggGroups;
         private List<string> otherFormes;
         private List<string> formeOrder;
@@ -41,6 +42,7 @@ namespace BrickemonGo
         public List<string> Evos { get => evos; set => evos = value; }
         public string Prevo { get => prevo; set => prevo = value; }
         public int EvoLevel { get => evoLevel; set => evoLevel = value; }
+        public Dictionary<string, double> GenderRatio { get => genderRatio; set => genderRatio = value; }
 
         public static void readJSON()
         {

@@ -12,7 +12,7 @@ namespace BrickemonGo
 {
     public partial class Form1 : Form
     {
-        //private Pokemon poke;
+        private Pokemon poke;
         private Dictionary<int, Move> MoveDictionary;
         public Form1(int x)
         {
@@ -22,7 +22,9 @@ namespace BrickemonGo
         {
             //init
             InitializeComponent();
-            int pokenum = x;
+            poke = new Pokemon(x);
+            //int pokenum = x;
+            Pokedex pokedex = new Pokedex();
             //set up paint methods below
             this.StatPanel.Paint += new PaintEventHandler(Form1_Paint);
             this.InfoPanel.Paint += new PaintEventHandler(Info_Paint);
@@ -45,14 +47,14 @@ namespace BrickemonGo
         {
             try
             {
-                pictureBox1.ImageLocation = (@"res/sprites/sugimori/" + this.pokenum.GetNum(poke) + ".png");
+                //pictureBox1.ImageLocation = (@"res/sprites/sugimori/" + this.pokenum.GetNum(poke) + ".png");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
             //name text box
-            NameLabel.Text = "#" + poke.GetDexNum() + "  " + poke.GetName();
+            //NameLabel.Text = "#" + pokenum + "  " + poke.GetName();
             //do calculations
             float hp = (float)(poke.GetBaseHp() * 2);
             float atk = (float)(poke.GetBaseAtk() * 2);
@@ -387,7 +389,7 @@ namespace BrickemonGo
                 checkmark.ImageLocation = @"res/symbols/yes.png";
                 checkmark.Size = s;
                 checkmark.MouseHover += Checkmark_hover;
-                MoveTablePanel.Controls.Add(checkmark,6,iterator);
+                MoveTablePanel.Controls.Add(checkmark, 6, iterator);
                 iterator++;
             }
         }

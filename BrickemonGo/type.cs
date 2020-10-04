@@ -9,7 +9,7 @@ namespace BrickemonGo
     public class Type
     {
         //public enum types{NULL, NORMAL, FIGHTING, FLYING, POISON, GROUND, ROCK, BUG, GHOST, STEEL, FIRE, WATER, GRASS, ELECTRIC, PSYCHIC, ICE, DRAGON, DARK, FAIRY};
-        public enum types{NULL, NORMAL, FIRE, WATER, ELECTRIC, GRASS, ICE, FIGHTING, POISON, GROUND, FLYING, PSYCHIC, BUG, ROCK, GHOST, DRAGON, DARK, STEEL, FAIRY };
+        public enum types{ NULL, NORMAL, FIRE, WATER, ELECTRIC, GRASS, ICE, FIGHTING, POISON, GROUND, FLYING, PSYCHIC, BUG, ROCK, GHOST, DRAGON, DARK, STEEL, FAIRY };
 
         private Boolean monotype; //if the pokemon has only 1 type
         private int primaryType; //primary typing of the pokemon
@@ -27,7 +27,6 @@ namespace BrickemonGo
         {
             primaryType = (int)Enum.Parse(typeof(types), type);
             this.monotype = true;
-            //CheckMonotype();
         }
         //same as above but for dual types
         public Type(String type1, String type2)
